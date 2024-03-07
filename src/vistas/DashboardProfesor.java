@@ -141,7 +141,7 @@ public class DashboardProfesor extends javax.swing.JFrame {
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         //Abrir ventana
-        ConsultarSecciones frm = new ConsultarSecciones();
+        ConsultarSeccionesProf frm = new ConsultarSeccionesProf();
         frm.setVisible(true);
         //Cerrar ventana anterior
         this.dispose();
