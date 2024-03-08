@@ -6,6 +6,174 @@ import java.awt.Color;
 
 public class Login extends javax.swing.JFrame {
 
+    /**
+     * @return the botonAcceder
+     */
+    public javax.swing.JButton getBotonAcceder() {
+        return botonAcceder;
+    }
+
+    /**
+     * @param botonAcceder the botonAcceder to set
+     */
+    public void setBotonAcceder(javax.swing.JButton botonAcceder) {
+        this.botonAcceder = botonAcceder;
+    }
+
+    /**
+     * @return the campoPassword
+     */
+    public javax.swing.JPasswordField getCampoPassword() {
+        return campoPassword;
+    }
+
+    /**
+     * @param campoPassword the campoPassword to set
+     */
+    public void setCampoPassword(javax.swing.JPasswordField campoPassword) {
+        this.campoPassword = campoPassword;
+    }
+
+    /**
+     * @return the campoUsuario
+     */
+    public javax.swing.JTextField getCampoUsuario() {
+        return campoUsuario;
+    }
+
+    /**
+     * @param campoUsuario the campoUsuario to set
+     */
+    public void setCampoUsuario(javax.swing.JTextField campoUsuario) {
+        this.campoUsuario = campoUsuario;
+    }
+
+    /**
+     * @return the fondoIzq
+     */
+    public javax.swing.JLabel getFondoIzq() {
+        return fondoIzq;
+    }
+
+    /**
+     * @param fondoIzq the fondoIzq to set
+     */
+    public void setFondoIzq(javax.swing.JLabel fondoIzq) {
+        this.fondoIzq = fondoIzq;
+    }
+
+    /**
+     * @return the logoDer
+     */
+    public javax.swing.JLabel getLogoDer() {
+        return logoDer;
+    }
+
+    /**
+     * @param logoDer the logoDer to set
+     */
+    public void setLogoDer(javax.swing.JLabel logoDer) {
+        this.logoDer = logoDer;
+    }
+
+    /**
+     * @return the logoIzq
+     */
+    public javax.swing.JLabel getLogoIzq() {
+        return logoIzq;
+    }
+
+    /**
+     * @param logoIzq the logoIzq to set
+     */
+    public void setLogoIzq(javax.swing.JLabel logoIzq) {
+        this.logoIzq = logoIzq;
+    }
+
+    /**
+     * @return the separadorPassword
+     */
+    public javax.swing.JSeparator getSeparadorPassword() {
+        return separadorPassword;
+    }
+
+    /**
+     * @param separadorPassword the separadorPassword to set
+     */
+    public void setSeparadorPassword(javax.swing.JSeparator separadorPassword) {
+        this.separadorPassword = separadorPassword;
+    }
+
+    /**
+     * @return the separadorUsuario
+     */
+    public javax.swing.JSeparator getSeparadorUsuario() {
+        return separadorUsuario;
+    }
+
+    /**
+     * @param separadorUsuario the separadorUsuario to set
+     */
+    public void setSeparadorUsuario(javax.swing.JSeparator separadorUsuario) {
+        this.separadorUsuario = separadorUsuario;
+    }
+
+    /**
+     * @return the textDer
+     */
+    public javax.swing.JLabel getTextDer() {
+        return textDer;
+    }
+
+    /**
+     * @param textDer the textDer to set
+     */
+    public void setTextDer(javax.swing.JLabel textDer) {
+        this.textDer = textDer;
+    }
+
+    /**
+     * @return the textIzq
+     */
+    public javax.swing.JLabel getTextIzq() {
+        return textIzq;
+    }
+
+    /**
+     * @param textIzq the textIzq to set
+     */
+    public void setTextIzq(javax.swing.JLabel textIzq) {
+        this.textIzq = textIzq;
+    }
+
+    /**
+     * @return the textPassword
+     */
+    public javax.swing.JLabel getTextPassword() {
+        return textPassword;
+    }
+
+    /**
+     * @param textPassword the textPassword to set
+     */
+    public void setTextPassword(javax.swing.JLabel textPassword) {
+        this.textPassword = textPassword;
+    }
+
+    /**
+     * @return the textUsuario
+     */
+    public javax.swing.JLabel getTextUsuario() {
+        return textUsuario;
+    }
+
+    /**
+     * @param textUsuario the textUsuario to set
+     */
+    public void setTextUsuario(javax.swing.JLabel textUsuario) {
+        this.textUsuario = textUsuario;
+    }
+    
     public Login() {
         initComponents();
     }
@@ -69,6 +237,11 @@ public class Login extends javax.swing.JFrame {
                 campoUsuarioMousePressed(evt);
             }
         });
+        campoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoUsuarioActionPerformed(evt);
+            }
+        });
         background.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 410, 20));
 
         separadorUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -121,30 +294,30 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUsuarioMousePressed
-        if (campoUsuario.getText().equals("Ingrese Usuario")) {
-            campoUsuario.setText("");
-            campoUsuario.setForeground(Color.black);
+        if (getCampoUsuario().getText().equals("Ingrese Usuario")) {
+            getCampoUsuario().setText("");
+            getCampoUsuario().setForeground(Color.black);
         }
-        if (String.valueOf(campoPassword.getPassword()).isEmpty()) {
-            campoPassword.setText("**********");
-            campoPassword.setForeground(Color.gray);
+        if (String.valueOf(getCampoPassword().getPassword()).isEmpty()) {
+            getCampoPassword().setText("**********");
+            getCampoPassword().setForeground(Color.gray);
         }
     }//GEN-LAST:event_campoUsuarioMousePressed
 
     private void campoPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoPasswordMousePressed
-        if (String.valueOf(campoPassword.getPassword()).equals("**********")) {
-            campoPassword.setText("");
-            campoPassword.setForeground(Color.black);
+        if (String.valueOf(getCampoPassword().getPassword()).equals("**********")) {
+            getCampoPassword().setText("");
+            getCampoPassword().setForeground(Color.black);
         }
-        if (campoUsuario.getText().isEmpty()) {
-            campoUsuario.setText("Ingrese Usuario");
-            campoUsuario.setForeground(Color.gray);
+        if (getCampoUsuario().getText().isEmpty()) {
+            getCampoUsuario().setText("Ingrese Usuario");
+            getCampoUsuario().setForeground(Color.gray);
         }
     }//GEN-LAST:event_campoPasswordMousePressed
 
     private void botonAccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAccederMouseClicked
-        String usuario = campoUsuario.getText();
-        String contrasena = new String (campoPassword.getPassword());
+        String usuario = getCampoUsuario().getText();
+        String contrasena = new String (getCampoPassword().getPassword());
         
         if (usuario.equals("Administrador") && contrasena.equals("Admin")) {
             JOptionPane.showMessageDialog(this,"Bienvenido Administrador");
@@ -164,6 +337,10 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Credenciales Incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonAccederMouseClicked
+
+    private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

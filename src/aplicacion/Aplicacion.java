@@ -2,6 +2,7 @@
 
 package aplicacion;
 import vistas.Login;
+import controlador.CUsuario;
 
 public class Aplicacion {
 
@@ -9,6 +10,8 @@ public class Aplicacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-                new Login().setVisible(true);
+        Login view = new Login();
+        CUsuario controlador = new CUsuario(view);
+        view.setVisible(true);
     }
 }
