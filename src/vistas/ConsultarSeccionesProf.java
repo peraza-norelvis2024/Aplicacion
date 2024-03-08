@@ -4,6 +4,27 @@ package vistas;
 
 public class ConsultarSeccionesProf extends javax.swing.JFrame {
 
+    /**
+     * @return the bontonAtras
+     */
+    public javax.swing.JButton getBontonAtras() {
+        return bontonAtras;
+    }
+
+    /**
+     * @return the listPeriodos
+     */
+    public javax.swing.JComboBox<String> getListPeriodos() {
+        return listPeriodos;
+    }
+
+    /**
+     * @return the tablaSecciones
+     */
+    public javax.swing.JTable getTablaSecciones() {
+        return tablaSecciones;
+    }
+
     public ConsultarSeccionesProf() {
         initComponents();
     }
