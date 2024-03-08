@@ -5,6 +5,27 @@ import javax.swing.JOptionPane;
 
 public class DashboardProfesor extends javax.swing.JFrame {
 
+    /**
+     * @return the cargar
+     */
+    public javax.swing.JMenuItem getCargar() {
+        return cargar;
+    }
+
+    /**
+     * @return the consultar
+     */
+    public javax.swing.JMenuItem getConsultar() {
+        return consultar;
+    }
+
+    /**
+     * @return the salir
+     */
+    public javax.swing.JMenuItem getSalir() {
+        return salir;
+    }
+
     public DashboardProfesor() {
         initComponents();
     }
@@ -133,7 +154,7 @@ public class DashboardProfesor extends javax.swing.JFrame {
 
     private void cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarActionPerformed
         //Abrir ventana
-        CargarNotas frm = new CargarNotas();
+        CargarNotasProf frm = new CargarNotasProf();
         frm.setVisible(true);
         //Cerrar ventana anterior
         this.dispose();
