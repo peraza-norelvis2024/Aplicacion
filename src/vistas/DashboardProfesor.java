@@ -142,14 +142,14 @@ public class DashboardProfesor extends javax.swing.JFrame {
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
        //Preguntar si esta seguro de cerrar sesión
-        int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
+        /*int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
         if (JOptionPane.OK_OPTION==confirmado) {
             //Abrir ventana
             Login frm = new Login();
             frm.setVisible(true);
             //Cerrar ventana anterior
             this.dispose();
-        }
+        }*/
     }//GEN-LAST:event_salirActionPerformed
 
     private void cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarActionPerformed

@@ -17,10 +17,11 @@ import modelo.MUsuario;
 public class CUsuario {
     private Login view;
     private CConexion cconexion = new CConexion();
+    private Sesion sesion;
     Connection connection = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
-    
+   
     public CUsuario(Login view){
         this.view = view;
         this.view.getBotonAcceder().addActionListener(new ActionListener(){
@@ -40,18 +41,12 @@ public class CUsuario {
         connection = cconexion.establecerConexion();
         boolean valid = true;
         try {
-            System.out.printf("contrasena "+usuario.getContrasena());
-            System.out.printf("usurio "+usuario.getUsuario());
-            
             statement = connection.prepareStatement(sql);
             statement.setString(1, usuario.getUsuario());
             statement.setString(2, usuario.getContrasena());
             
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                System.out.printf("paso por aqui");
-                System.out.printf("while");
-                System.out.print("rol :"+resultSet.getString("rol_nombre"));
                 if(resultSet.getString("rol_nombre").equalsIgnoreCase("Administrador")){
                     JOptionPane.showMessageDialog(this.view,"Bienvenido Administrador");
                     //Abrir la otra ventana si el usuario y contraseña son correctos
@@ -70,11 +65,13 @@ public class CUsuario {
                     resultSet = statement.executeQuery();
                     if (resultSet.next()) {
                         String nombre = resultSet.getString("nombre") +" "+resultSet.getString("apellido");
-                        Sesion.getInstance().iniciarSesion(resultSet.getString("codigo"), nombre, resultSet.getString("cedula"));
+                        sesion = Sesion.getInstance();
+                        sesion.iniciarSesion(resultSet.getString("codigo"), nombre, resultSet.getString("cedula"));
                         
                         JOptionPane.showMessageDialog(this.view,"Bienvenido Profesor, "+nombre);
                         //Abrir la otra ventana si el usuario y contraseña son correctos
                         DashboardProfesor frm = new DashboardProfesor();
+                        CDashboardProfesor controladorDashboardProfesor = new CDashboardProfesor(frm, sesion);
                         frm.setVisible(true);
                         this.view.dispose();
                     }

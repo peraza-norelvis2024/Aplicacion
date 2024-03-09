@@ -48,4 +48,9 @@ public class Sesion {
     public boolean estaLogueado() {
         return codigo_usuario != null;
     }
+    public void cerrarSesion() {
+        this.codigo_usuario = null;
+        this.nombre_usuario = null;
+        this.cedula_usuario = null;
+    }
 }
