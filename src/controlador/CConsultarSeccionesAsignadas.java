@@ -21,8 +21,8 @@ public class CConsultarSeccionesAsignadas {
     private ConsultarSeccionesProf view;
     private Sesion sesion;
     private CConexion cconexion = new CConexion();
-    private HashMap<String, Integer> mapaPeriodos; // Mapa para almacenar nombres de secciones y sus códigos
-
+    private HashMap<String, Integer> mapaPeriodos; 
+    
     Connection connection = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
@@ -55,6 +55,8 @@ public class CConsultarSeccionesAsignadas {
                 view.dispose();
             }
         });
+        
+        
     }
     
     private void llenarCbxPeriodoAcademico(){
@@ -93,6 +95,7 @@ public class CConsultarSeccionesAsignadas {
             }
         }
     }
+    
     private void llenarTablaSecciones(int periodo){
         
         System.out.println("Usuario logueado: " + sesion.getNombre_usuario());
@@ -134,6 +137,7 @@ public class CConsultarSeccionesAsignadas {
             }
         }
     }
+    
     private int obtenerCodigoPeriodoSeleccionado() {
         int selectedIndex = view.getListPeriodos().getSelectedIndex();
 

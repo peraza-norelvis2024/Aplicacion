@@ -115,6 +115,11 @@ public class CargarNotasProf extends javax.swing.JFrame {
 
         listPeriodos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         listPeriodos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        listPeriodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listPeriodosActionPerformed(evt);
+            }
+        });
 
         textCarrera.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textCarrera.setForeground(new java.awt.Color(255, 255, 255));
@@ -305,6 +310,10 @@ public class CargarNotasProf extends javax.swing.JFrame {
         //Cerrar ventana anterior
         this.dispose();
     }//GEN-LAST:event_modificarNotaMouseClicked
+
+    private void listPeriodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPeriodosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listPeriodosActionPerformed
 
     /**
      * @param args the command line arguments
