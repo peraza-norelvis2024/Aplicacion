@@ -3,6 +3,7 @@
 package controlador;
 import vistas.DashboardProfesor;
 import vistas.Login;
+import vistas.ConsultarSeccionesProf;
 import modelo.Sesion;
 
 import java.awt.event.ActionEvent;
@@ -30,6 +31,16 @@ public class CDashboardProfesor {
 
                     view.dispose();
                 }
+            }
+        });
+        
+        this.view.getConsultar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                ConsultarSeccionesProf secciones = new ConsultarSeccionesProf();
+                CConsultarSeccionesAsignadas controladorSecciones = new CConsultarSeccionesAsignadas(secciones, sesion);
+                secciones.setVisible(true);
+                view.dispose();
             }
         });
     }

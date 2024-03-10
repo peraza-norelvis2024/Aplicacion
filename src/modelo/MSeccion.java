@@ -77,5 +77,8 @@ public class MSeccion {
         this.estatus = estatus;
     }
     
-    
+     @Override
+    public String toString() {
+        return numero;
+    }
 }

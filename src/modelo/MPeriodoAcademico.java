@@ -12,7 +12,9 @@ public class MPeriodoAcademico {
     private Date fecha_culminacion;
     private boolean estatus;
     private boolean activo;
-
+    
+    public MPeriodoAcademico(){}
+    
     public MPeriodoAcademico(int codigo, String nombre, String descripcion, Date fecha_ingreso, Date fecha_culminacion, boolean estatus, boolean activo) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -77,5 +79,10 @@ public class MPeriodoAcademico {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
-    }   
+    }
+    
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }
