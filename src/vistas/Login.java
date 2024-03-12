@@ -6,9 +6,6 @@ import java.awt.Color;
 
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * @return the botonAcceder
-     */
     public javax.swing.JButton getBotonAcceder() {
         return botonAcceder;
     }
@@ -20,9 +17,6 @@ public class Login extends javax.swing.JFrame {
         this.botonAcceder = botonAcceder;
     }
 
-    /**
-     * @return the campoPassword
-     */
     public javax.swing.JPasswordField getCampoPassword() {
         return campoPassword;
     }
@@ -34,9 +28,6 @@ public class Login extends javax.swing.JFrame {
         this.campoPassword = campoPassword;
     }
 
-    /**
-     * @return the campoUsuario
-     */
     public javax.swing.JTextField getCampoUsuario() {
         return campoUsuario;
     }
@@ -48,9 +39,6 @@ public class Login extends javax.swing.JFrame {
         this.campoUsuario = campoUsuario;
     }
 
-    /**
-     * @return the fondoIzq
-     */
     public javax.swing.JLabel getFondoIzq() {
         return fondoIzq;
     }
@@ -62,9 +50,6 @@ public class Login extends javax.swing.JFrame {
         this.fondoIzq = fondoIzq;
     }
 
-    /**
-     * @return the logoDer
-     */
     public javax.swing.JLabel getLogoDer() {
         return logoDer;
     }
@@ -76,9 +61,6 @@ public class Login extends javax.swing.JFrame {
         this.logoDer = logoDer;
     }
 
-    /**
-     * @return the logoIzq
-     */
     public javax.swing.JLabel getLogoIzq() {
         return logoIzq;
     }
@@ -90,9 +72,6 @@ public class Login extends javax.swing.JFrame {
         this.logoIzq = logoIzq;
     }
 
-    /**
-     * @return the separadorPassword
-     */
     public javax.swing.JSeparator getSeparadorPassword() {
         return separadorPassword;
     }
@@ -104,9 +83,6 @@ public class Login extends javax.swing.JFrame {
         this.separadorPassword = separadorPassword;
     }
 
-    /**
-     * @return the separadorUsuario
-     */
     public javax.swing.JSeparator getSeparadorUsuario() {
         return separadorUsuario;
     }
@@ -118,9 +94,6 @@ public class Login extends javax.swing.JFrame {
         this.separadorUsuario = separadorUsuario;
     }
 
-    /**
-     * @return the textDer
-     */
     public javax.swing.JLabel getTextDer() {
         return textDer;
     }
@@ -132,9 +105,6 @@ public class Login extends javax.swing.JFrame {
         this.textDer = textDer;
     }
 
-    /**
-     * @return the textIzq
-     */
     public javax.swing.JLabel getTextIzq() {
         return textIzq;
     }
@@ -146,9 +116,6 @@ public class Login extends javax.swing.JFrame {
         this.textIzq = textIzq;
     }
 
-    /**
-     * @return the textPassword
-     */
     public javax.swing.JLabel getTextPassword() {
         return textPassword;
     }
@@ -160,9 +127,6 @@ public class Login extends javax.swing.JFrame {
         this.textPassword = textPassword;
     }
 
-    /**
-     * @return the textUsuario
-     */
     public javax.swing.JLabel getTextUsuario() {
         return textUsuario;
     }
