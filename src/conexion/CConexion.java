@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class CConexion {
     Connection conexion = null;
-    String usuario = "postgres";
+    String usuario = "fidel";
     String contrasena = "garden86";
     String bd = "proyecto";
     String ip = "localhost";
@@ -19,8 +19,6 @@ public class CConexion {
         try {
             Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection(cadena, usuario, contrasena);
-            //JOptionPane.showMessageDialog(null, "Conectado");
-            
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos. error: "+e.toString());

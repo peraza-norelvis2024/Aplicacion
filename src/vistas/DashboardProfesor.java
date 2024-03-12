@@ -5,23 +5,14 @@ import javax.swing.JOptionPane;
 
 public class DashboardProfesor extends javax.swing.JFrame {
 
-    /**
-     * @return the cargar
-     */
     public javax.swing.JMenuItem getCargar() {
         return cargar;
     }
 
-    /**
-     * @return the consultar
-     */
     public javax.swing.JMenuItem getConsultar() {
         return consultar;
     }
 
-    /**
-     * @return the salir
-     */
     public javax.swing.JMenuItem getSalir() {
         return salir;
     }
