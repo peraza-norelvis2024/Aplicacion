@@ -3,10 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/NYPS/Documents/NetBeansProjects/Aplicacion/src/vistas/DashboardProfesor.java</file>
-            <file>file:/C:/Users/NYPS/Documents/NetBeansProjects/Aplicacion/src/vistas/InscripcionAdmin.java</file>
-            <file>file:/C:/Users/NYPS/Documents/NetBeansProjects/Aplicacion/src/vistas/DashboardAdministrador.java</file>
-            <file>file:/C:/Users/NYPS/Documents/NetBeansProjects/Aplicacion/src/vistas/CarreraAdmin.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MUsuario.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/vistas/CargarNotasProf.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/controlador/CConsultarSeccionesAsignadas.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/controlador/CUsuario.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/vistas/DashboardAdministrador.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MSeccion.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/vistas/ConsultarSeccionesProf.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MAsignatura.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MUniversidad.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MInscripcion.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MProfesor.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/vistas/DashboardProfesor.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/controlador/CDashboardProfesor.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MPersona.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MNota.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/conexion/CConexion.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MEstudiante.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MPeriodoAcademico.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/controlador/CCargarNota.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/MRol.java</file>
+            <file>file:/home/fidel/public_html/Aplicacion/src/modelo/Sesion.java</file>
         </group>
     </open-files>
 </project-private>
