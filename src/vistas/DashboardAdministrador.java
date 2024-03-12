@@ -5,47 +5,80 @@ import javax.swing.JOptionPane;
 
 public class DashboardAdministrador extends javax.swing.JFrame {
 
-    public javax.swing.JMenu getAsignatura() {
+    /**
+     * @return the asignatura
+     */
+    public javax.swing.JMenuItem getAsignatura() {
         return asignatura;
     }
 
-    public javax.swing.JMenu getCarrera() {
+    /**
+     * @return the carrera
+     */
+    public javax.swing.JMenuItem getCarrera() {
         return carrera;
     }
 
-    public javax.swing.JMenu getDecanato() {
+    /**
+     * @return the decanato
+     */
+    public javax.swing.JMenuItem getDecanato() {
         return decanato;
     }
 
-    public javax.swing.JMenu getEstudiante() {
+    /**
+     * @return the estudiante
+     */
+    public javax.swing.JMenuItem getEstudiante() {
         return estudiante;
     }
 
-    public javax.swing.JMenu getInscripcion() {
-        return inscripcion;
+    /**
+     * @return the inscripcionEstudiante
+     */
+    public javax.swing.JMenuItem getInscripcionEstudiante() {
+        return inscripcionEstudiante;
     }
 
-    public javax.swing.JMenu getPeriodAcadem() {
-        return periodAcadem;
+    /**
+     * @return the periodoAcademico
+     */
+    public javax.swing.JMenuItem getPeriodoAcademico() {
+        return periodoAcademico;
     }
 
-    public javax.swing.JMenu getProfesor() {
+    /**
+     * @return the profesor
+     */
+    public javax.swing.JMenuItem getProfesor() {
         return profesor;
     }
 
-    public javax.swing.JMenu getReportes() {
-        return reportes;
+    /**
+     * @return the resportesConsultar
+     */
+    public javax.swing.JMenuItem getResportesConsultar() {
+        return resportesConsultar;
     }
 
+    /**
+     * @return the salir
+     */
     public javax.swing.JMenuItem getSalir() {
         return salir;
     }
 
-    public javax.swing.JMenu getSecciones() {
-        return secciones;
+    /**
+     * @return the seccion
+     */
+    public javax.swing.JMenuItem getSeccion() {
+        return seccion;
     }
 
-    public javax.swing.JMenu getSemestre() {
+    /**
+     * @return the semestre
+     */
+    public javax.swing.JMenuItem getSemestre() {
         return semestre;
     }
 
@@ -57,30 +90,27 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         bgDashAdmin = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
         titulo2 = new javax.swing.JLabel();
         imgIzq = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
-        decanato = new javax.swing.JMenu();
-        carrera = new javax.swing.JMenu();
-        semestre = new javax.swing.JMenu();
-        asignatura = new javax.swing.JMenu();
-        periodAcadem = new javax.swing.JMenu();
-        secciones = new javax.swing.JMenu();
-        profesor = new javax.swing.JMenu();
-        estudiante = new javax.swing.JMenu();
+        modulos = new javax.swing.JMenu();
+        decanato = new javax.swing.JMenuItem();
+        carrera = new javax.swing.JMenuItem();
+        semestre = new javax.swing.JMenuItem();
+        asignatura = new javax.swing.JMenuItem();
+        seccion = new javax.swing.JMenuItem();
+        periodoAcademico = new javax.swing.JMenuItem();
+        profesor = new javax.swing.JMenuItem();
+        estudiante = new javax.swing.JMenuItem();
         inscripcion = new javax.swing.JMenu();
+        inscripcionEstudiante = new javax.swing.JMenuItem();
         reportes = new javax.swing.JMenu();
+        resportesConsultar = new javax.swing.JMenuItem();
         cerrar = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
-
-        jMenu1.setText("jMenu1");
-
-        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard Aministrador");
@@ -90,58 +120,53 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         bgDashAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoDash.png"))); // NOI18N
-        bgDashAdmin.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
+        bgDashAdmin.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
 
         titulo1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         titulo1.setText("¡GRACIAS POR FORMAR PARTE");
-        bgDashAdmin.add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
+        bgDashAdmin.add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
         titulo2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         titulo2.setText(" DE NUESTRO EQUIPO!");
-        bgDashAdmin.add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
+        bgDashAdmin.add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
 
         imgIzq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoDashAdmin.png"))); // NOI18N
-        bgDashAdmin.add(imgIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 290, 470));
+        bgDashAdmin.add(imgIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 290, 470));
+
+        modulos.setText("Modulos");
+        modulos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modulos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         decanato.setText("Decanato");
-        decanato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        decanato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(decanato);
+        modulos.add(decanato);
 
         carrera.setText("Carrera");
-        carrera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        carrera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(carrera);
+        modulos.add(carrera);
 
         semestre.setText("Semestre");
-        semestre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        semestre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(semestre);
+        modulos.add(semestre);
 
         asignatura.setText("Asignatura");
-        asignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        asignatura.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(asignatura);
+        modulos.add(asignatura);
 
-        periodAcadem.setText("Periodo Académico");
-        periodAcadem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        periodAcadem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(periodAcadem);
+        seccion.setText("Sección");
+        modulos.add(seccion);
 
-        secciones.setText("Sección");
-        secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        secciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(secciones);
+        periodoAcademico.setText("Periodo Académico");
+        periodoAcademico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                periodoAcademicoActionPerformed(evt);
+            }
+        });
+        modulos.add(periodoAcademico);
 
-        profesor.setText("Profresor");
-        profesor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        profesor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(profesor);
+        profesor.setText("Profesor");
+        modulos.add(profesor);
 
         estudiante.setText("Estudiante");
-        estudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        estudiante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        menu.add(estudiante);
+        modulos.add(estudiante);
+
+        menu.add(modulos);
 
         inscripcion.setText("Inscripción");
         inscripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -151,11 +176,19 @@ public class DashboardAdministrador extends javax.swing.JFrame {
                 inscripcionActionPerformed(evt);
             }
         });
+
+        inscripcionEstudiante.setText("Inscribir Estudiante");
+        inscripcion.add(inscripcionEstudiante);
+
         menu.add(inscripcion);
 
         reportes.setText("Reportes");
         reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        resportesConsultar.setText("Consultar");
+        reportes.add(resportesConsultar);
+
         menu.add(reportes);
 
         cerrar.setText("Cerrar");
@@ -208,6 +241,10 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_inscripcionActionPerformed
 
+    private void periodoAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoAcademicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_periodoAcademicoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,24 +257,25 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu asignatura;
+    private javax.swing.JMenuItem asignatura;
     private javax.swing.JPanel bgDashAdmin;
-    private javax.swing.JMenu carrera;
+    private javax.swing.JMenuItem carrera;
     private javax.swing.JMenu cerrar;
-    private javax.swing.JMenu decanato;
-    private javax.swing.JMenu estudiante;
+    private javax.swing.JMenuItem decanato;
+    private javax.swing.JMenuItem estudiante;
     private javax.swing.JLabel imgIzq;
     private javax.swing.JMenu inscripcion;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem inscripcionEstudiante;
     private javax.swing.JLabel logo;
     private javax.swing.JMenuBar menu;
-    private javax.swing.JMenu periodAcadem;
-    private javax.swing.JMenu profesor;
+    private javax.swing.JMenu modulos;
+    private javax.swing.JMenuItem periodoAcademico;
+    private javax.swing.JMenuItem profesor;
     private javax.swing.JMenu reportes;
+    private javax.swing.JMenuItem resportesConsultar;
     private javax.swing.JMenuItem salir;
-    private javax.swing.JMenu secciones;
-    private javax.swing.JMenu semestre;
+    private javax.swing.JMenuItem seccion;
+    private javax.swing.JMenuItem semestre;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     // End of variables declaration//GEN-END:variables
