@@ -81,7 +81,11 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     public javax.swing.JMenuItem getSemestre() {
         return semestre;
     }
-
+    
+    public javax.swing.JMenuItem getInscribir() {
+        return inscribir;
+    }
+    
     public DashboardAdministrador() {
         initComponents();
     }
@@ -223,14 +227,14 @@ public class DashboardAdministrador extends javax.swing.JFrame {
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         //Preguntar si esta seguro de cerrar sesión
-        int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
+        /*int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
         if (JOptionPane.OK_OPTION==confirmado) {
             //Abrir ventana
             Login frm = new Login();
             frm.setVisible(true);
             //Cerrar ventana anterior
             this.dispose();
-        }
+        }*/
     }//GEN-LAST:event_salirActionPerformed
 
     private void inscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscripcionActionPerformed
@@ -264,6 +268,7 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem decanato;
     private javax.swing.JMenuItem estudiante;
     private javax.swing.JLabel imgIzq;
+    private javax.swing.JMenuItem inscribir;
     private javax.swing.JMenu inscripcion;
     private javax.swing.JMenuItem inscripcionEstudiante;
     private javax.swing.JLabel logo;
@@ -279,4 +284,6 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     // End of variables declaration//GEN-END:variables
+
+    
 }

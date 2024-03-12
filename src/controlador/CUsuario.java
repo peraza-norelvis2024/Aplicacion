@@ -50,7 +50,9 @@ public class CUsuario {
                 if(resultSet.getString("rol_nombre").equalsIgnoreCase("Administrador")){
                     JOptionPane.showMessageDialog(this.view,"Bienvenido Administrador");
                     //Abrir la otra ventana si el usuario y contraseña son correctos
+                    sesion = Sesion.getInstance();
                     DashboardAdministrador frm = new DashboardAdministrador();
+                    CDashboardAdministrador controlador = new CDashboardAdministrador(frm, sesion);
                     frm.setVisible(true);
                     //Cerrar ventana anterior
                     this.view.dispose();
