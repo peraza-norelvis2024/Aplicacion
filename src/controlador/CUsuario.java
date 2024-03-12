@@ -39,7 +39,7 @@ public class CUsuario {
                 
 //                "SELECT * FROM usuario WHERE usuario = ? AND contrasena = ? LIMIT 1";
         connection = cconexion.establecerConexion();
-        boolean valid = true;
+        
         try {
             statement = connection.prepareStatement(sql);
             statement.setString(1, usuario.getUsuario());
@@ -66,7 +66,7 @@ public class CUsuario {
                     if (resultSet.next()) {
                         String nombre = resultSet.getString("nombre") +" "+resultSet.getString("apellido");
                         sesion = Sesion.getInstance();
-                        sesion.iniciarSesion(resultSet.getString("codigo"), nombre, resultSet.getString("cedula"));
+                        sesion.iniciarSesion(resultSet.getInt("codigo"), nombre, resultSet.getString("cedula"));
                         
                         JOptionPane.showMessageDialog(this.view,"Bienvenido Profesor, "+nombre);
                         //Abrir la otra ventana si el usuario y contraseña son correctos

@@ -5,7 +5,7 @@ package modelo;
 public class Sesion {
 
     private static Sesion instance;
-    public String codigo_usuario;
+    public int codigo_usuario;
     public String nombre_usuario;
     public String cedula_usuario;
     
@@ -19,7 +19,7 @@ public class Sesion {
         }
         return instance;
     }
-    public void iniciarSesion(String codigo, String nombre, String cedula) {
+    public void iniciarSesion(int codigo, String nombre, String cedula) {
         this.codigo_usuario = codigo;
         this.nombre_usuario = nombre;
         this.cedula_usuario = cedula;
@@ -27,7 +27,7 @@ public class Sesion {
     /**
      * @return the codigo_usuario
      */
-    public String getCodigo_usuario() {
+    public int getCodigo_usuario() {
         return codigo_usuario;
     }
 
@@ -46,10 +46,10 @@ public class Sesion {
     }
     
     public boolean estaLogueado() {
-        return codigo_usuario != null;
+        return codigo_usuario != 0;
     }
     public void cerrarSesion() {
-        this.codigo_usuario = null;
+        this.codigo_usuario = 0;
         this.nombre_usuario = null;
         this.cedula_usuario = null;
     }
