@@ -34,7 +34,7 @@ public class CDashboardAdministrador {
             }
         });
         
-        this.view.getInscribir().addActionListener(new ActionListener(){
+        this.view.getInscripcionEstudiante().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 InscripcionAdmin inscripcion = new InscripcionAdmin();
