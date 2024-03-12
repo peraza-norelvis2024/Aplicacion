@@ -69,6 +69,7 @@ public class ModificarNotaProf extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         bgModificarNota = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         textCedula = new javax.swing.JLabel();
@@ -84,6 +85,8 @@ public class ModificarNotaProf extends javax.swing.JFrame {
         listAsignatura = new javax.swing.JComboBox<>();
         textSeccion = new javax.swing.JLabel();
         listSeccion = new javax.swing.JComboBox<>();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Modificar Nota");
@@ -310,6 +313,7 @@ public class ModificarNotaProf extends javax.swing.JFrame {
     private javax.swing.JButton bontonGuardar;
     private javax.swing.JButton botonBuscar;
     private javax.swing.JTextField campoCedula;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> listAsignatura;
     private javax.swing.JComboBox<String> listCarreras;
     private javax.swing.JComboBox<String> listSeccion;
