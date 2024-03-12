@@ -5,79 +5,46 @@ import javax.swing.JOptionPane;
 
 public class DashboardAdministrador extends javax.swing.JFrame {
 
-    /**
-     * @return the asignatura
-     */
     public javax.swing.JMenu getAsignatura() {
         return asignatura;
     }
 
-    /**
-     * @return the carrera
-     */
     public javax.swing.JMenu getCarrera() {
         return carrera;
     }
 
-    /**
-     * @return the decanato
-     */
     public javax.swing.JMenu getDecanato() {
         return decanato;
     }
 
-    /**
-     * @return the estudiante
-     */
     public javax.swing.JMenu getEstudiante() {
         return estudiante;
     }
 
-    /**
-     * @return the inscripcion
-     */
     public javax.swing.JMenu getInscripcion() {
         return inscripcion;
     }
 
-    /**
-     * @return the periodAcadem
-     */
     public javax.swing.JMenu getPeriodAcadem() {
         return periodAcadem;
     }
 
-    /**
-     * @return the profesor
-     */
     public javax.swing.JMenu getProfesor() {
         return profesor;
     }
 
-    /**
-     * @return the reportes
-     */
     public javax.swing.JMenu getReportes() {
         return reportes;
     }
 
-    /**
-     * @return the salir
-     */
     public javax.swing.JMenuItem getSalir() {
         return salir;
     }
 
-    /**
-     * @return the secciones
-     */
     public javax.swing.JMenu getSecciones() {
         return secciones;
     }
 
-    /**
-     * @return the semestre
-     */
     public javax.swing.JMenu getSemestre() {
         return semestre;
     }
@@ -245,30 +212,6 @@ public class DashboardAdministrador extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DashboardAdministrador().setVisible(true);
