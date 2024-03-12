@@ -152,6 +152,11 @@ public class CargarNotasProf extends javax.swing.JFrame {
                 bontonAtras1MouseClicked(evt);
             }
         });
+        bontonAtras1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bontonAtras1ActionPerformed(evt);
+            }
+        });
 
         bontonGuardar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         bontonGuardar.setText("GUARDAR");
@@ -287,6 +292,10 @@ public class CargarNotasProf extends javax.swing.JFrame {
     private void listPeriodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPeriodosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listPeriodosActionPerformed
+
+    private void bontonAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonAtras1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonAtras1ActionPerformed
 
     /**
      * @param args the command line arguments

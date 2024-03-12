@@ -48,7 +48,11 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     public javax.swing.JMenu getSemestre() {
         return semestre;
     }
-
+    
+    public javax.swing.JMenuItem getInscribir() {
+        return inscribir;
+    }
+    
     public DashboardAdministrador() {
         initComponents();
     }
@@ -74,6 +78,7 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         profesor = new javax.swing.JMenu();
         estudiante = new javax.swing.JMenu();
         inscripcion = new javax.swing.JMenu();
+        inscribir = new javax.swing.JMenuItem();
         reportes = new javax.swing.JMenu();
         cerrar = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
@@ -151,6 +156,10 @@ public class DashboardAdministrador extends javax.swing.JFrame {
                 inscripcionActionPerformed(evt);
             }
         });
+
+        inscribir.setText("Inscribir estudiante");
+        inscripcion.add(inscribir);
+
         menu.add(inscripcion);
 
         reportes.setText("Reportes");
@@ -190,14 +199,14 @@ public class DashboardAdministrador extends javax.swing.JFrame {
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         //Preguntar si esta seguro de cerrar sesión
-        int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
+        /*int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
         if (JOptionPane.OK_OPTION==confirmado) {
             //Abrir ventana
             Login frm = new Login();
             frm.setVisible(true);
             //Cerrar ventana anterior
             this.dispose();
-        }
+        }*/
     }//GEN-LAST:event_salirActionPerformed
 
     private void inscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscripcionActionPerformed
@@ -227,6 +236,7 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu decanato;
     private javax.swing.JMenu estudiante;
     private javax.swing.JLabel imgIzq;
+    private javax.swing.JMenuItem inscribir;
     private javax.swing.JMenu inscripcion;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -241,4 +251,6 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     // End of variables declaration//GEN-END:variables
+
+    
 }

@@ -8,7 +8,9 @@ public class MCarrera {
     private String descripcion;
     private MDecanato decanato_id;
     private boolean estatus;
-
+    
+    public MCarrera(){}
+    
     public MCarrera(int codigo, String nombre, String descripcion, MDecanato decanato_id, boolean estatus) {
         this.codigo = codigo;
         this.nombre = nombre;

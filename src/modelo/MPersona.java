@@ -11,7 +11,11 @@ public class MPersona {
     private String correo;
     private String telefono;
     private boolean estatus;
-
+    
+    public MPersona(){
+        
+    }
+    
     public MPersona(int codigo, String nombre, String apellido, String cedula, String direccion, String correo, String telefono, boolean estatus) {
         this.codigo = codigo;
         this.nombre = nombre;

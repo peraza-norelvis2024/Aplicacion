@@ -114,6 +114,16 @@ public class CCargarNota {
             }
         });
         
+        view.getBontonAtras1().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DashboardProfesor frm = new DashboardProfesor();
+                CDashboardProfesor controladorDashboardProfesor = new CDashboardProfesor(frm, sesion);
+                frm.setVisible(true);
+                view.dispose();
+            }
+        });
+        
     }
     
     private void llenarCbxPeriodoAcademico(){

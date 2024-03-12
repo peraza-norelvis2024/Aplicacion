@@ -64,9 +64,9 @@ public class InscripcionAdmin extends javax.swing.JFrame {
         campoPeriodoAcademico = new javax.swing.JComboBox<>();
         botonBuscar = new javax.swing.JButton();
         textNombres = new javax.swing.JLabel();
-        campoNombres = new javax.swing.JTextField();
-        textApellidos = new javax.swing.JLabel();
         campoApellidos = new javax.swing.JTextField();
+        textApellidos = new javax.swing.JLabel();
+        campoNombres = new javax.swing.JTextField();
         textCarrera = new javax.swing.JLabel();
         campoCarrera1 = new javax.swing.JTextField();
         titulo2 = new javax.swing.JLabel();
@@ -81,7 +81,6 @@ public class InscripcionAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inscripción");
-        setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(41, 144, 159));
@@ -108,15 +107,15 @@ public class InscripcionAdmin extends javax.swing.JFrame {
         textNombres.setForeground(new java.awt.Color(255, 255, 255));
         textNombres.setText("Nombres");
 
-        campoNombres.setEditable(false);
-        campoNombres.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        campoApellidos.setEditable(false);
+        campoApellidos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         textApellidos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textApellidos.setForeground(new java.awt.Color(255, 255, 255));
         textApellidos.setText("Apellidos");
 
-        campoApellidos.setEditable(false);
-        campoApellidos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        campoNombres.setEditable(false);
+        campoNombres.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         textCarrera.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textCarrera.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,7 +205,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
                             .addComponent(textNombres))
                         .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(campoAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,7 +226,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(textApellidos)
                                         .addGap(88, 88, 88)
-                                        .addComponent(campoNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(campoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
@@ -267,9 +266,9 @@ public class InscripcionAdmin extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNombres)
-                    .addComponent(campoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textApellidos)
-                    .addComponent(campoNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textCarrera)
