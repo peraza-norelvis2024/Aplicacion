@@ -78,6 +78,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
         scrollTabla = new javax.swing.JScrollPane();
         tablaInscripcion = new javax.swing.JTable();
         botonInscripcion = new javax.swing.JButton();
+        bontonAtras1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inscripción");
@@ -190,6 +191,23 @@ public class InscripcionAdmin extends javax.swing.JFrame {
             }
         });
 
+        bontonAtras1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonAtras1.setText("ATRAS");
+        bontonAtras1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonAtras1.setMaximumSize(new java.awt.Dimension(93, 21));
+        bontonAtras1.setMinimumSize(new java.awt.Dimension(93, 21));
+        bontonAtras1.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonAtras1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bontonAtras1MouseClicked(evt);
+            }
+        });
+        bontonAtras1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bontonAtras1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -235,11 +253,11 @@ public class InscripcionAdmin extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(botonAgregar)
                                         .addGap(8, 8, 8))))))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(scrollTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(801, 801, 801)
-                            .addComponent(botonInscripcion))))
+                    .addComponent(scrollTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bontonAtras1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(698, 698, 698)
+                        .addComponent(botonInscripcion)))
                 .addGap(0, 13, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -285,8 +303,10 @@ public class InscripcionAdmin extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(scrollTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(botonInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonAtras1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -311,6 +331,18 @@ public class InscripcionAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoAsignaturaActionPerformed
 
+    private void bontonAtras1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonAtras1MouseClicked
+        //Abrir ventana
+        DashboardProfesor frm = new DashboardProfesor();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_bontonAtras1MouseClicked
+
+    private void bontonAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonAtras1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonAtras1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -323,6 +355,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bontonAtras1;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonInscripcion;
@@ -346,4 +379,11 @@ public class InscripcionAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the bontonAtras1
+     */
+    public javax.swing.JButton getBontonAtras1() {
+        return bontonAtras1;
+    }
 }

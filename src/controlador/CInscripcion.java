@@ -121,6 +121,26 @@ public class CInscripcion {
             
         });
         
+        this.view.getBotonInscripcion().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registrarInscripcion();
+                JOptionPane.showMessageDialog(view,"Se ha inscrito exitosamente!");
+                limpiarCampos();
+            }
+            
+        });
+        
+        view.getBontonAtras1().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DashboardAdministrador frm = new DashboardAdministrador();
+                CDashboardAdministrador controladorDashboardAdmin = new CDashboardAdministrador(frm, sesion);
+                frm.setVisible(true);
+                view.dispose();
+            }
+        });
+        
     }
     
     private void llenarCbxPeriodoAcademico(){
@@ -205,7 +225,10 @@ public class CInscripcion {
             }
             
             view.getCampoAsignatura().setEnabled(encontro);
-            
+            if(!encontro){
+               JOptionPane.showMessageDialog(view,"El estudiante no tiene asignaturas para inscribir", "Error", JOptionPane.ERROR_MESSAGE);
+               limpiarCampos();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -380,6 +403,8 @@ public class CInscripcion {
                     inscripcion.getSeccion_id().getNumero(),
                 };
                 ((DefaultTableModel) model).addRow(row);
+                view.getBotonInscripcion().setEnabled(true);
+                
             }else{
                 JOptionPane.showMessageDialog(view,"No se encontro el semestre", "Error", JOptionPane.ERROR_MESSAGE);
                 
@@ -401,6 +426,34 @@ public class CInscripcion {
         }
         //MInscripcion inscripcion = new MInscripcion();
                 
+    }
+    
+    private void registrarInscripcion(){
+        String sql = "INSERT INTO inscripcion (estudiante_id, seccion_id, periodo_academico_id, semestre_id) VALUES (?,?,?,?);";
+        try{
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+
+            for (MInscripcion inscripcion : inscripciones) {
+                statement.setInt(1, inscripcion.getEstudiante_id().getCodigo());
+                statement.setInt(2, inscripcion.getSeccion_id().getCodigo());
+                statement.setInt(3, inscripcion.getPeriodo_academico_id().getCodigo());
+                statement.setInt(4, inscripcion.getSemestre_id().getCodigo());
+                statement.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            // Cerrar la conexión, el statement y el resultSet
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
     
     private int obtenerCodigoPeriodoSeleccionado() {
@@ -437,5 +490,28 @@ public class CInscripcion {
         }else{
             return 0;
         }
+    }
+    
+    private void limpiarCampos(){
+        view.getCampoCedula().setText("");
+        view.getCampoNombres().setText("");
+        view.getCampoApellidos().setText("");
+        view.getCampoCarrera1().setText("");
+        
+        TableModel model = view.getjTablaInscripcion().getModel();
+        DefaultTableModel defaultModel = (DefaultTableModel) model;
+        defaultModel.setRowCount(0);
+        
+        view.getCampoPeriodoAcademico().removeAllItems();
+        llenarCbxPeriodoAcademico();
+        
+        view.getCampoAsignatura().removeAllItems();
+        view.getCampoAsignatura().setEnabled(false);
+        
+        view.getCampoSecciones().removeAllItems();
+        view.getCampoSecciones().setEnabled(false);
+        
+        view.getBotonAgregar().setEnabled(false);
+        view.getBotonInscripcion().setEnabled(false);
     }
 }
