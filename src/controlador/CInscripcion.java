@@ -61,9 +61,24 @@ public class CInscripcion {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int periodo = obtenerCodigoPeriodoSeleccionado();
-                
+                int asignatura = obtenerCodigoAsignaturaSeleccionada();
+                if(asignatura > 0){
+                    llenarCbxSecciones(periodo, asignatura);
+                }
             }
         });
+        
+        this.view.getCampoSecciones().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int seccion = obtenerCodigoSeccionSeleccionado();
+                if(seccion > 0){
+                    view.getBotonAgregar().setEnabled(true);
+                }
+            }
+
+        });
+        
     }
     
     private void llenarCbxPeriodoAcademico(){
@@ -105,17 +120,29 @@ public class CInscripcion {
         }
     }
     
-    private void llenarCbxAsignatura(int carrera_id){
+    private void llenarCbxAsignatura(int carrera_id, int periodo_id){
         try{
             // Crear una lista para almacenar los datos del combo
             this.mapaAsignatura = new HashMap<>();
             ArrayList<String> data = new ArrayList<>();
             this.view.getCampoAsignatura().addItem("Seleccione opción");
         
-            String sql = "SELECT codigo, nombre FROM asigantura WHERE estatus=true AND carrera_id = ?;";
+            //String sql = "SELECT codigo, nombre FROM asigantura WHERE estatus=true AND carrera_id = ?;";
+            String sql = "SELECT codigo, nombre "
+                    + "FROM asignatura "
+                    + "WHERE codigo NOT IN ("
+                        + "SELECT DISTINCT s.asignatura_id "
+                        + "FROM inscripcion i "
+                        + "INNER JOIN seccion s ON i.seccion_id = s.codigo "
+                        + "WHERE i.estudiante_id = ? AND i.periodo_academico_id = ? AND i.estatus = true"
+                    + ")"
+                    + "AND carrera_id = ? AND estatus = true;";
+            
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, carrera_id);
+            statement.setInt(1, estudiante.getCodigo());
+            statement.setInt(2, periodo_id);
+            statement.setInt(3, carrera_id);
             
             resultSet = statement.executeQuery();
             
@@ -154,17 +181,33 @@ public class CInscripcion {
     private void llenarCbxSecciones(int periodo, int asignatura){
         try{
             // Crear una lista para almacenar los datos del combo
+            this.mapaSecciones = new HashMap<>();
             ArrayList<String> data = new ArrayList<>();
-            String sql = "SELECT DISTINCT s.codigo, s.numero FROM seccion s WHERE s.estatus = true AND s.periodo_id = ? AND s.asignatura_id = ?;";
+            this.view.getCampoSecciones().addItem("Seleccione opción");
+            int estudiante_id = estudiante.getCodigo();
+            
+            String sql = "SELECT codigo, numero "
+                    + "FROM seccion "
+                    + "WHERE codigo NOT IN ("
+                        + "SELECT DISTINCT s.asignatura_id "
+                        + "FROM inscripcion i "
+                        + "INNER JOIN seccion s ON i.seccion_id = s.codigo "
+                        + "WHERE i.estudiante_id = ? AND i.periodo_academico_id = ? AND i.estatus = true"
+                    + ")"
+                    + "AND asignatura_id = ? AND estatus = true;";
+            
+            
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, sesion.getCodigo_usuario());
+            statement.setInt(1, estudiante_id);
             statement.setInt(2, periodo);
             statement.setInt(3, asignatura);
             
             resultSet = statement.executeQuery();
+            boolean encontro = false;
             // Iterar sobre los resultados y agregarlos a la lista
             while (resultSet.next()) {
+                encontro = true;
                 int codigo = resultSet.getInt("codigo");
                 String nombre = resultSet.getString("numero");
                 
@@ -174,6 +217,8 @@ public class CInscripcion {
             for (String seccion : data) {
                 view.getCampoSecciones().addItem(seccion);
             }
+            
+            view.getCampoSecciones().setEnabled(encontro);
             
 
         } catch (SQLException e) {
@@ -229,7 +274,7 @@ public class CInscripcion {
                 view.getCampoNombres().setText(estudiante.getNombre());
                 view.getCampoApellidos().setText(estudiante.getApellido());
                 view.getCampoCarrera1().setText(estudiante.getCarrera_id().getNombre());
-                llenarCbxAsignatura(carrera_id);
+                llenarCbxAsignatura(carrera_id, periodo);
                 
                 
             }else{
@@ -267,4 +312,27 @@ public class CInscripcion {
         }
     }
     
+    private int obtenerCodigoAsignaturaSeleccionada() {
+        int selectedIndex = view.getCampoAsignatura().getSelectedIndex();
+
+        // Verificar si se seleccionó alguna opción
+        if (selectedIndex != -1 && selectedIndex > 0) { 
+            String nombreAsignaturaSeleccionado = (String) view.getCampoAsignatura().getSelectedItem(); // Obtener nombre de asignatura seleccionada
+            return mapaAsignatura.get(nombreAsignaturaSeleccionado); // Obtener código de asignatura a partir del nombre en el mapa
+        }else{
+            return 0;
+        }
+    }
+    
+    private int obtenerCodigoSeccionSeleccionado() {
+        int selectedIndex = view.getCampoSecciones().getSelectedIndex();
+
+        // Verificar si se seleccionó alguna opción
+        if (selectedIndex != -1 && selectedIndex > 0) { 
+            String nombreSeccionSeleccionado = (String) view.getCampoSecciones().getSelectedItem(); // Obtener nombre de seccion seleccionada
+            return mapaSecciones.get(nombreSeccionSeleccionado); // Obtener código de seccion a partir del nombre en el mapa
+        }else{
+            return 0;
+        }
+    }
 }
