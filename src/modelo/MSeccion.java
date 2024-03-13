@@ -11,6 +11,8 @@ public class MSeccion {
     private MPeriodoAcademico periodo_id;
     private boolean estatus;
 
+    public MSeccion(){}
+    
     public MSeccion(int codigo, String numero, int max_estudiantes, MAsignatura asignatura_id, MProfesor profesor_id, MPeriodoAcademico periodo_id, boolean estatus) {
         this.codigo = codigo;
         this.numero = numero;

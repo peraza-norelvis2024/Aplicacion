@@ -44,8 +44,8 @@ public class InscripcionAdmin extends javax.swing.JFrame {
         return campoSecciones;
     }
 
-    public javax.swing.JTable getjTable1() {
-        return jTable1;
+    public javax.swing.JTable getjTablaInscripcion() {
+        return tablaInscripcion;
     }
 
     public InscripcionAdmin() {
@@ -76,7 +76,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
         campoSecciones = new javax.swing.JComboBox<>();
         botonAgregar = new javax.swing.JButton();
         scrollTabla = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaInscripcion = new javax.swing.JTable();
         botonInscripcion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -150,7 +150,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
         botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAgregar.setEnabled(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaInscripcion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -178,7 +178,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        scrollTabla.setViewportView(jTable1);
+        scrollTabla.setViewportView(tablaInscripcion);
 
         botonInscripcion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonInscripcion.setText("INSCRIBIR");
@@ -334,8 +334,8 @@ public class InscripcionAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> campoPeriodoAcademico;
     private javax.swing.JComboBox<String> campoSecciones;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane scrollTabla;
+    private javax.swing.JTable tablaInscripcion;
     private javax.swing.JLabel textApellidos;
     private javax.swing.JLabel textAsignatura;
     private javax.swing.JLabel textCarrera;
