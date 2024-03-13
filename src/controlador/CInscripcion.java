@@ -12,11 +12,15 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import conexion.CConexion;
+import modelo.MAsignatura;
 import modelo.MCarrera;
 import modelo.MEstudiante;
+import modelo.MInscripcion;
 
 import modelo.Sesion;
 import modelo.MPeriodoAcademico;
+import modelo.MSeccion;
+import modelo.MSemestre;
 
 import vistas.DashboardAdministrador;
 import vistas.InscripcionAdmin;
@@ -28,8 +32,14 @@ public class CInscripcion {
     private HashMap<String, Integer> mapaPeriodos; 
     private HashMap<String, Integer> mapaAsignatura;
     private HashMap<String, Integer> mapaSecciones;
+    
     private MEstudiante estudiante;
     private MCarrera carrera;
+    private MPeriodoAcademico periodoAcademico;
+    private MAsignatura asignatura_model;
+    private MSeccion seccion_model;
+    
+    private List<MInscripcion> inscripciones;
     
     Connection connection = null;
     PreparedStatement statement = null;
@@ -39,6 +49,12 @@ public class CInscripcion {
         this.view = view;
         this.sesion = sesion;
         this.mapaPeriodos = new HashMap<>();
+        this.inscripciones = new ArrayList<>();
+        
+        TableModel model = view.getjTablaInscripcion().getModel();
+        DefaultTableModel defaultModel = (DefaultTableModel) model;
+        defaultModel.setRowCount(0);
+        
         llenarCbxPeriodoAcademico();
         
         this.view.getBotonBuscar().addActionListener(new ActionListener(){
@@ -49,7 +65,13 @@ public class CInscripcion {
                 
                 if(cedula != "" && cedula != null && index > 0){
                     int periodo = obtenerCodigoPeriodoSeleccionado();
+                    
+                    periodoAcademico = new MPeriodoAcademico();
+                    periodoAcademico.setCodigo(periodo);
+                    periodoAcademico.setNombre((String) view.getCampoPeriodoAcademico().getSelectedItem());
+                    
                     buscarEstudiante(cedula, periodo);
+                    
                 }else{
                     JOptionPane.showMessageDialog(view,"Debe ingresar una cédula y seleccionar un periodo académico", "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -63,6 +85,10 @@ public class CInscripcion {
                 int periodo = obtenerCodigoPeriodoSeleccionado();
                 int asignatura = obtenerCodigoAsignaturaSeleccionada();
                 if(asignatura > 0){
+                    asignatura_model = new MAsignatura();
+                    asignatura_model.setCodigo(asignatura);
+                    asignatura_model.setNombre((String) view.getCampoAsignatura().getSelectedItem());
+                    
                     llenarCbxSecciones(periodo, asignatura);
                 }
             }
@@ -73,10 +99,26 @@ public class CInscripcion {
             public void actionPerformed(ActionEvent e) {
                 int seccion = obtenerCodigoSeccionSeleccionado();
                 if(seccion > 0){
+                    seccion_model = new MSeccion();
+                    seccion_model.setCodigo(seccion);
+                    seccion_model.setNumero((String) view.getCampoSecciones().getSelectedItem());
+                    seccion_model.setAsignatura_id(asignatura_model);
+                    
                     view.getBotonAgregar().setEnabled(true);
                 }
             }
 
+        });
+        
+        this.view.getBotonAgregar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int seccion = obtenerCodigoSeccionSeleccionado();
+                if(seccion > 0){
+                    llenarTablaInscripcion();
+                }
+            }
+            
         });
         
     }
@@ -125,6 +167,7 @@ public class CInscripcion {
             // Crear una lista para almacenar los datos del combo
             this.mapaAsignatura = new HashMap<>();
             ArrayList<String> data = new ArrayList<>();
+            this.view.getCampoAsignatura().removeAllItems();
             this.view.getCampoAsignatura().addItem("Seleccione opción");
         
             //String sql = "SELECT codigo, nombre FROM asigantura WHERE estatus=true AND carrera_id = ?;";
@@ -183,6 +226,7 @@ public class CInscripcion {
             // Crear una lista para almacenar los datos del combo
             this.mapaSecciones = new HashMap<>();
             ArrayList<String> data = new ArrayList<>();
+            this.view.getCampoSecciones().removeAllItems();
             this.view.getCampoSecciones().addItem("Seleccione opción");
             int estudiante_id = estudiante.getCodigo();
             
@@ -298,7 +342,66 @@ public class CInscripcion {
         }    
     }
     
-    
+    private void llenarTablaInscripcion(){
+        int seccion = obtenerCodigoSeccionSeleccionado();
+        MSemestre semestre;
+        
+        TableModel model = view.getjTablaInscripcion().getModel();
+        
+        ArrayList<String> data = new ArrayList<>();
+        String sql = "SELECT sm.codigo as codigo, sm.nombre as nombre "
+                + "FROM seccion s "
+                + "INNER JOIN asignatura a ON s.asignatura_id =  a.codigo "
+                + "INNER JOIN semestre sm ON a.semestre_id = sm.codigo "
+                + "WHERE s.codigo = ? AND s.estatus = true LIMIT 1;";
+        try {
+            
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, seccion);
+            
+            resultSet = statement.executeQuery();
+            // Iterar sobre los resultados y agregarlos a la lista
+            if (resultSet.next()) {
+                semestre = new MSemestre(resultSet.getInt("codigo"), resultSet.getString("nombre"), true);
+                
+                MInscripcion inscripcion = new MInscripcion();
+                inscripcion.setEstudiante_id(estudiante);
+                inscripcion.setPeriodo_academico_id(periodoAcademico);
+                inscripcion.setSeccion_id(seccion_model);
+                inscripcion.setSemestre_id(semestre);
+                
+                inscripciones.add(inscripcion);
+                
+                Object[] row = {
+                    inscripcion.getSeccion_id().getAsignatura_id().getCodigo(),
+                    inscripcion.getSeccion_id().getAsignatura_id().getNombre(),
+                    inscripcion.getSemestre_id().getNombre(),
+                    inscripcion.getSeccion_id().getNumero(),
+                };
+                ((DefaultTableModel) model).addRow(row);
+            }else{
+                JOptionPane.showMessageDialog(view,"No se encontro el semestre", "Error", JOptionPane.ERROR_MESSAGE);
+                
+            }
+            
+        
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión, el statement y el resultSet
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        //MInscripcion inscripcion = new MInscripcion();
+                
+    }
     
     private int obtenerCodigoPeriodoSeleccionado() {
         int selectedIndex = view.getCampoPeriodoAcademico().getSelectedIndex();

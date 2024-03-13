@@ -9,7 +9,9 @@ public class MAsignatura {
     private MCarrera carrera_id;
     private MSemestre semestre_id;
     private boolean estatus;
-
+    
+    public MAsignatura(){}
+    
     public MAsignatura(int codigo, String nombre, String descripcion, MCarrera carrera_id, MSemestre semestre, boolean estatus) {
         this.codigo = codigo;
         this.nombre = nombre;

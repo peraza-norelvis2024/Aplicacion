@@ -9,7 +9,9 @@ public class MInscripcion {
     private MPeriodoAcademico periodo_academico_id;
     private MSemestre semestre_id;
     private boolean estatus;
-
+    
+    public MInscripcion(){}
+    
     public MInscripcion(int codigo, MEstudiante estudiante_id, MSeccion seccion_id, MPeriodoAcademico periodo_academico_id, MSemestre semestre_id, boolean estatus) {
         this.codigo = codigo;
         this.estudiante_id = estudiante_id;
