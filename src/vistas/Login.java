@@ -196,6 +196,7 @@ public class Login extends javax.swing.JFrame {
         campoUsuario.setForeground(new java.awt.Color(204, 204, 204));
         campoUsuario.setText("Ingrese Usuario");
         campoUsuario.setBorder(null);
+        campoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 campoUsuarioMousePressed(evt);
