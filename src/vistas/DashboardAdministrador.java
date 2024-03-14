@@ -82,10 +82,6 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         return semestre;
     }
     
-    public javax.swing.JMenuItem getInscribir() {
-        return inscribir;
-    }
-    
     public DashboardAdministrador() {
         initComponents();
     }
@@ -116,8 +112,8 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         cerrar = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Dashboard Aministrador");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Dashboard Administrador");
         setResizable(false);
 
         bgDashAdmin.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,18 +138,43 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         modulos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         decanato.setText("Decanato");
+        decanato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decanatoActionPerformed(evt);
+            }
+        });
         modulos.add(decanato);
 
         carrera.setText("Carrera");
+        carrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carreraActionPerformed(evt);
+            }
+        });
         modulos.add(carrera);
 
         semestre.setText("Semestre");
+        semestre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                semestreActionPerformed(evt);
+            }
+        });
         modulos.add(semestre);
 
         asignatura.setText("Asignatura");
+        asignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignaturaActionPerformed(evt);
+            }
+        });
         modulos.add(asignatura);
 
         seccion.setText("Sección");
+        seccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seccionActionPerformed(evt);
+            }
+        });
         modulos.add(seccion);
 
         periodoAcademico.setText("Periodo Académico");
@@ -165,9 +186,19 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         modulos.add(periodoAcademico);
 
         profesor.setText("Profesor");
+        profesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profesorActionPerformed(evt);
+            }
+        });
         modulos.add(profesor);
 
         estudiante.setText("Estudiante");
+        estudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estudianteActionPerformed(evt);
+            }
+        });
         modulos.add(estudiante);
 
         menu.add(modulos);
@@ -191,6 +222,11 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         reportes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         resportesConsultar.setText("Consultar");
+        resportesConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resportesConsultarActionPerformed(evt);
+            }
+        });
         reportes.add(resportesConsultar);
 
         menu.add(reportes);
@@ -246,8 +282,76 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_inscripcionActionPerformed
 
     private void periodoAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoAcademicoActionPerformed
-        // TODO add your handling code here:
+        //Abrir ventana
+        PeriodoAcademicoAdmin frm = new PeriodoAcademicoAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
     }//GEN-LAST:event_periodoAcademicoActionPerformed
+
+    private void decanatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decanatoActionPerformed
+        //Abrir ventana
+        DecanatoAdmin frm = new DecanatoAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_decanatoActionPerformed
+
+    private void carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carreraActionPerformed
+        //Abrir ventana
+        CarreraAdmin frm = new CarreraAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_carreraActionPerformed
+
+    private void semestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreActionPerformed
+        //Abrir ventana
+        SemestreAdmin frm = new SemestreAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_semestreActionPerformed
+
+    private void asignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignaturaActionPerformed
+        //Abrir ventana
+        AsignaturaAdmin frm = new AsignaturaAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_asignaturaActionPerformed
+
+    private void seccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seccionActionPerformed
+        //Abrir ventana
+        SeccionAdmin frm = new SeccionAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_seccionActionPerformed
+
+    private void profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profesorActionPerformed
+        //Abrir ventana
+        ProfesorAdmin frm = new ProfesorAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_profesorActionPerformed
+
+    private void estudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estudianteActionPerformed
+        //Abrir ventana
+        EstudianteAdmin frm = new EstudianteAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_estudianteActionPerformed
+
+    private void resportesConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resportesConsultarActionPerformed
+        //Abrir ventana
+        ReportesAdmin frm = new ReportesAdmin();
+        frm.setVisible(true);
+        //Cerrar ventana anterior
+        this.dispose();
+    }//GEN-LAST:event_resportesConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,7 +372,6 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem decanato;
     private javax.swing.JMenuItem estudiante;
     private javax.swing.JLabel imgIzq;
-    private javax.swing.JMenuItem inscribir;
     private javax.swing.JMenu inscripcion;
     private javax.swing.JMenuItem inscripcionEstudiante;
     private javax.swing.JLabel logo;

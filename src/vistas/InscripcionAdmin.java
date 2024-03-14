@@ -332,11 +332,7 @@ public class InscripcionAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_campoAsignaturaActionPerformed
 
     private void bontonAtras1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonAtras1MouseClicked
-        //Abrir ventana
-        DashboardProfesor frm = new DashboardProfesor();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_bontonAtras1MouseClicked
 
     private void bontonAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonAtras1ActionPerformed

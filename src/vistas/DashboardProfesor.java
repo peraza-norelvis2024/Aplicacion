@@ -41,7 +41,6 @@ public class DashboardProfesor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard Profesor");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         bgDashProfe.setBackground(new java.awt.Color(255, 255, 255));
