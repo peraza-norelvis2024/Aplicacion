@@ -25,7 +25,7 @@ import modelo.MSemestre;
 import vistas.DashboardAdministrador;
 import vistas.InscripcionAdmin;
 
-public class CInscripcion {
+public class CInscripcionAdmin {
     private InscripcionAdmin view;
     private Sesion sesion;
     private CConexion cconexion = new CConexion();
@@ -45,7 +45,7 @@ public class CInscripcion {
     PreparedStatement statement = null;
     ResultSet resultSet = null;
    
-    public CInscripcion(InscripcionAdmin view, Sesion sesion){
+    public CInscripcionAdmin(InscripcionAdmin view, Sesion sesion){
         this.view = view;
         this.sesion = sesion;
         this.mapaPeriodos = new HashMap<>();
@@ -131,7 +131,7 @@ public class CInscripcion {
             
         });
         
-        view.getBontonAtras1().addActionListener(new ActionListener(){
+        this.view.getBontonAtras1().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 DashboardAdministrador frm = new DashboardAdministrador();

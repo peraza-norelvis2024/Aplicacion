@@ -16,7 +16,7 @@ import conexion.CConexion;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-public class CCargarNota {
+public class CCargarNotaProf {
     private CargarNotasProf view;
     private Sesion sesion;
     private CConexion cconexion = new CConexion();
@@ -29,7 +29,7 @@ public class CCargarNota {
     PreparedStatement statement = null;
     ResultSet resultSet = null;
    
-    public CCargarNota(CargarNotasProf view, Sesion sesion){
+    public CCargarNotaProf(CargarNotasProf view, Sesion sesion){
         this.view = view;
         this.sesion = sesion;
         this.view.getListPeriodos().addItem("Seleccione opción");

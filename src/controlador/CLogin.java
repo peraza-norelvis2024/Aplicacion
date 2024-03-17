@@ -14,7 +14,7 @@ import vistas.DashboardProfesor;
 
 import modelo.MUsuario;
 
-public class CUsuario {
+public class CLogin {
     private Login view;
     private CConexion cconexion = new CConexion();
     private Sesion sesion;
@@ -22,7 +22,7 @@ public class CUsuario {
     PreparedStatement statement = null;
     ResultSet resultSet = null;
    
-    public CUsuario(Login view){
+    public CLogin(Login view){
         this.view = view;
         this.view.getBotonAcceder().addActionListener(new ActionListener(){
             @Override

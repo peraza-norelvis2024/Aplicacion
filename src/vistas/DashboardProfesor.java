@@ -131,61 +131,21 @@ public class DashboardProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_salirMouseClicked
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-       //Preguntar si esta seguro de cerrar sesión
-        /*int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
-        if (JOptionPane.OK_OPTION==confirmado) {
-            //Abrir ventana
-            Login frm = new Login();
-            frm.setVisible(true);
-            //Cerrar ventana anterior
-            this.dispose();
-        }*/
+
     }//GEN-LAST:event_salirActionPerformed
 
     private void cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarActionPerformed
-        //Abrir ventana
-        /*CargarNotasProf frm = new CargarNotasProf();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();*/
+
     }//GEN-LAST:event_cargarActionPerformed
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
-        //Abrir ventana
-        /*ConsultarSeccionesProf frm = new ConsultarSeccionesProf();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();*/
+
     }//GEN-LAST:event_consultarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DashboardProfesor().setVisible(true);

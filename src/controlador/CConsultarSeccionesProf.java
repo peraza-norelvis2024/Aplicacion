@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import vistas.DashboardProfesor;
 
-public class CConsultarSeccionesAsignadas {
+public class CConsultarSeccionesProf {
     private ConsultarSeccionesProf view;
     private Sesion sesion;
     private CConexion cconexion = new CConexion();
@@ -27,7 +27,7 @@ public class CConsultarSeccionesAsignadas {
     PreparedStatement statement = null;
     ResultSet resultSet = null;
    
-    public CConsultarSeccionesAsignadas(ConsultarSeccionesProf view, Sesion sesion) {
+    public CConsultarSeccionesProf(ConsultarSeccionesProf view, Sesion sesion) {
         this.view = view;
         this.sesion = sesion;
         this.mapaPeriodos = new HashMap<>();

@@ -27,7 +27,7 @@ public class CDashboardProfesor {
                 if (JOptionPane.OK_OPTION==confirmado) {
                     sesion.cerrarSesion();
                     Login login = new Login();
-                    CUsuario controladorLogin = new CUsuario(login);
+                    CLogin controladorLogin = new CLogin(login);
                     login.setVisible(true);
 
                     view.dispose();
@@ -39,7 +39,7 @@ public class CDashboardProfesor {
             @Override
             public void actionPerformed(ActionEvent e){
                 ConsultarSeccionesProf secciones = new ConsultarSeccionesProf();
-                CConsultarSeccionesAsignadas controladorSecciones = new CConsultarSeccionesAsignadas(secciones, sesion);
+                CConsultarSeccionesProf controladorSecciones = new CConsultarSeccionesProf(secciones, sesion);
                 secciones.setVisible(true);
                 view.dispose();
             }
@@ -49,7 +49,7 @@ public class CDashboardProfesor {
             @Override
             public void actionPerformed(ActionEvent e){
                 CargarNotasProf cargar = new CargarNotasProf();
-                CCargarNota controladorNota = new CCargarNota(cargar, sesion);
+                CCargarNotaProf controladorNota = new CCargarNotaProf(cargar, sesion);
                 cargar.setVisible(true);
                 view.dispose();
             }
