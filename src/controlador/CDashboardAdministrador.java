@@ -1,9 +1,18 @@
 // Norelvis Peraza // Joe Verde // Sophia Estrada // Juan Fonseca // Gloria Sánchez
 
 package controlador;
-import vistas.Login;
-import vistas.InscripcionAdmin;
 import vistas.DashboardAdministrador;
+import vistas.DecanatoAdmin;
+import vistas.CarreraAdmin;
+import vistas.SemestreAdmin;
+import vistas.AsignaturaAdmin;
+import vistas.SeccionAdmin;
+import vistas.PeriodoAcademicoAdmin;
+import vistas.ProfesorAdmin;
+import vistas.EstudianteAdmin;
+import vistas.InscripcionAdmin;
+import vistas.ReportesAdmin;
+import vistas.Login;
 
 import modelo.Sesion;
 
@@ -19,18 +28,13 @@ public class CDashboardAdministrador {
         this.view = view;
         this.sesion = sesion;
         
-        this.view.getSalir().addActionListener(new ActionListener(){
+        this.view.getDecanato().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
-                if (JOptionPane.OK_OPTION==confirmado) {
-                    sesion.cerrarSesion();
-                    Login login = new Login();
-                    CUsuario controladorLogin = new CUsuario(login);
-                    login.setVisible(true);
-
-                    view.dispose();
-                }
+                DecanatoAdmin decanato = new DecanatoAdmin();
+                CDecanatoAdmin controlador_decanato = new CDecanatoAdmin(decanato, sesion);
+                decanato.setVisible(true);
+                view.dispose();
             }
         });
         
@@ -38,9 +42,23 @@ public class CDashboardAdministrador {
             @Override
             public void actionPerformed(ActionEvent e){
                 InscripcionAdmin inscripcion = new InscripcionAdmin();
-                CInscripcion controlador_inscripcion = new CInscripcion(inscripcion, sesion);
+                CInscripcionAdmin controlador_inscripcion = new CInscripcionAdmin(inscripcion, sesion);
                 inscripcion.setVisible(true);
                 view.dispose();
+            }
+        });
+        
+        this.view.getSalir().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
+                if (JOptionPane.OK_OPTION==confirmado) {
+                    sesion.cerrarSesion();
+                    Login login = new Login();
+                    CLogin controladorLogin = new CLogin(login);
+                    login.setVisible(true);
+                    view.dispose();
+                }
             }
         });
 

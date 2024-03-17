@@ -4,6 +4,13 @@ package vistas;
 
 public class DecanatoAdmin extends javax.swing.JFrame {
 
+    /**
+     * @return the bontonAtrasDec
+     */
+    public javax.swing.JButton getBontonAtrasDec() {
+        return bontonAtrasDec;
+    }
+
     public DecanatoAdmin() {
         initComponents();
     }
@@ -13,28 +20,24 @@ public class DecanatoAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         bgDecanato = new javax.swing.JPanel();
-        titulo1Dec = new javax.swing.JLabel();
+        tituloDec = new javax.swing.JLabel();
         textNomBusDec = new javax.swing.JLabel();
-        campoNomBusDec = new javax.swing.JTextField();
+        comboNombBusDec = new javax.swing.JComboBox<>();
         botonBuscarDec = new javax.swing.JButton();
-        scrollDec = new javax.swing.JScrollPane();
-        tablaDec = new javax.swing.JTable();
+        botonAgregarDec = new javax.swing.JButton();
+        textNomDec = new javax.swing.JLabel();
+        campoNomDec = new javax.swing.JTextField();
+        textDesDec = new javax.swing.JLabel();
+        campoDesDec = new javax.swing.JTextField();
+        textUniDec = new javax.swing.JLabel();
+        comboUniDec = new javax.swing.JComboBox<>();
+        textStaDec = new javax.swing.JLabel();
+        comboStaDec = new javax.swing.JComboBox<>();
         bontonAtrasDec = new javax.swing.JButton();
+        bontonCancelarDec = new javax.swing.JButton();
         botonEliminarDec = new javax.swing.JButton();
         botonModificarDec = new javax.swing.JButton();
         botonGuardarDec = new javax.swing.JButton();
-        titulo2Dec = new javax.swing.JLabel();
-        textCodAgrDec = new javax.swing.JLabel();
-        campoCodAgrDec = new javax.swing.JTextField();
-        textNomAgrDec = new javax.swing.JLabel();
-        campoNomAgrDec = new javax.swing.JTextField();
-        textDesAgrDec = new javax.swing.JLabel();
-        campoDesAgrDec = new javax.swing.JTextField();
-        textUniAgrDec = new javax.swing.JLabel();
-        comboUniAgrDec = new javax.swing.JComboBox<>();
-        textStaAgrDec = new javax.swing.JLabel();
-        comboStaAgrDec = new javax.swing.JComboBox<>();
-        botonAgregarDec = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Decanato");
@@ -42,64 +45,43 @@ public class DecanatoAdmin extends javax.swing.JFrame {
 
         bgDecanato.setBackground(new java.awt.Color(41, 144, 159));
 
-        titulo1Dec.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        titulo1Dec.setForeground(new java.awt.Color(255, 255, 255));
-        titulo1Dec.setText("BUSCAR DECANATO");
+        tituloDec.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        tituloDec.setForeground(new java.awt.Color(255, 255, 255));
+        tituloDec.setText("GESTIONAR DECANATO");
 
         textNomBusDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textNomBusDec.setForeground(new java.awt.Color(255, 255, 255));
         textNomBusDec.setText("Nombre");
 
-        campoNomBusDec.setEditable(false);
-        campoNomBusDec.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
         botonBuscarDec.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonBuscarDec.setText("BUSCAR");
         botonBuscarDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        tablaDec.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Código", "Nombre", "Descripción", "Universidad", "Estado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        botonAgregarDec.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonAgregarDec.setText("AGREGAR");
+        botonAgregarDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
+        textNomDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textNomDec.setForeground(new java.awt.Color(255, 255, 255));
+        textNomDec.setText("Nombre");
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        scrollDec.setViewportView(tablaDec);
+        campoNomDec.setEditable(false);
+        campoNomDec.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textDesDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textDesDec.setForeground(new java.awt.Color(255, 255, 255));
+        textDesDec.setText("Descripción");
+
+        campoDesDec.setEditable(false);
+        campoDesDec.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textUniDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textUniDec.setForeground(new java.awt.Color(255, 255, 255));
+        textUniDec.setText("Universidad");
+
+        textStaDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textStaDec.setForeground(new java.awt.Color(255, 255, 255));
+        textStaDec.setText("Estatus");
 
         bontonAtrasDec.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         bontonAtrasDec.setText("ATRAS");
@@ -118,6 +100,24 @@ public class DecanatoAdmin extends javax.swing.JFrame {
             }
         });
 
+        bontonCancelarDec.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonCancelarDec.setText("CANCELAR");
+        bontonCancelarDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonCancelarDec.setEnabled(false);
+        bontonCancelarDec.setMaximumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarDec.setMinimumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarDec.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonCancelarDec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bontonCancelarDecMouseClicked(evt);
+            }
+        });
+        bontonCancelarDec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bontonCancelarDecActionPerformed(evt);
+            }
+        });
+
         botonEliminarDec.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonEliminarDec.setText("ELIMINAR");
         botonEliminarDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -133,43 +133,6 @@ public class DecanatoAdmin extends javax.swing.JFrame {
         botonGuardarDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonGuardarDec.setEnabled(false);
 
-        titulo2Dec.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        titulo2Dec.setForeground(new java.awt.Color(255, 255, 255));
-        titulo2Dec.setText("AGREGAR DECANATO");
-
-        textCodAgrDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textCodAgrDec.setForeground(new java.awt.Color(255, 255, 255));
-        textCodAgrDec.setText("Código");
-
-        campoCodAgrDec.setEditable(false);
-        campoCodAgrDec.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textNomAgrDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textNomAgrDec.setForeground(new java.awt.Color(255, 255, 255));
-        textNomAgrDec.setText("Nombre");
-
-        campoNomAgrDec.setEditable(false);
-        campoNomAgrDec.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textDesAgrDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textDesAgrDec.setForeground(new java.awt.Color(255, 255, 255));
-        textDesAgrDec.setText("Descripción");
-
-        campoDesAgrDec.setEditable(false);
-        campoDesAgrDec.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textUniAgrDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textUniAgrDec.setForeground(new java.awt.Color(255, 255, 255));
-        textUniAgrDec.setText("Universidad");
-
-        textStaAgrDec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textStaAgrDec.setForeground(new java.awt.Color(255, 255, 255));
-        textStaAgrDec.setText("Estado");
-
-        botonAgregarDec.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonAgregarDec.setText("AGREGAR");
-        botonAgregarDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         javax.swing.GroupLayout bgDecanatoLayout = new javax.swing.GroupLayout(bgDecanato);
         bgDecanato.setLayout(bgDecanatoLayout);
         bgDecanatoLayout.setHorizontalGroup(
@@ -177,98 +140,77 @@ public class DecanatoAdmin extends javax.swing.JFrame {
             .addGroup(bgDecanatoLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(bgDecanatoLayout.createSequentialGroup()
-                            .addComponent(bontonAtrasDec, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(botonEliminarDec)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonModificarDec)
-                            .addGap(18, 18, 18)
-                            .addComponent(botonGuardarDec))
-                        .addComponent(scrollDec, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgDecanatoLayout.createSequentialGroup()
-                            .addComponent(textNomBusDec)
-                            .addGap(29, 29, 29)
-                            .addComponent(campoNomBusDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(53, 53, 53)
-                            .addComponent(botonBuscarDec)))
                     .addGroup(bgDecanatoLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
                         .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textCodAgrDec)
-                            .addComponent(textDesAgrDec)
-                            .addComponent(textStaAgrDec))
-                        .addGap(26, 26, 26)
-                        .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgDecanatoLayout.createSequentialGroup()
-                                .addComponent(titulo2Dec)
-                                .addGap(41, 41, 41))
+                            .addComponent(textNomDec)
+                            .addComponent(textUniDec)
+                            .addComponent(bontonAtrasDec, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(bgDecanatoLayout.createSequentialGroup()
                                 .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboStaAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(bgDecanatoLayout.createSequentialGroup()
-                                        .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(campoDesAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(campoCodAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(58, 58, 58)
-                                        .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textNomAgrDec)
-                                            .addComponent(textUniAgrDec))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(comboUniAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campoNomAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonAgregarDec))))
-                .addContainerGap(49, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgDecanatoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titulo1Dec)
-                .addGap(363, 363, 363))
+                                    .addComponent(campoNomDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboUniDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48)
+                                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textDesDec)
+                                    .addComponent(textStaDec))
+                                .addGap(27, 27, 27)
+                                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboStaDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoDesDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgDecanatoLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(bontonCancelarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonEliminarDec)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonModificarDec)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonGuardarDec))
+                            .addGroup(bgDecanatoLayout.createSequentialGroup()
+                                .addComponent(comboNombBusDec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(botonBuscarDec)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonAgregarDec))
+                            .addGroup(bgDecanatoLayout.createSequentialGroup()
+                                .addGap(104, 104, 104)
+                                .addComponent(tituloDec))))
+                    .addComponent(textNomBusDec))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         bgDecanatoLayout.setVerticalGroup(
             bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgDecanatoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(titulo1Dec)
-                .addGap(39, 39, 39)
+                .addGap(16, 16, 16)
+                .addComponent(tituloDec)
+                .addGap(42, 42, 42)
                 .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNomBusDec)
-                    .addComponent(campoNomBusDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(scrollDec, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgDecanatoLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonGuardarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonModificarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bontonAtrasDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonEliminarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgDecanatoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(titulo2Dec)
-                        .addGap(32, 32, 32)))
-                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoCodAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textNomAgrDec)
-                    .addComponent(campoNomAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textCodAgrDec))
-                .addGap(37, 37, 37)
-                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDesAgrDec)
-                    .addComponent(campoDesAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textUniAgrDec)
-                    .addComponent(comboUniAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textStaAgrDec)
-                    .addComponent(comboStaAgrDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonBuscarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboNombBusDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAgregarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoNomDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textNomDec)
+                    .addComponent(textDesDec)
+                    .addComponent(campoDesDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textUniDec)
+                    .addComponent(comboUniDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboStaDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textStaDec))
+                .addGap(58, 58, 58)
+                .addGroup(bgDecanatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonEliminarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonGuardarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonModificarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonAtrasDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonCancelarDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -297,6 +239,14 @@ public class DecanatoAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bontonAtrasDecActionPerformed
 
+    private void bontonCancelarDecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonCancelarDecMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonCancelarDecMouseClicked
+
+    private void bontonCancelarDecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonCancelarDecActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonCancelarDecActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,26 +261,22 @@ public class DecanatoAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgDecanato;
     private javax.swing.JButton bontonAtrasDec;
+    private javax.swing.JButton bontonCancelarDec;
     private javax.swing.JButton botonAgregarDec;
     private javax.swing.JButton botonBuscarDec;
     private javax.swing.JButton botonEliminarDec;
     private javax.swing.JButton botonGuardarDec;
     private javax.swing.JButton botonModificarDec;
-    private javax.swing.JTextField campoCodAgrDec;
-    private javax.swing.JTextField campoDesAgrDec;
-    private javax.swing.JTextField campoNomAgrDec;
-    private javax.swing.JTextField campoNomBusDec;
-    private javax.swing.JComboBox<String> comboStaAgrDec;
-    private javax.swing.JComboBox<String> comboUniAgrDec;
-    private javax.swing.JScrollPane scrollDec;
-    private javax.swing.JTable tablaDec;
-    private javax.swing.JLabel textCodAgrDec;
-    private javax.swing.JLabel textDesAgrDec;
-    private javax.swing.JLabel textNomAgrDec;
+    private javax.swing.JTextField campoDesDec;
+    private javax.swing.JTextField campoNomDec;
+    private javax.swing.JComboBox<String> comboNombBusDec;
+    private javax.swing.JComboBox<String> comboStaDec;
+    private javax.swing.JComboBox<String> comboUniDec;
+    private javax.swing.JLabel textDesDec;
     private javax.swing.JLabel textNomBusDec;
-    private javax.swing.JLabel textStaAgrDec;
-    private javax.swing.JLabel textUniAgrDec;
-    private javax.swing.JLabel titulo1Dec;
-    private javax.swing.JLabel titulo2Dec;
+    private javax.swing.JLabel textNomDec;
+    private javax.swing.JLabel textStaDec;
+    private javax.swing.JLabel textUniDec;
+    private javax.swing.JLabel tituloDec;
     // End of variables declaration//GEN-END:variables
 }

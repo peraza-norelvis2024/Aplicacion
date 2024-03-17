@@ -2,7 +2,7 @@
 
 package aplicacion;
 import vistas.Login;
-import controlador.CUsuario;
+import controlador.CLogin;
 
 public class Aplicacion {
 
@@ -11,7 +11,7 @@ public class Aplicacion {
      */
     public static void main(String[] args) {
         Login view = new Login();
-        CUsuario controlador = new CUsuario(view);
+        CLogin controlador = new CLogin(view);
         view.setVisible(true);
     }
 }

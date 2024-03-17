@@ -262,95 +262,47 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        //Preguntar si esta seguro de cerrar sesión
-        /*int confirmado = JOptionPane.showConfirmDialog(null, "Está Seguro de Salir");
-        if (JOptionPane.OK_OPTION==confirmado) {
-            //Abrir ventana
-            Login frm = new Login();
-            frm.setVisible(true);
-            //Cerrar ventana anterior
-            this.dispose();
-        }*/
+
     }//GEN-LAST:event_salirActionPerformed
 
     private void inscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscripcionActionPerformed
-        //Abrir ventana
-        InscripcionAdmin frm = new InscripcionAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_inscripcionActionPerformed
 
     private void periodoAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoAcademicoActionPerformed
-        //Abrir ventana
-        PeriodoAcademicoAdmin frm = new PeriodoAcademicoAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_periodoAcademicoActionPerformed
 
     private void decanatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decanatoActionPerformed
-        //Abrir ventana
-        DecanatoAdmin frm = new DecanatoAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_decanatoActionPerformed
 
     private void carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carreraActionPerformed
-        //Abrir ventana
-        CarreraAdmin frm = new CarreraAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_carreraActionPerformed
 
     private void semestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreActionPerformed
-        //Abrir ventana
-        SemestreAdmin frm = new SemestreAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_semestreActionPerformed
 
     private void asignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignaturaActionPerformed
-        //Abrir ventana
-        AsignaturaAdmin frm = new AsignaturaAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_asignaturaActionPerformed
 
     private void seccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seccionActionPerformed
-        //Abrir ventana
-        SeccionAdmin frm = new SeccionAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_seccionActionPerformed
 
     private void profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profesorActionPerformed
-        //Abrir ventana
-        ProfesorAdmin frm = new ProfesorAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_profesorActionPerformed
 
     private void estudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estudianteActionPerformed
-        //Abrir ventana
-        EstudianteAdmin frm = new EstudianteAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_estudianteActionPerformed
 
     private void resportesConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resportesConsultarActionPerformed
-        //Abrir ventana
-        ReportesAdmin frm = new ReportesAdmin();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_resportesConsultarActionPerformed
 
     /**
