@@ -9,6 +9,8 @@ public class MUniversidad {
     private String descripcion;
     private boolean estatus;
     
+    public MUniversidad(){}
+    
     public MUniversidad(int codigo, String nombre, String descripcion, boolean estatus){
         this.codigo = codigo;
         this.nombre = nombre;
