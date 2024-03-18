@@ -4,6 +4,118 @@ package vistas;
 
 public class EstudianteAdmin extends javax.swing.JFrame {
 
+    /**
+     * @return the bontonAtrasEst
+     */
+    public javax.swing.JButton getBontonAtrasEst() {
+        return bontonAtrasEst;
+    }
+
+    /**
+     * @return the bontonCancelarEst
+     */
+    public javax.swing.JButton getBontonCancelarEst() {
+        return bontonCancelarEst;
+    }
+
+    /**
+     * @return the botonAgregarEst
+     */
+    public javax.swing.JButton getBotonAgregarEst() {
+        return botonAgregarEst;
+    }
+
+    /**
+     * @return the botonBuscarEst
+     */
+    public javax.swing.JButton getBotonBuscarEst() {
+        return botonBuscarEst;
+    }
+
+    /**
+     * @return the botonEliminarEst
+     */
+    public javax.swing.JButton getBotonEliminarEst() {
+        return botonEliminarEst;
+    }
+
+    /**
+     * @return the botonGuardarEst
+     */
+    public javax.swing.JButton getBotonGuardarEst() {
+        return botonGuardarEst;
+    }
+
+    /**
+     * @return the botonModificarEst
+     */
+    public javax.swing.JButton getBotonModificarEst() {
+        return botonModificarEst;
+    }
+
+    /**
+     * @return the campoApeEst
+     */
+    public javax.swing.JTextField getCampoApeEst() {
+        return campoApeEst;
+    }
+
+    /**
+     * @return the campoCedBusEst
+     */
+    public javax.swing.JTextField getCampoCedBusEst() {
+        return campoCedBusEst;
+    }
+
+    /**
+     * @return the campoCedEst
+     */
+    public javax.swing.JTextField getCampoCedEst() {
+        return campoCedEst;
+    }
+
+    /**
+     * @return the campoCorEst
+     */
+    public javax.swing.JTextField getCampoCorEst() {
+        return campoCorEst;
+    }
+
+    /**
+     * @return the campoDirEst
+     */
+    public javax.swing.JTextField getCampoDirEst() {
+        return campoDirEst;
+    }
+
+    /**
+     * @return the campoNomEst
+     */
+    public javax.swing.JTextField getCampoNomEst() {
+        return campoNomEst;
+    }
+
+    /**
+     * @return the campoTelEst
+     */
+    public javax.swing.JTextField getCampoTelEst() {
+        return campoTelEst;
+    }
+
+    /**
+     * @return the comboCarEst
+     */
+    public javax.swing.JComboBox<String> getComboCarEst() {
+        return comboCarEst;
+    }
+
+    /**
+     * @return the comboStaEst
+     */
+    public javax.swing.JComboBox<String> getComboStaEst() {
+        return comboStaEst;
+    }
+
     public EstudianteAdmin() {
         initComponents();
     }
@@ -13,36 +125,32 @@ public class EstudianteAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         bgEstudiante = new javax.swing.JPanel();
-        titulo1Est = new javax.swing.JLabel();
+        tituloEst = new javax.swing.JLabel();
         textCedBusEst = new javax.swing.JLabel();
         campoCedBusEst = new javax.swing.JTextField();
         botonBuscarEst = new javax.swing.JButton();
-        scrollEst = new javax.swing.JScrollPane();
-        tablaEst = new javax.swing.JTable();
+        botonAgregarEst = new javax.swing.JButton();
+        textCedEst = new javax.swing.JLabel();
+        campoCedEst = new javax.swing.JTextField();
+        textNomEst = new javax.swing.JLabel();
+        campoNomEst = new javax.swing.JTextField();
+        textApeEst = new javax.swing.JLabel();
+        campoApeEst = new javax.swing.JTextField();
+        textDirEst = new javax.swing.JLabel();
+        campoDirEst = new javax.swing.JTextField();
+        textCorEst = new javax.swing.JLabel();
+        campoCorEst = new javax.swing.JTextField();
+        textTelEst = new javax.swing.JLabel();
+        campoTelEst = new javax.swing.JTextField();
+        textCarEst = new javax.swing.JLabel();
+        comboCarEst = new javax.swing.JComboBox<>();
+        textStaEst = new javax.swing.JLabel();
+        comboStaEst = new javax.swing.JComboBox<>();
         bontonAtrasEst = new javax.swing.JButton();
+        bontonCancelarEst = new javax.swing.JButton();
         botonEliminarEst = new javax.swing.JButton();
         botonModificarEst = new javax.swing.JButton();
         botonGuardarEst = new javax.swing.JButton();
-        titulo2Est = new javax.swing.JLabel();
-        textCodAgrEst = new javax.swing.JLabel();
-        campoCodAgrEst = new javax.swing.JTextField();
-        textCedAgrEst = new javax.swing.JLabel();
-        campoCedAgrEst = new javax.swing.JTextField();
-        textNomAgrEst = new javax.swing.JLabel();
-        campoNomAgrEst = new javax.swing.JTextField();
-        textApeAgrEst = new javax.swing.JLabel();
-        campoApeAgrEst = new javax.swing.JTextField();
-        textDirAgrEst = new javax.swing.JLabel();
-        campoDirAgrEst = new javax.swing.JTextField();
-        textCorAgrEst = new javax.swing.JLabel();
-        campoCorAgrEst = new javax.swing.JTextField();
-        textTelAgrEst = new javax.swing.JLabel();
-        campoTelAgrEst = new javax.swing.JTextField();
-        textCarAgrEst = new javax.swing.JLabel();
-        comboCarAgrEst = new javax.swing.JComboBox<>();
-        textStaAgrEst = new javax.swing.JLabel();
-        comboStaAgrEst = new javax.swing.JComboBox<>();
-        botonAgregarEst = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estudiante");
@@ -50,9 +158,9 @@ public class EstudianteAdmin extends javax.swing.JFrame {
 
         bgEstudiante.setBackground(new java.awt.Color(41, 144, 159));
 
-        titulo1Est.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        titulo1Est.setForeground(new java.awt.Color(255, 255, 255));
-        titulo1Est.setText("BUSCAR ESTUDIANTE");
+        tituloEst.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        tituloEst.setForeground(new java.awt.Color(255, 255, 255));
+        tituloEst.setText("GESTIONAR ESTUDIANTE");
 
         textCedBusEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textCedBusEst.setForeground(new java.awt.Color(255, 255, 255));
@@ -65,129 +173,64 @@ public class EstudianteAdmin extends javax.swing.JFrame {
         botonBuscarEst.setText("BUSCAR");
         botonBuscarEst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        tablaEst.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Código", "Cédula", "Nombre", "Apellido", "Dirección", "Correo", "Teléfono", "Carrera", "Estado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
+        botonAgregarEst.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonAgregarEst.setText("AGREGAR");
+        botonAgregarEst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
+        textCedEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textCedEst.setForeground(new java.awt.Color(255, 255, 255));
+        textCedEst.setText("Cédula");
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        campoCedEst.setEditable(false);
+        campoCedEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textNomEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textNomEst.setForeground(new java.awt.Color(255, 255, 255));
+        textNomEst.setText("Nombre");
+
+        campoNomEst.setEditable(false);
+        campoNomEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textApeEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textApeEst.setForeground(new java.awt.Color(255, 255, 255));
+        textApeEst.setText("Apellido");
+
+        campoApeEst.setEditable(false);
+        campoApeEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        campoApeEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoApeEstActionPerformed(evt);
             }
         });
-        scrollEst.setViewportView(tablaEst);
+
+        textDirEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textDirEst.setForeground(new java.awt.Color(255, 255, 255));
+        textDirEst.setText("Dirección");
+
+        campoDirEst.setEditable(false);
+        campoDirEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textCorEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textCorEst.setForeground(new java.awt.Color(255, 255, 255));
+        textCorEst.setText("Correo");
+
+        campoCorEst.setEditable(false);
+        campoCorEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textTelEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textTelEst.setForeground(new java.awt.Color(255, 255, 255));
+        textTelEst.setText("Teléfono");
+
+        campoTelEst.setEditable(false);
+        campoTelEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textCarEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textCarEst.setForeground(new java.awt.Color(255, 255, 255));
+        textCarEst.setText("Carrera");
+
+        textStaEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textStaEst.setForeground(new java.awt.Color(255, 255, 255));
+        textStaEst.setText("Estatus");
 
         bontonAtrasEst.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         bontonAtrasEst.setText("ATRAS");
@@ -206,6 +249,24 @@ public class EstudianteAdmin extends javax.swing.JFrame {
             }
         });
 
+        bontonCancelarEst.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonCancelarEst.setText("CANCELAR");
+        bontonCancelarEst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonCancelarEst.setEnabled(false);
+        bontonCancelarEst.setMaximumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarEst.setMinimumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarEst.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonCancelarEst.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bontonCancelarEstMouseClicked(evt);
+            }
+        });
+        bontonCancelarEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bontonCancelarEstActionPerformed(evt);
+            }
+        });
+
         botonEliminarEst.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonEliminarEst.setText("ELIMINAR");
         botonEliminarEst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -221,71 +282,6 @@ public class EstudianteAdmin extends javax.swing.JFrame {
         botonGuardarEst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonGuardarEst.setEnabled(false);
 
-        titulo2Est.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        titulo2Est.setForeground(new java.awt.Color(255, 255, 255));
-        titulo2Est.setText("AGREGAR ESTUDIANTE");
-
-        textCodAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textCodAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textCodAgrEst.setText("Código");
-
-        campoCodAgrEst.setEditable(false);
-        campoCodAgrEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textCedAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textCedAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textCedAgrEst.setText("Cédula");
-
-        campoCedAgrEst.setEditable(false);
-        campoCedAgrEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textNomAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textNomAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textNomAgrEst.setText("Nombre");
-
-        campoNomAgrEst.setEditable(false);
-        campoNomAgrEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textApeAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textApeAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textApeAgrEst.setText("Apellido");
-
-        campoApeAgrEst.setEditable(false);
-        campoApeAgrEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textDirAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textDirAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textDirAgrEst.setText("Dirección");
-
-        campoDirAgrEst.setEditable(false);
-        campoDirAgrEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textCorAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textCorAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textCorAgrEst.setText("Correo");
-
-        campoCorAgrEst.setEditable(false);
-        campoCorAgrEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textTelAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textTelAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textTelAgrEst.setText("Teléfono");
-
-        campoTelAgrEst.setEditable(false);
-        campoTelAgrEst.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textCarAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textCarAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textCarAgrEst.setText("Carrera");
-
-        textStaAgrEst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textStaAgrEst.setForeground(new java.awt.Color(255, 255, 255));
-        textStaAgrEst.setText("Estado");
-
-        botonAgregarEst.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonAgregarEst.setText("AGREGAR");
-        botonAgregarEst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         javax.swing.GroupLayout bgEstudianteLayout = new javax.swing.GroupLayout(bgEstudiante);
         bgEstudiante.setLayout(bgEstudianteLayout);
         bgEstudianteLayout.setHorizontalGroup(
@@ -294,120 +290,109 @@ public class EstudianteAdmin extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgEstudianteLayout.createSequentialGroup()
-                        .addComponent(textCedBusEst)
-                        .addGap(28, 28, 28)
-                        .addComponent(campoCedBusEst, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonBuscarEst)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(bgEstudianteLayout.createSequentialGroup()
                         .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(scrollEst, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(bgEstudianteLayout.createSequentialGroup()
-                                .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgEstudianteLayout.createSequentialGroup()
-                                        .addComponent(bontonAtrasEst, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(botonEliminarEst)
-                                            .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(textNomAgrEst)
-                                                .addComponent(textCodAgrEst)))
-                                        .addGap(138, 138, 138)
-                                        .addComponent(titulo2Est)
-                                        .addGap(136, 136, 136)
-                                        .addComponent(botonModificarEst))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgEstudianteLayout.createSequentialGroup()
-                                        .addGap(137, 137, 137)
-                                        .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textDirAgrEst)
-                                            .addComponent(textTelAgrEst)
-                                            .addComponent(textStaAgrEst))
-                                        .addGap(18, 18, 18)
+                                .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(bgEstudianteLayout.createSequentialGroup()
+                                        .addComponent(textCedEst)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(campoCedEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(71, 71, 71)
+                                        .addComponent(textNomEst))
+                                    .addGroup(bgEstudianteLayout.createSequentialGroup()
                                         .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(bgEstudianteLayout.createSequentialGroup()
+                                                .addComponent(textApeEst)
+                                                .addGap(31, 31, 31)
+                                                .addComponent(campoApeEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(bgEstudianteLayout.createSequentialGroup()
                                                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(campoCodAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(campoNomAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(campoDirAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(campoTelAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(72, 72, 72)
+                                                    .addComponent(textCorEst)
+                                                    .addComponent(textCarEst))
+                                                .addGap(34, 34, 34)
                                                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(textCedAgrEst)
-                                                    .addComponent(textApeAgrEst)
-                                                    .addComponent(textCarAgrEst)
-                                                    .addComponent(textCorAgrEst))
-                                                .addGap(36, 36, 36)
-                                                .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(campoApeAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(campoCedAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(campoCorAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(botonAgregarEst, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(comboCarAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(comboStaAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(comboCarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(campoCorEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(71, 71, 71)
+                                        .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textTelEst)
+                                            .addComponent(textDirEst)
+                                            .addComponent(textStaEst))))
+                                .addGap(39, 39, 39)
+                                .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoDirEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoNomEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoTelEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboStaEst, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(bgEstudianteLayout.createSequentialGroup()
+                                .addComponent(bontonAtrasEst, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bontonCancelarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonEliminarEst)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonModificarEst)
+                                .addGap(18, 18, 18)
                                 .addComponent(botonGuardarEst)))
-                        .addGap(0, 46, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgEstudianteLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titulo1Est)
-                .addGap(377, 377, 377))
+                        .addGap(0, 48, Short.MAX_VALUE))
+                    .addGroup(bgEstudianteLayout.createSequentialGroup()
+                        .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgEstudianteLayout.createSequentialGroup()
+                                .addComponent(textCedBusEst)
+                                .addGap(28, 28, 28)
+                                .addComponent(campoCedBusEst, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonBuscarEst)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonAgregarEst))
+                            .addGroup(bgEstudianteLayout.createSequentialGroup()
+                                .addGap(199, 199, 199)
+                                .addComponent(tituloEst)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         bgEstudianteLayout.setVerticalGroup(
             bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgEstudianteLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(titulo1Est)
-                .addGap(34, 34, 34)
+                .addGap(25, 25, 25)
+                .addComponent(tituloEst)
+                .addGap(33, 33, 33)
                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textCedBusEst)
                     .addComponent(campoCedBusEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(scrollEst, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(bgEstudianteLayout.createSequentialGroup()
-                        .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bontonAtrasEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonEliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonModificarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonGuardarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(70, 70, 70))
-                    .addGroup(bgEstudianteLayout.createSequentialGroup()
-                        .addComponent(titulo2Est)
-                        .addGap(27, 27, 27)
-                        .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoCodAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textCodAgrEst)
-                            .addComponent(textCedAgrEst)
-                            .addComponent(campoCedAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)))
-                .addGap(4, 4, 4)
+                    .addComponent(botonBuscarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAgregarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoNomAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textNomAgrEst)
-                    .addComponent(campoApeAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textApeAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(textCedEst)
+                    .addComponent(campoCedEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textNomEst)
+                    .addComponent(campoNomEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoDirAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textDirAgrEst)
-                    .addComponent(campoCorAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textCorAgrEst))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(textApeEst, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoApeEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textDirEst)
+                    .addComponent(campoDirEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoTelAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textTelAgrEst)
-                    .addComponent(textCarAgrEst)
-                    .addComponent(comboCarAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(textCorEst)
+                    .addComponent(campoCorEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textTelEst)
+                    .addComponent(campoTelEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboStaAgrEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textStaAgrEst))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonAgregarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(textCarEst)
+                    .addComponent(comboCarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textStaEst)
+                    .addComponent(comboStaEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(bgEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonGuardarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonModificarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonAtrasEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonCancelarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -425,16 +410,24 @@ public class EstudianteAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bontonAtrasEstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonAtrasEstMouseClicked
-        //Abrir ventana
-        DashboardAdministrador frm = new DashboardAdministrador();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
+
     }//GEN-LAST:event_bontonAtrasEstMouseClicked
 
     private void bontonAtrasEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonAtrasEstActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bontonAtrasEstActionPerformed
+
+    private void bontonCancelarEstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonCancelarEstMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonCancelarEstMouseClicked
+
+    private void bontonCancelarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonCancelarEstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonCancelarEstActionPerformed
+
+    private void campoApeEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoApeEstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoApeEstActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,34 +443,30 @@ public class EstudianteAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgEstudiante;
     private javax.swing.JButton bontonAtrasEst;
+    private javax.swing.JButton bontonCancelarEst;
     private javax.swing.JButton botonAgregarEst;
     private javax.swing.JButton botonBuscarEst;
     private javax.swing.JButton botonEliminarEst;
     private javax.swing.JButton botonGuardarEst;
     private javax.swing.JButton botonModificarEst;
-    private javax.swing.JTextField campoApeAgrEst;
-    private javax.swing.JTextField campoCedAgrEst;
+    private javax.swing.JTextField campoApeEst;
     private javax.swing.JTextField campoCedBusEst;
-    private javax.swing.JTextField campoCodAgrEst;
-    private javax.swing.JTextField campoCorAgrEst;
-    private javax.swing.JTextField campoDirAgrEst;
-    private javax.swing.JTextField campoNomAgrEst;
-    private javax.swing.JTextField campoTelAgrEst;
-    private javax.swing.JComboBox<String> comboCarAgrEst;
-    private javax.swing.JComboBox<String> comboStaAgrEst;
-    private javax.swing.JScrollPane scrollEst;
-    private javax.swing.JTable tablaEst;
-    private javax.swing.JLabel textApeAgrEst;
-    private javax.swing.JLabel textCarAgrEst;
-    private javax.swing.JLabel textCedAgrEst;
+    private javax.swing.JTextField campoCedEst;
+    private javax.swing.JTextField campoCorEst;
+    private javax.swing.JTextField campoDirEst;
+    private javax.swing.JTextField campoNomEst;
+    private javax.swing.JTextField campoTelEst;
+    private javax.swing.JComboBox<String> comboCarEst;
+    private javax.swing.JComboBox<String> comboStaEst;
+    private javax.swing.JLabel textApeEst;
+    private javax.swing.JLabel textCarEst;
     private javax.swing.JLabel textCedBusEst;
-    private javax.swing.JLabel textCodAgrEst;
-    private javax.swing.JLabel textCorAgrEst;
-    private javax.swing.JLabel textDirAgrEst;
-    private javax.swing.JLabel textNomAgrEst;
-    private javax.swing.JLabel textStaAgrEst;
-    private javax.swing.JLabel textTelAgrEst;
-    private javax.swing.JLabel titulo1Est;
-    private javax.swing.JLabel titulo2Est;
+    private javax.swing.JLabel textCedEst;
+    private javax.swing.JLabel textCorEst;
+    private javax.swing.JLabel textDirEst;
+    private javax.swing.JLabel textNomEst;
+    private javax.swing.JLabel textStaEst;
+    private javax.swing.JLabel textTelEst;
+    private javax.swing.JLabel tituloEst;
     // End of variables declaration//GEN-END:variables
 }
