@@ -5,6 +5,83 @@ package vistas;
 public class DecanatoAdmin extends javax.swing.JFrame {
 
     /**
+     * @return the bontonCancelarDec
+     */
+    public javax.swing.JButton getBontonCancelarDec() {
+        return bontonCancelarDec;
+    }
+
+    /**
+     * @return the botonAgregarDec
+     */
+    public javax.swing.JButton getBotonAgregarDec() {
+        return botonAgregarDec;
+    }
+
+    /**
+     * @return the botonBuscarDec
+     */
+    public javax.swing.JButton getBotonBuscarDec() {
+        return botonBuscarDec;
+    }
+
+    /**
+     * @return the botonEliminarDec
+     */
+    public javax.swing.JButton getBotonEliminarDec() {
+        return botonEliminarDec;
+    }
+
+    /**
+     * @return the botonGuardarDec
+     */
+    public javax.swing.JButton getBotonGuardarDec() {
+        return botonGuardarDec;
+    }
+
+    /**
+     * @return the botonModificarDec
+     */
+    public javax.swing.JButton getBotonModificarDec() {
+        return botonModificarDec;
+    }
+
+    /**
+     * @return the campoDesDec
+     */
+    public javax.swing.JTextField getCampoDesDec() {
+        return campoDesDec;
+    }
+
+    /**
+     * @return the campoNomDec
+     */
+    public javax.swing.JTextField getCampoNomDec() {
+        return campoNomDec;
+    }
+
+    /**
+     * @return the comboNombBusDec
+     */
+    public javax.swing.JComboBox<String> getComboNombBusDec() {
+        return comboNombBusDec;
+    }
+
+    /**
+     * @return the comboStaDec
+     */
+    public javax.swing.JComboBox<String> getComboStaDec() {
+        return comboStaDec;
+    }
+
+    /**
+     * @return the comboUniDec
+     */
+    public javax.swing.JComboBox<String> getComboUniDec() {
+        return comboUniDec;
+    }
+
+    /**
      * @return the bontonAtrasDec
      */
     public javax.swing.JButton getBontonAtrasDec() {
