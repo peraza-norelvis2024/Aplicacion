@@ -8,7 +8,7 @@ public class MEstudiante extends MPersona{
     public MEstudiante(){
         super();
     }
-    public MEstudiante(MCarrera carrera_id, int codigo, String nombre, String apellido, String cedula, String direccion, String correo, String telefono, boolean estatus) {
+    public MEstudiante(int codigo, String nombre, String apellido, String cedula, String direccion, String correo, String telefono, MCarrera carrera_id, boolean estatus) {
         super(codigo, nombre, apellido, cedula, direccion, correo, telefono, estatus);
         this.carrera_id = carrera_id;
     }
