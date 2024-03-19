@@ -37,6 +37,16 @@ public class CSeccionesAdmin {
     ResultSet resultSet = null;
     
     public CSeccionesAdmin(SeccionAdmin view, Sesion sesion){
+        this.view = view;
+        this.sesion = sesion;
+        this.mapaSeccion = new HashMap<>();
+        this.seccion = null;
+        this.mapaPeriodoAcademico = new HashMap<>();
+        this.periodoAcademico = null;
+        this.mapaAsignatura = new HashMap<>();
+        this.asignatura = null;
+        this.mapaProfesor = new HashMap<>();
+        this.profesor = null;
         
     }
 }

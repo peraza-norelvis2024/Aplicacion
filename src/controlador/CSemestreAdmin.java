@@ -33,7 +33,7 @@ public class CSemestreAdmin {
         this.mapaSemestre = new HashMap<>();
         this.semestre = null;
         
-        //Llenamos el combo de decanatos registrados
+        //Llenamos el combo de semestres registrados
         this.view.getComboNomBusSem().addItem("Seleccione opción");
         this.llenarCbxSemestres();
         this.view.getComboStaSem().addItem("Seleccione opción");
@@ -330,8 +330,8 @@ public class CSemestreAdmin {
 
         // Verificar si se seleccionó alguna opción
         if (selectedIndex != -1 && selectedIndex > 0) { 
-            String nombreSemestreSeleccionado = (String) view.getComboNomBusSem().getSelectedItem(); // Obtener nombre de decanato seleccionado
-            return mapaSemestre.get(nombreSemestreSeleccionado); // Obtener código de decanato a partir del nombre en el mapa
+            String nombreSemestreSeleccionado = (String) view.getComboNomBusSem().getSelectedItem(); // Obtener nombre del semestre seleccionado
+            return mapaSemestre.get(nombreSemestreSeleccionado); // Obtener código de semestre a partir del nombre en el mapa
         }else{
             return 0;
         }
