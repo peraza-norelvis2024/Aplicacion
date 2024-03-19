@@ -324,7 +324,7 @@ public class CAsignaturaAdmin {
     
                 
             }else{
-                JOptionPane.showMessageDialog(view,"No se encontro el decanato seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(view,"No se encontro la asignatura seleccionada", "Error", JOptionPane.ERROR_MESSAGE);
             }
             
 
@@ -455,8 +455,8 @@ public class CAsignaturaAdmin {
 
         // Verificar si se seleccionó alguna opción
         if (selectedIndex != -1 && selectedIndex > 0) { 
-            String nombreAsignaturaSeleccionada = (String) view.getComboNomBusAsig().getSelectedItem(); // Obtener nombre de decanato seleccionado
-            return mapaAsignatura.get(nombreAsignaturaSeleccionada); // Obtener código de decanato a partir del nombre en el mapa
+            String nombreAsignaturaSeleccionada = (String) view.getComboNomBusAsig().getSelectedItem(); // Obtener nombre de asignatura seleccionada
+            return mapaAsignatura.get(nombreAsignaturaSeleccionada); // Obtener código de asignatura a partir del nombre en el mapa
         }else{
             return 0;
         }
@@ -467,8 +467,8 @@ public class CAsignaturaAdmin {
 
         // Verificar si se seleccionó alguna opción
         if (selectedIndex != -1 && selectedIndex > 0) { 
-            String nombreSemestreSeleccionado = (String) view.getComboSemAsig().getSelectedItem(); // Obtener nombre de decanato seleccionado
-            return mapaSemestre.get(nombreSemestreSeleccionado); // Obtener código de decanato a partir del nombre en el mapa
+            String nombreSemestreSeleccionado = (String) view.getComboSemAsig().getSelectedItem(); // Obtener nombre de semestre seleccionado
+            return mapaSemestre.get(nombreSemestreSeleccionado); // Obtener código de semestre a partir del nombre en el mapa
         }else{
             return 0;
         }
@@ -479,8 +479,8 @@ public class CAsignaturaAdmin {
 
         // Verificar si se seleccionó alguna opción
         if (selectedIndex != -1 && selectedIndex > 0) { 
-            String nombreCarreraSeleccionada = (String) view.getComboCarAsig().getSelectedItem(); // Obtener nombre de decanato seleccionado
-            return mapaCarrera.get(nombreCarreraSeleccionada); // Obtener código de decanato a partir del nombre en el mapa
+            String nombreCarreraSeleccionada = (String) view.getComboCarAsig().getSelectedItem(); // Obtener nombre de carrera seleccionada
+            return mapaCarrera.get(nombreCarreraSeleccionada); // Obtener código de carrera a partir del nombre en el mapa
         }else{
             return 0;
         }
