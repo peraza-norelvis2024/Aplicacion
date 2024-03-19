@@ -38,6 +38,16 @@ public class CDashboardAdministrador {
             }
         });
         
+        this.view.getAsignatura().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                AsignaturaAdmin asignatura = new AsignaturaAdmin();
+                CAsignaturaAdmin controlador_asignatura = new CAsignaturaAdmin(asignatura, sesion);
+                asignatura.setVisible(true);
+                view.dispose();
+            }
+        });
+        
         this.view.getInscripcionEstudiante().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
