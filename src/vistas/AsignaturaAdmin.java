@@ -14,8 +14,8 @@ public class AsignaturaAdmin extends javax.swing.JFrame {
     /**
      * @return the bontonCancelarEst
      */
-    public javax.swing.JButton getBontonCancelarEst() {
-        return bontonCancelarEst;
+    public javax.swing.JButton getBontonCancelarAsig() {
+        return bontonCancelarAsig;
     }
 
     /**
@@ -120,7 +120,7 @@ public class AsignaturaAdmin extends javax.swing.JFrame {
         textStaAsig = new javax.swing.JLabel();
         comboStaAsig = new javax.swing.JComboBox<>();
         bontonAtrasAsig = new javax.swing.JButton();
-        bontonCancelarEst = new javax.swing.JButton();
+        bontonCancelarAsig = new javax.swing.JButton();
         botonEliminarAsig = new javax.swing.JButton();
         botonModificarAsig = new javax.swing.JButton();
         botonGuardarAsig = new javax.swing.JButton();
@@ -196,21 +196,21 @@ public class AsignaturaAdmin extends javax.swing.JFrame {
             }
         });
 
-        bontonCancelarEst.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        bontonCancelarEst.setText("CANCELAR");
-        bontonCancelarEst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bontonCancelarEst.setEnabled(false);
-        bontonCancelarEst.setMaximumSize(new java.awt.Dimension(93, 21));
-        bontonCancelarEst.setMinimumSize(new java.awt.Dimension(93, 21));
-        bontonCancelarEst.setPreferredSize(new java.awt.Dimension(82, 31));
-        bontonCancelarEst.addMouseListener(new java.awt.event.MouseAdapter() {
+        bontonCancelarAsig.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonCancelarAsig.setText("CANCELAR");
+        bontonCancelarAsig.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonCancelarAsig.setEnabled(false);
+        bontonCancelarAsig.setMaximumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarAsig.setMinimumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarAsig.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonCancelarAsig.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bontonCancelarEstMouseClicked(evt);
+                bontonCancelarAsigMouseClicked(evt);
             }
         });
-        bontonCancelarEst.addActionListener(new java.awt.event.ActionListener() {
+        bontonCancelarAsig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bontonCancelarEstActionPerformed(evt);
+                bontonCancelarAsigActionPerformed(evt);
             }
         });
 
@@ -239,50 +239,50 @@ public class AsignaturaAdmin extends javax.swing.JFrame {
                     .addGroup(bgAsignaturaLayout.createSequentialGroup()
                         .addComponent(bontonAtrasAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bontonCancelarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bontonCancelarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(bgAsignaturaLayout.createSequentialGroup()
                         .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textSemAsig)
-                            .addComponent(textStaAsig))
-                        .addGap(18, 18, 18)
-                        .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboSemAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(bgAsignaturaLayout.createSequentialGroup()
-                                .addComponent(comboStaAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(bgAsignaturaLayout.createSequentialGroup()
-                        .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textNomAsig, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textNomBusAsig))
-                        .addGap(32, 32, 32)
-                        .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboNomBusAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textSemAsig)
+                                    .addComponent(textStaAsig))
+                                .addGap(18, 18, 18)
+                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboSemAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboStaAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(bgAsignaturaLayout.createSequentialGroup()
-                                .addComponent(botonBuscarAsig)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonAgregarAsig))
-                            .addGroup(bgAsignaturaLayout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textNomAsig, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(textNomBusAsig))
+                                .addGap(32, 32, 32)
+                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboNomBusAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoNomAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(bgAsignaturaLayout.createSequentialGroup()
-                                        .addComponent(botonEliminarAsig)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonModificarAsig)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonGuardarAsig))
+                                        .addComponent(botonBuscarAsig)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(botonAgregarAsig))
                                     .addGroup(bgAsignaturaLayout.createSequentialGroup()
-                                        .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textDesAsig)
-                                            .addComponent(textCarAsig))
-                                        .addGap(30, 30, 30)
-                                        .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(comboCarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(campoDesAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(46, Short.MAX_VALUE))))
+                                        .addGap(100, 100, 100)
+                                        .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(bgAsignaturaLayout.createSequentialGroup()
+                                                .addComponent(botonEliminarAsig)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(botonModificarAsig)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(botonGuardarAsig))
+                                            .addGroup(bgAsignaturaLayout.createSequentialGroup()
+                                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(textDesAsig)
+                                                    .addComponent(textCarAsig))
+                                                .addGap(30, 30, 30)
+                                                .addGroup(bgAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(comboCarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(campoDesAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAsignaturaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tituloAsig)
@@ -321,7 +321,7 @@ public class AsignaturaAdmin extends javax.swing.JFrame {
                     .addComponent(botonEliminarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonGuardarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonModificarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bontonCancelarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bontonCancelarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -347,13 +347,13 @@ public class AsignaturaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bontonAtrasAsigActionPerformed
 
-    private void bontonCancelarEstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonCancelarEstMouseClicked
+    private void bontonCancelarAsigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonCancelarAsigMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_bontonCancelarEstMouseClicked
+    }//GEN-LAST:event_bontonCancelarAsigMouseClicked
 
-    private void bontonCancelarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonCancelarEstActionPerformed
+    private void bontonCancelarAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonCancelarAsigActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bontonCancelarEstActionPerformed
+    }//GEN-LAST:event_bontonCancelarAsigActionPerformed
 
     private void comboCarAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCarAsigActionPerformed
         // TODO add your handling code here:
@@ -373,7 +373,7 @@ public class AsignaturaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAsignatura;
     private javax.swing.JButton bontonAtrasAsig;
-    private javax.swing.JButton bontonCancelarEst;
+    private javax.swing.JButton bontonCancelarAsig;
     private javax.swing.JButton botonAgregarAsig;
     private javax.swing.JButton botonBuscarAsig;
     private javax.swing.JButton botonEliminarAsig;
