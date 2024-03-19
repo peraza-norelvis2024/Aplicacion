@@ -9,6 +9,8 @@ public class MUsuario {
     MRol rol_id;
     boolean estatus;
     
+    public MUsuario(){}
+    
     public MUsuario(String usuario, String contrasena){
         this.usuario = usuario;
         this.contrasena = contrasena;

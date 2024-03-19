@@ -109,13 +109,7 @@ public class ProfesorAdmin extends javax.swing.JFrame {
         return campoTelProf;
     }
 
-    /**
-     * @return the comboCarProf
-     */
-    public javax.swing.JComboBox<String> getComboCarProf() {
-        return comboCarProf;
-    }
-
+    
     /**
      * @return the comboStaProf
      */
@@ -151,8 +145,6 @@ public class ProfesorAdmin extends javax.swing.JFrame {
         campoTelProf = new javax.swing.JTextField();
         textEspProf = new javax.swing.JLabel();
         campoEspProf = new javax.swing.JTextField();
-        textCarProf = new javax.swing.JLabel();
-        comboCarProf = new javax.swing.JComboBox<>();
         textStaProf = new javax.swing.JLabel();
         comboStaProf = new javax.swing.JComboBox<>();
         bontonAtrasProf = new javax.swing.JButton();
@@ -175,7 +167,6 @@ public class ProfesorAdmin extends javax.swing.JFrame {
         textCedBusProf.setForeground(new java.awt.Color(255, 255, 255));
         textCedBusProf.setText("Cédula");
 
-        campoCedBusProf.setEditable(false);
         campoCedBusProf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         botonBuscarProf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -234,10 +225,6 @@ public class ProfesorAdmin extends javax.swing.JFrame {
 
         campoEspProf.setEditable(false);
         campoEspProf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        textCarProf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textCarProf.setForeground(new java.awt.Color(255, 255, 255));
-        textCarProf.setText("Carrera");
 
         textStaProf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textStaProf.setForeground(new java.awt.Color(255, 255, 255));
@@ -302,26 +289,19 @@ public class ProfesorAdmin extends javax.swing.JFrame {
                 .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgEstudiante2Layout.createSequentialGroup()
                         .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(bgEstudiante2Layout.createSequentialGroup()
-                                    .addComponent(textStaProf)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboStaProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgEstudiante2Layout.createSequentialGroup()
-                                    .addComponent(textEspProf)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(campoCorProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(campoEspProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(campoApeProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(campoCedProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                                .addComponent(textEspProf)
+                                .addGap(18, 18, 18)
+                                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoCorProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoEspProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoApeProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoCedProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(textCedProf))
                         .addGap(54, 54, 54)
                         .addComponent(textNomProf)
                         .addGap(46, 46, 46)
-                        .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNomProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboCarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoNomProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(bgEstudiante2Layout.createSequentialGroup()
                         .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,10 +333,12 @@ public class ProfesorAdmin extends javax.swing.JFrame {
                                 .addComponent(textCorProf)
                                 .addGap(342, 342, 342)
                                 .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textCarProf)
-                                    .addComponent(textTelProf))
+                                    .addComponent(textTelProf)
+                                    .addComponent(textStaProf))
                                 .addGap(38, 38, 38)
-                                .addComponent(campoTelProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboStaProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoTelProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(46, Short.MAX_VALUE))))
             .addGroup(bgEstudiante2Layout.createSequentialGroup()
                 .addGap(250, 250, 250)
@@ -399,25 +381,22 @@ public class ProfesorAdmin extends javax.swing.JFrame {
                     .addComponent(campoCorProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textTelProf)
                     .addComponent(campoTelProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textEspProf)
-                    .addComponent(campoEspProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textCarProf)
-                    .addComponent(comboCarProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(19, 19, 19)
                 .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                    .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textEspProf)
+                        .addComponent(campoEspProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(textStaProf)
-                        .addGap(49, 49, 49)
-                        .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bontonAtrasProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bontonCancelarProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonEliminarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonModificarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonGuardarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(comboStaProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addComponent(comboStaProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(93, 93, 93)
+                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bontonAtrasProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonCancelarProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonModificarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonGuardarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -478,10 +457,8 @@ public class ProfesorAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField campoEspProf;
     private javax.swing.JTextField campoNomProf;
     private javax.swing.JTextField campoTelProf;
-    private javax.swing.JComboBox<String> comboCarProf;
     private javax.swing.JComboBox<String> comboStaProf;
     private javax.swing.JLabel textApeProf;
-    private javax.swing.JLabel textCarProf;
     private javax.swing.JLabel textCedBusProf;
     private javax.swing.JLabel textCedProf;
     private javax.swing.JLabel textCorProf;
