@@ -107,6 +107,9 @@ public class CCarreraAdmin {
                 if(validarCampos()){
                     if(carrera != null){
                         carrera.setNombre(view.getCampoNomCar().getText());
+                        carrera.setDescripcion(view.getCampoDesCar().getText());
+                        carrera.getDecanato_id().setCodigo(obtenerDecanatoSeleccionado());
+                        carrera.getDecanato_id().setNombre(view.getComboDecCar().getSelectedItem().toString());
                         editarCarrera(carrera);
                     }else{
                         registrarCarrera();
@@ -193,10 +196,10 @@ public class CCarreraAdmin {
                 String nombre = resultSet.getString("nombre");
                 
                 data.add(nombre);
-                mapaCarrera.put(nombre, codigo);
+                mapaDecanato.put(nombre, codigo);
             }
             for (String decanato : data) {
-                view.getComboNomBusCar().addItem(decanato);
+                view.getComboDecCar().addItem(decanato);
             }
             
 
@@ -216,7 +219,6 @@ public class CCarreraAdmin {
     }
     
     public void buscarCarrera(){
-        this.view.getComboDecCar().removeAllItems();
         int codigoCarreraSeleccionada = this.obtenerCarreraSeleccionada();
         
         try{
@@ -232,13 +234,6 @@ public class CCarreraAdmin {
             resultSet = statement.executeQuery();
             // Iterar sobre los resultados y agregarlos a la lista
             if (resultSet.next()) {
-                MCarrera carrera = new MCarrera(
-                    resultSet.getInt("codigo"),
-                    resultSet.getString("nombre"),
-                    resultSet.getString("descripcion"),
-                    decanato,
-                    resultSet.getBoolean("estatus")
-                );
                 
                 this.decanato = new MDecanato(
                     resultSet.getInt("codigo_deca"),
@@ -247,7 +242,15 @@ public class CCarreraAdmin {
                     new MUniversidad(),
                     resultSet.getBoolean("estatus_deca")
                 );
-
+                
+                this.carrera = new MCarrera(
+                    resultSet.getInt("codigo"),
+                    resultSet.getString("nombre"),
+                    resultSet.getString("descripcion"),
+                    decanato,
+                    resultSet.getBoolean("estatus")
+                );
+                
                 this.view.getCampoNomCar().setText(this.carrera.getNombre());
                 this.view.getCampoDesCar().setText(this.carrera.getDescripcion());
                 
@@ -256,11 +259,11 @@ public class CCarreraAdmin {
                 }else{
                     this.view.getComboStaCar().setSelectedIndex(2);    
                 }
-                this.view.getComboDecCar().removeAllItems();
-                this.view.getComboDecCar().addItem("Seleccione opción");
-                this.view.getComboDecCar().addItem(this.decanato.getUniversidad_id().getNombre());
-                this.view.getComboDecCar().setSelectedIndex(1);
+                
+                this.view.getComboDecCar().setSelectedItem(this.decanato.getNombre());
+                
                 this.inhabilitarCampos();
+                this.view.getComboDecCar().setEnabled(false);
                 this.view.getBotonEliminarCar().setEnabled(true);
                 this.view.getBotonModificarCar().setEnabled(true);
                 this.view.getBontonCancelarCar().setEnabled(true);
@@ -289,24 +292,25 @@ public class CCarreraAdmin {
     
     private void editarCarrera(MCarrera carrera){
         try{
-            String sql = "UPDATE carrera SET nombre = ?, descripcion = ? WHERE codigo = ?;";
+            String sql = "UPDATE carrera SET nombre = ?, descripcion = ?, decanato_id = ? WHERE codigo = ?;";
             
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
-            statement.setString(1, decanato.getNombre());
-            statement.setString(2, decanato.getDescripcion());
-            statement.setInt(3, decanato.getCodigo());
+            statement.setString(1, carrera.getNombre());
+            statement.setString(2, carrera.getDescripcion());
+            statement.setInt(3, carrera.getDecanato_id().getCodigo());
+            statement.setInt(4, carrera.getCodigo());
             
             statement.executeUpdate();
             
             JOptionPane.showMessageDialog(view,"Se ha actualizado exitosamente!");
             this.limpiarCampos();
             this.view.getComboNomBusCar().removeAllItems();
-            this.mapaDecanato = new HashMap<>();
+            this.mapaCarrera = new HashMap<>();
             this.view.getComboNomBusCar().addItem("Seleccione opción");
             this.view.getComboNomBusCar().setEnabled(true);
-            this.llenarCbxDecanatos();
-        
+            this.llenarCbxCarreras();
+            this.view.getComboDecCar().setSelectedIndex(0);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -328,7 +332,7 @@ public class CCarreraAdmin {
             
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, decanato.getCodigo());
+            statement.setInt(1, carrera.getCodigo());
             
             statement.executeUpdate();
             
@@ -418,7 +422,7 @@ public class CCarreraAdmin {
         this.view.getCampoNomCar().setEditable(false);
         this.view.getCampoDesCar().setEditable(false);
         this.view.getComboStaCar().setEnabled(false);
-        this.view.getComboDecCar().setEditable(false);
+        this.view.getComboDecCar().setEnabled(false);
         this.view.getBotonAgregarCar().setEnabled(true);
         this.view.getBotonBuscarCar().setEnabled(true);
         this.view.getBotonEliminarCar().setEnabled(false);
@@ -432,7 +436,7 @@ public class CCarreraAdmin {
         this.view.getCampoNomCar().setEditable(true);
         this.view.getCampoDesCar().setEditable(true);
         this.view.getComboStaCar().setEnabled(true);
-        this.view.getComboDecCar().setEditable(true);
+        this.view.getComboDecCar().setEnabled(true);
         this.view.getBotonAgregarCar().setEnabled(false);
         this.view.getBotonEliminarCar().setEnabled(false);
         this.view.getBotonGuardarCar().setEnabled(true);
@@ -446,9 +450,10 @@ public class CCarreraAdmin {
         this.view.getCampoNomCar().setText("");
         this.view.getCampoDesCar().setText("");
         this.view.getComboStaCar().setSelectedIndex(0);
-        this.view.getComboDecCar().removeAllItems();
         this.view.getComboNomBusCar().setSelectedIndex(0);
+        this.view.getComboDecCar().setSelectedIndex(0);
         this.decanato = null;
+        this.carrera = null;
     }
     
     private boolean validarCampos(){
