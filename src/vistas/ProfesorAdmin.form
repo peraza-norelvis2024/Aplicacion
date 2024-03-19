@@ -50,21 +50,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="textStaProf" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="comboStaProf" min="-2" pref="228" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="textEspProf" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="campoCorProf" min="-2" pref="228" max="-2" attributes="0"/>
-                                          <Component id="campoEspProf" min="-2" pref="228" max="-2" attributes="0"/>
-                                          <Component id="campoApeProf" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                                          <Component id="campoCedProf" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                                      </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="textEspProf" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoCorProf" min="-2" pref="228" max="-2" attributes="0"/>
+                                      <Component id="campoEspProf" min="-2" pref="228" max="-2" attributes="0"/>
+                                      <Component id="campoApeProf" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                                      <Component id="campoCedProf" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="textCedProf" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -72,10 +65,7 @@
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="textNomProf" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="campoNomProf" min="-2" pref="228" max="-2" attributes="0"/>
-                              <Component id="comboCarProf" min="-2" pref="228" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="campoNomProf" min="-2" pref="228" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -111,11 +101,14 @@
                                   <Component id="textCorProf" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="textCarProf" min="-2" max="-2" attributes="0"/>
-                                      <Component id="textTelProf" min="-2" max="-2" attributes="0"/>
+                                      <Component id="textTelProf" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="textStaProf" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="campoTelProf" min="-2" pref="228" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="comboStaProf" min="-2" pref="228" max="-2" attributes="0"/>
+                                      <Component id="campoTelProf" min="-2" pref="228" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="46" max="32767" attributes="0"/>
@@ -175,29 +168,26 @@
                       <Component id="textTelProf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoTelProf" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textEspProf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoEspProf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textCarProf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboCarProf" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="textStaProf" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bontonAtrasProf" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="bontonCancelarProf" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonEliminarProf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="botonModificarProf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="botonGuardarProf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="textEspProf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoEspProf" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="comboStaProf" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="textStaProf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboStaProf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="bontonAtrasProf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bontonCancelarProf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonEliminarProf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="botonModificarProf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="botonGuardarProf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -227,7 +217,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="campoCedBusProf">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
             </Property>
@@ -387,27 +376,6 @@
               <Font name="Arial" size="14" style="0"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="textCarProf">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Carrera"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboCarProf">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="textStaProf">
           <Properties>

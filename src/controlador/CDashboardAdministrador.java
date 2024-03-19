@@ -58,6 +58,16 @@ public class CDashboardAdministrador {
             }
         });
         
+        this.view.getProfesor().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                ProfesorAdmin profesor = new ProfesorAdmin();
+                CProfesorAdmin controlador_profesor = new CProfesorAdmin(profesor, sesion);
+                profesor.setVisible(true);
+                view.dispose();
+            }
+        });
+        
         this.view.getSalir().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
