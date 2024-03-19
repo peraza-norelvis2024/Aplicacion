@@ -38,12 +38,62 @@ public class CDashboardAdministrador {
             }
         });
         
+        this.view.getCarrera().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                CarreraAdmin carrera = new CarreraAdmin();
+                CCarreraAdmin controlador_carrera = new CCarreraAdmin(carrera, sesion);
+                carrera.setVisible(true);
+                view.dispose();
+            }
+        });
+        
+        this.view.getSemestre().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                SemestreAdmin semestre = new SemestreAdmin();
+                CSemestreAdmin controlador_semestre = new CSemestreAdmin(semestre, sesion);
+                semestre.setVisible(true);
+                view.dispose();
+            }
+        });
+        
         this.view.getAsignatura().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 AsignaturaAdmin asignatura = new AsignaturaAdmin();
                 CAsignaturaAdmin controlador_asignatura = new CAsignaturaAdmin(asignatura, sesion);
                 asignatura.setVisible(true);
+                view.dispose();
+            }
+        });
+        
+        this.view.getSeccion().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                SeccionAdmin seccion = new SeccionAdmin();
+                CSeccionesAdmin controlador_seccion = new CSeccionesAdmin(seccion, sesion);
+                seccion.setVisible(true);
+                view.dispose();
+            }
+        });
+        
+        this.view.getPeriodoAcademico().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                PeriodoAcademicoAdmin periodoAcademico = new PeriodoAcademicoAdmin();
+                CPeriodoAcademicoAdmin controlador_periodoAcademico = new CPeriodoAcademicoAdmin(periodoAcademico, sesion);
+                periodoAcademico.setVisible(true);
+                view.dispose();
+            }
+        });
+        
+        this.view.getEstudiante().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                EstudianteAdmin estudiante = new EstudianteAdmin();
+                CEstudianteAdmin controlador_estudiante = new CEstudianteAdmin(estudiante, sesion);
+                estudiante.setVisible(true);
                 view.dispose();
             }
         });

@@ -14,8 +14,8 @@ public class SemestreAdmin extends javax.swing.JFrame {
     /**
      * @return the bontonCancelarDec
      */
-    public javax.swing.JButton getBontonCancelarDec() {
-        return bontonCancelarDec;
+    public javax.swing.JButton getBontonCancelarSem() {
+        return bontonCancelarSem;
     }
 
     /**
@@ -93,7 +93,7 @@ public class SemestreAdmin extends javax.swing.JFrame {
         textStaSem = new javax.swing.JLabel();
         comboStaSem = new javax.swing.JComboBox<>();
         bontonAtrasSem = new javax.swing.JButton();
-        bontonCancelarDec = new javax.swing.JButton();
+        bontonCancelarSem = new javax.swing.JButton();
         botonEliminarSem = new javax.swing.JButton();
         botonModificarSem = new javax.swing.JButton();
         botonGuardarSem = new javax.swing.JButton();
@@ -148,21 +148,21 @@ public class SemestreAdmin extends javax.swing.JFrame {
             }
         });
 
-        bontonCancelarDec.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        bontonCancelarDec.setText("CANCELAR");
-        bontonCancelarDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bontonCancelarDec.setEnabled(false);
-        bontonCancelarDec.setMaximumSize(new java.awt.Dimension(93, 21));
-        bontonCancelarDec.setMinimumSize(new java.awt.Dimension(93, 21));
-        bontonCancelarDec.setPreferredSize(new java.awt.Dimension(82, 31));
-        bontonCancelarDec.addMouseListener(new java.awt.event.MouseAdapter() {
+        bontonCancelarSem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonCancelarSem.setText("CANCELAR");
+        bontonCancelarSem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonCancelarSem.setEnabled(false);
+        bontonCancelarSem.setMaximumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarSem.setMinimumSize(new java.awt.Dimension(93, 21));
+        bontonCancelarSem.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonCancelarSem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bontonCancelarDecMouseClicked(evt);
+                bontonCancelarSemMouseClicked(evt);
             }
         });
-        bontonCancelarDec.addActionListener(new java.awt.event.ActionListener() {
+        bontonCancelarSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bontonCancelarDecActionPerformed(evt);
+                bontonCancelarSemActionPerformed(evt);
             }
         });
 
@@ -202,7 +202,7 @@ public class SemestreAdmin extends javax.swing.JFrame {
                                 .addGroup(bgSemestreLayout.createSequentialGroup()
                                     .addComponent(bontonAtrasSem, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(bontonCancelarDec, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bontonCancelarSem, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(botonEliminarSem)
                                     .addGap(18, 18, 18)
@@ -245,7 +245,7 @@ public class SemestreAdmin extends javax.swing.JFrame {
                     .addComponent(botonGuardarSem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonModificarSem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonEliminarSem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bontonCancelarDec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bontonCancelarSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -271,13 +271,13 @@ public class SemestreAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bontonAtrasSemActionPerformed
 
-    private void bontonCancelarDecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonCancelarDecMouseClicked
+    private void bontonCancelarSemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonCancelarSemMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_bontonCancelarDecMouseClicked
+    }//GEN-LAST:event_bontonCancelarSemMouseClicked
 
-    private void bontonCancelarDecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonCancelarDecActionPerformed
+    private void bontonCancelarSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonCancelarSemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bontonCancelarDecActionPerformed
+    }//GEN-LAST:event_bontonCancelarSemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,7 +293,7 @@ public class SemestreAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgSemestre;
     private javax.swing.JButton bontonAtrasSem;
-    private javax.swing.JButton bontonCancelarDec;
+    private javax.swing.JButton bontonCancelarSem;
     private javax.swing.JButton botonAgregarSem;
     private javax.swing.JButton botonBuscarSem;
     private javax.swing.JButton botonEliminarSem;
