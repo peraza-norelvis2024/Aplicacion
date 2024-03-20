@@ -68,6 +68,13 @@ public class SeccionAdmin extends javax.swing.JFrame {
     }
 
     /**
+     * @return the comboAsigBusSec
+     */
+    public javax.swing.JComboBox<String> getComboAsigBusSec() {
+        return comboAsigBusSec;
+    }
+
+    /**
      * @return the comboAsigSec
      */
     public javax.swing.JComboBox<String> getComboAsigSec() {
@@ -75,10 +82,10 @@ public class SeccionAdmin extends javax.swing.JFrame {
     }
 
     /**
-     * @return the comboNomBusSec
+     * @return the comboPerAcaBusSec
      */
-    public javax.swing.JComboBox<String> getComboNomBusSec() {
-        return comboNomBusSec;
+    public javax.swing.JComboBox<String> getComboPerAcaBusSec() {
+        return comboPerAcaBusSec;
     }
 
     /**
@@ -96,11 +103,20 @@ public class SeccionAdmin extends javax.swing.JFrame {
     }
 
     /**
+     * @return the comboSecciones
+     */
+    public javax.swing.JComboBox<String> getComboSecciones() {
+        return comboSecciones;
+    }
+
+    /**
      * @return the comboStaSec
      */
     public javax.swing.JComboBox<String> getComboStaSec() {
         return comboStaSec;
     }
+
+    
 
     public SeccionAdmin() {
         initComponents();
@@ -112,8 +128,12 @@ public class SeccionAdmin extends javax.swing.JFrame {
 
         bgSeccion = new javax.swing.JPanel();
         tituloSec = new javax.swing.JLabel();
-        textNomBusSec = new javax.swing.JLabel();
-        comboNomBusSec = new javax.swing.JComboBox<>();
+        textPerAcaBusSec = new javax.swing.JLabel();
+        comboPerAcaBusSec = new javax.swing.JComboBox<>();
+        textAsigBusSec = new javax.swing.JLabel();
+        comboAsigBusSec = new javax.swing.JComboBox<>();
+        textSecciones = new javax.swing.JLabel();
+        comboSecciones = new javax.swing.JComboBox<>();
         botonBuscarSeccion = new javax.swing.JButton();
         botonAgregarSeccion = new javax.swing.JButton();
         textNumSec = new javax.swing.JLabel();
@@ -144,13 +164,33 @@ public class SeccionAdmin extends javax.swing.JFrame {
         tituloSec.setForeground(new java.awt.Color(255, 255, 255));
         tituloSec.setText("GESTIONAR SECCIÓN");
 
-        textNomBusSec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textNomBusSec.setForeground(new java.awt.Color(255, 255, 255));
-        textNomBusSec.setText("Nombre");
+        textPerAcaBusSec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textPerAcaBusSec.setForeground(new java.awt.Color(255, 255, 255));
+        textPerAcaBusSec.setText("Periodo Académico");
 
-        comboNomBusSec.addActionListener(new java.awt.event.ActionListener() {
+        comboPerAcaBusSec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboNomBusSecActionPerformed(evt);
+                comboPerAcaBusSecActionPerformed(evt);
+            }
+        });
+
+        textAsigBusSec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textAsigBusSec.setForeground(new java.awt.Color(255, 255, 255));
+        textAsigBusSec.setText("Asignatura");
+
+        comboAsigBusSec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboAsigBusSecActionPerformed(evt);
+            }
+        });
+
+        textSecciones.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textSecciones.setForeground(new java.awt.Color(255, 255, 255));
+        textSecciones.setText("Secciones");
+
+        comboSecciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSeccionesActionPerformed(evt);
             }
         });
 
@@ -265,94 +305,106 @@ public class SeccionAdmin extends javax.swing.JFrame {
                             .addGroup(bgSeccionLayout.createSequentialGroup()
                                 .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(bgSeccionLayout.createSequentialGroup()
-                                        .addComponent(textNomBusSec)
+                                        .addComponent(bontonAtrasSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(comboNomBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(botonBuscarSeccion))
-                                    .addComponent(textAsigSec))
-                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(bontonCancelarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(bgSeccionLayout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(bgSeccionLayout.createSequentialGroup()
-                                                .addComponent(botonEliminarSeccion)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botonModificarSeccion)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botonGuardarSeccion))
+                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textMaxEstSec)
+                                            .addComponent(textAsigSec)
+                                            .addComponent(textNumSec))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboAsigSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(campoMaxEstSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(campoNumSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboSecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboPerAcaBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(36, 36, 36)
+                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(bgSeccionLayout.createSequentialGroup()
+                                        .addComponent(botonEliminarSeccion)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(botonModificarSeccion)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(botonGuardarSeccion))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgSeccionLayout.createSequentialGroup()
+                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(bgSeccionLayout.createSequentialGroup()
                                                 .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(textProfSec)
-                                                    .addComponent(textPerAcaSec)
                                                     .addComponent(textStaSec))
-                                                .addGap(21, 21, 21)
-                                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(comboStaSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(comboPerAcaSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(comboProfSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(bgSeccionLayout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(botonAgregarSeccion))))
-                            .addGroup(bgSeccionLayout.createSequentialGroup()
-                                .addComponent(bontonAtrasSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(bontonCancelarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgSeccionLayout.createSequentialGroup()
-                                    .addComponent(textNumSec)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(campoNumSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(comboAsigSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(bgSeccionLayout.createSequentialGroup()
-                                        .addComponent(textMaxEstSec)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(campoMaxEstSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addGap(92, 92, 92))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgSeccionLayout.createSequentialGroup()
+                                                .addComponent(textPerAcaSec)
+                                                .addGap(18, 18, 18)))
+                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(comboStaSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboProfSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboPerAcaSec, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgSeccionLayout.createSequentialGroup()
+                                        .addComponent(textAsigBusSec)
+                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgSeccionLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(botonBuscarSeccion)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(botonAgregarSeccion))
+                                            .addGroup(bgSeccionLayout.createSequentialGroup()
+                                                .addGap(78, 78, 78)
+                                                .addComponent(comboAsigBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(textPerAcaBusSec)
+                            .addComponent(textSecciones)))
                     .addGroup(bgSeccionLayout.createSequentialGroup()
                         .addGap(355, 355, 355)
                         .addComponent(tituloSec)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         bgSeccionLayout.setVerticalGroup(
             bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgSeccionLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(tituloSec)
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textNomBusSec)
+                    .addComponent(textPerAcaBusSec)
+                    .addComponent(comboPerAcaBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textAsigBusSec)
+                    .addComponent(comboAsigBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textSecciones)
+                    .addComponent(comboSecciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBuscarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAgregarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboNomBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                    .addComponent(botonAgregarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
                 .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNumSec)
                     .addComponent(campoNumSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textPerAcaSec)
                     .addComponent(comboPerAcaSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textAsigSec)
-                    .addComponent(comboAsigSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textProfSec)
-                    .addComponent(comboProfSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textMaxEstSec)
-                    .addComponent(campoMaxEstSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textStaSec)
-                    .addComponent(comboStaSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(29, 29, 29)
                 .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboProfSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonGuardarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonModificarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonEliminarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboAsigSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textProfSec)
+                        .addComponent(textAsigSec)))
+                .addGap(28, 28, 28)
+                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboStaSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bontonAtrasSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bontonCancelarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(campoMaxEstSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textStaSec)
+                        .addComponent(textMaxEstSec)))
+                .addGap(74, 74, 74)
+                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bontonAtrasSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonCancelarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonModificarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonGuardarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -381,9 +433,9 @@ public class SeccionAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboAsigSecActionPerformed
 
-    private void comboNomBusSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNomBusSecActionPerformed
+    private void comboPerAcaBusSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPerAcaBusSecActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboNomBusSecActionPerformed
+    }//GEN-LAST:event_comboPerAcaBusSecActionPerformed
 
     private void bontonCancelarSeccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonCancelarSeccionMouseClicked
         // TODO add your handling code here:
@@ -396,6 +448,14 @@ public class SeccionAdmin extends javax.swing.JFrame {
     private void campoMaxEstSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoMaxEstSecActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoMaxEstSecActionPerformed
+
+    private void comboAsigBusSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAsigBusSecActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboAsigBusSecActionPerformed
+
+    private void comboSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSeccionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSeccionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,17 +479,21 @@ public class SeccionAdmin extends javax.swing.JFrame {
     private javax.swing.JButton botonModificarSeccion;
     private javax.swing.JTextField campoMaxEstSec;
     private javax.swing.JTextField campoNumSec;
+    private javax.swing.JComboBox<String> comboAsigBusSec;
     private javax.swing.JComboBox<String> comboAsigSec;
-    private javax.swing.JComboBox<String> comboNomBusSec;
+    private javax.swing.JComboBox<String> comboPerAcaBusSec;
     private javax.swing.JComboBox<String> comboPerAcaSec;
     private javax.swing.JComboBox<String> comboProfSec;
+    private javax.swing.JComboBox<String> comboSecciones;
     private javax.swing.JComboBox<String> comboStaSec;
+    private javax.swing.JLabel textAsigBusSec;
     private javax.swing.JLabel textAsigSec;
     private javax.swing.JLabel textMaxEstSec;
-    private javax.swing.JLabel textNomBusSec;
     private javax.swing.JLabel textNumSec;
+    private javax.swing.JLabel textPerAcaBusSec;
     private javax.swing.JLabel textPerAcaSec;
     private javax.swing.JLabel textProfSec;
+    private javax.swing.JLabel textSecciones;
     private javax.swing.JLabel textStaSec;
     private javax.swing.JLabel tituloSec;
     // End of variables declaration//GEN-END:variables
