@@ -281,26 +281,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPasswordMousePressed
 
     private void botonAccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAccederMouseClicked
-        String usuario = getCampoUsuario().getText();
-        String contrasena = new String (getCampoPassword().getPassword());
         
-        if (usuario.equals("Administrador") && contrasena.equals("Admin")) {
-            JOptionPane.showMessageDialog(this,"Bienvenido Administrador");
-            //Abrir la otra ventana si el usuario y contraseña son correctos
-            DashboardAdministrador frm = new DashboardAdministrador();
-            frm.setVisible(true);
-            //Cerrar ventana anterior
-            this.dispose();
-        } else if (usuario.equals("Profesor") && contrasena.equals("profesor")) {
-            JOptionPane.showMessageDialog(this,"Bienvenido Profesor");
-            //Abrir la otra ventana si el usuario y contraseña son correctos
-            DashboardProfesor frm = new DashboardProfesor();
-            frm.setVisible(true);
-            //Cerrar ventana anterior
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this,"Credenciales Incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_botonAccederMouseClicked
 
     private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUsuarioActionPerformed
