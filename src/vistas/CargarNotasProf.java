@@ -277,10 +277,6 @@ public class CargarNotasProf extends javax.swing.JFrame {
 
     private void bontonAtras1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonAtras1MouseClicked
         //Abrir ventana
-        DashboardProfesor frm = new DashboardProfesor();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
     }//GEN-LAST:event_bontonAtras1MouseClicked
 
     private void bontonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonGuardarMouseClicked
@@ -293,10 +289,6 @@ public class CargarNotasProf extends javax.swing.JFrame {
 
     private void modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseClicked
         //Abrir la otra ventana si el usuario y contraseña son correctos
-        ModificarNotaProf frm = new ModificarNotaProf();
-        frm.setVisible(true);
-        //Cerrar ventana anterior
-        this.dispose();
     }//GEN-LAST:event_modificarMouseClicked
 
     private void listPeriodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPeriodosActionPerformed
