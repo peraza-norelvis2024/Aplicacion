@@ -55,7 +55,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="bontonAtrasSeccion" min="-2" pref="93" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="bontonCancelarSeccion" min="-2" pref="93" max="-2" attributes="0"/>
+                                          <Component id="bontonCancelarSeccion" min="-2" pref="113" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -73,47 +73,58 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="botonEliminarSeccion" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="botonModificarSeccion" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="botonGuardarSeccion" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="botonEliminarSeccion" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="botonModificarSeccion" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="botonGuardarSeccion" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" attributes="0">
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="textProfSec" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="textStaSec" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="textPerAcaSec" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="comboStaSec" min="-2" pref="250" max="-2" attributes="0"/>
+                                                      <Component id="comboProfSec" min="-2" pref="250" max="-2" attributes="0"/>
+                                                      <Component id="comboPerAcaSec" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="textProfSec" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="textStaSec" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                                  <Component id="textAsigBusSec" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="textPerAcaSec" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="comboStaSec" min="-2" pref="250" max="-2" attributes="0"/>
-                                              <Component id="comboProfSec" min="-2" pref="250" max="-2" attributes="0"/>
-                                              <Component id="comboPerAcaSec" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="textAsigBusSec" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                                   <Component id="botonBuscarSeccion" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="botonAgregarSeccion" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                                   <Component id="comboAsigBusSec" min="-2" pref="250" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="botonAgregarSeccion" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -283,6 +294,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonBuscarSeccionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonAgregarSeccion">
           <Properties>

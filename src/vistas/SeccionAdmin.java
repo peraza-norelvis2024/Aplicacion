@@ -197,6 +197,11 @@ public class SeccionAdmin extends javax.swing.JFrame {
         botonBuscarSeccion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonBuscarSeccion.setText("BUSCAR");
         botonBuscarSeccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonBuscarSeccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarSeccionActionPerformed(evt);
+            }
+        });
 
         botonAgregarSeccion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonAgregarSeccion.setText("AGREGAR");
@@ -307,7 +312,7 @@ public class SeccionAdmin extends javax.swing.JFrame {
                                     .addGroup(bgSeccionLayout.createSequentialGroup()
                                         .addComponent(bontonAtrasSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(bontonCancelarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(bontonCancelarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(bgSeccionLayout.createSequentialGroup()
                                         .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(textMaxEstSec)
@@ -320,39 +325,45 @@ public class SeccionAdmin extends javax.swing.JFrame {
                                             .addComponent(campoNumSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(comboSecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(comboPerAcaBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(36, 36, 36)
-                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(bgSeccionLayout.createSequentialGroup()
-                                        .addComponent(botonEliminarSeccion)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonModificarSeccion)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonGuardarSeccion))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgSeccionLayout.createSequentialGroup()
+                                        .addGap(36, 36, 36)
+                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(bgSeccionLayout.createSequentialGroup()
+                                                .addComponent(botonEliminarSeccion)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(botonModificarSeccion)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(botonGuardarSeccion))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgSeccionLayout.createSequentialGroup()
+                                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(bgSeccionLayout.createSequentialGroup()
+                                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(textProfSec)
+                                                            .addComponent(textStaSec))
+                                                        .addGap(92, 92, 92))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgSeccionLayout.createSequentialGroup()
+                                                        .addComponent(textPerAcaSec)
+                                                        .addGap(18, 18, 18)))
+                                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(comboStaSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(comboProfSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(comboPerAcaSec, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addGroup(bgSeccionLayout.createSequentialGroup()
                                         .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(bgSeccionLayout.createSequentialGroup()
-                                                .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(textProfSec)
-                                                    .addComponent(textStaSec))
-                                                .addGap(92, 92, 92))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgSeccionLayout.createSequentialGroup()
-                                                .addComponent(textPerAcaSec)
-                                                .addGap(18, 18, 18)))
-                                        .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(comboStaSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(comboProfSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(comboPerAcaSec, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgSeccionLayout.createSequentialGroup()
-                                        .addComponent(textAsigBusSec)
+                                                .addGap(36, 36, 36)
+                                                .addComponent(textAsigBusSec))
+                                            .addGroup(bgSeccionLayout.createSequentialGroup()
+                                                .addGap(27, 27, 27)
+                                                .addComponent(botonBuscarSeccion)))
                                         .addGroup(bgSeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgSeccionLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(botonBuscarSeccion)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botonAgregarSeccion))
                                             .addGroup(bgSeccionLayout.createSequentialGroup()
                                                 .addGap(78, 78, 78)
-                                                .addComponent(comboAsigBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addComponent(comboAsigBusSec, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(bgSeccionLayout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(botonAgregarSeccion))))))
                             .addComponent(textPerAcaBusSec)
                             .addComponent(textSecciones)))
                     .addGroup(bgSeccionLayout.createSequentialGroup()
@@ -456,6 +467,10 @@ public class SeccionAdmin extends javax.swing.JFrame {
     private void comboSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSeccionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboSeccionesActionPerformed
+
+    private void botonBuscarSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarSeccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonBuscarSeccionActionPerformed
 
     /**
      * @param args the command line arguments
