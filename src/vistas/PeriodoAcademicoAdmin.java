@@ -75,13 +75,6 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
     }
 
     /**
-     * @return the campoNomBusPerAcad
-     */
-    public javax.swing.JTextField getCampoNomBusPerAcad() {
-        return campoNomBusPerAcad;
-    }
-
-    /**
      * @return the campoNomPerAcad
      */
     public javax.swing.JTextField getCampoNomPerAcad() {
@@ -96,11 +89,19 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
     }
 
     /**
+     * @return the comboNomBusPerAcad
+     */
+    public javax.swing.JComboBox<String> getComboNomBusPerAcad() {
+        return comboNomBusPerAcad;
+    }
+
+    /**
      * @return the comboStaPerAcad
      */
     public javax.swing.JComboBox<String> getComboStaPerAcad() {
         return comboStaPerAcad;
     }
+
 
     public PeriodoAcademicoAdmin() {
         initComponents();
@@ -113,7 +114,7 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
         bgPeriodoAcademico = new javax.swing.JPanel();
         tituloPerAcad = new javax.swing.JLabel();
         textNomBusPerAcad = new javax.swing.JLabel();
-        campoNomBusPerAcad = new javax.swing.JTextField();
+        comboNomBusPerAcad = new javax.swing.JComboBox<>();
         botonBuscarPerAcad = new javax.swing.JButton();
         botonAgregarPerAcad = new javax.swing.JButton();
         textNomPerAcad = new javax.swing.JLabel();
@@ -148,9 +149,6 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
         textNomBusPerAcad.setForeground(new java.awt.Color(255, 255, 255));
         textNomBusPerAcad.setText("Nombre");
 
-        campoNomBusPerAcad.setEditable(false);
-        campoNomBusPerAcad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
         botonBuscarPerAcad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonBuscarPerAcad.setText("BUSCAR");
         botonBuscarPerAcad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -177,13 +175,13 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
         textFecIngPerAcad.setForeground(new java.awt.Color(255, 255, 255));
         textFecIngPerAcad.setText("Fecha de Ingreso");
 
-        campoFecIngPerAcad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        campoFecIngPerAcad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         textFecCulPerAcad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textFecCulPerAcad.setForeground(new java.awt.Color(255, 255, 255));
         textFecCulPerAcad.setText("Fecha de Culminación");
 
-        campoFecCulPerAcad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        campoFecCulPerAcad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         textActPerAcad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textActPerAcad.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,46 +257,49 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(botonGuardarPerAcad))
                             .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
-                                .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
-                                        .addComponent(textNomBusPerAcad)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(campoNomBusPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonBuscarPerAcad)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonAgregarPerAcad))
+                                .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
                                         .addComponent(bontonAtrasPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(bontonCancelarPerAca, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(textActPerAcad)
                                     .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
-                                        .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(comboActPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
-                                                    .addComponent(textNomPerAcad)
+                                                    .addComponent(textNomBusPerAcad)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(campoNomPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(comboNomBusPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(comboActPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
                                                     .addComponent(textFecIngPerAcad)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(campoFecIngPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(60, 60, 60)
+                                                    .addGap(24, 24, 24)
+                                                    .addComponent(campoFecIngPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
+                                                .addComponent(textNomPerAcad)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(campoNomPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textStaPerAcad)
-                                            .addComponent(textFecCulPerAcad)
-                                            .addComponent(textDesPerAcad))))
-                                .addGap(31, 31, 31)
+                                            .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
+                                                .addGap(50, 50, 50)
+                                                .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(textStaPerAcad)
+                                                    .addComponent(textFecCulPerAcad)
+                                                    .addComponent(textDesPerAcad)))
+                                            .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(botonBuscarPerAcad)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(botonAgregarPerAcad)))))
+                                .addGap(18, 18, 18)
                                 .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboStaPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campoFecCulPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoDesPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboStaPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(campoDesPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(bgPeriodoAcademicoLayout.createSequentialGroup()
                         .addGap(261, 261, 261)
                         .addComponent(tituloPerAcad)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         bgPeriodoAcademicoLayout.setVerticalGroup(
             bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,9 +309,9 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNomBusPerAcad)
-                    .addComponent(campoNomBusPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBuscarPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAgregarPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonAgregarPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboNomBusPerAcad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(bgPeriodoAcademicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNomPerAcad)
@@ -392,9 +393,9 @@ public class PeriodoAcademicoAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField campoDesPerAcad;
     private javax.swing.JFormattedTextField campoFecCulPerAcad;
     private javax.swing.JFormattedTextField campoFecIngPerAcad;
-    private javax.swing.JTextField campoNomBusPerAcad;
     private javax.swing.JTextField campoNomPerAcad;
     private javax.swing.JComboBox<String> comboActPerAcad;
+    private javax.swing.JComboBox<String> comboNomBusPerAcad;
     private javax.swing.JComboBox<String> comboStaPerAcad;
     private javax.swing.JLabel textActPerAcad;
     private javax.swing.JLabel textDesPerAcad;

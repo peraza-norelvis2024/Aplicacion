@@ -6,6 +6,20 @@ import javax.swing.JOptionPane;
 public class DashboardAdministrador extends javax.swing.JFrame {
 
     /**
+     * @return the reportesConsultar
+     */
+    public javax.swing.JMenuItem getReportesConsultar() {
+        return reportesConsultar;
+    }
+
+    /**
+     * @return the retiroAsignatura
+     */
+    public javax.swing.JMenuItem getRetiroAsignatura() {
+        return retiroAsignatura;
+    }
+
+    /**
      * @return the asignatura
      */
     public javax.swing.JMenuItem getAsignatura() {
@@ -55,13 +69,6 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     }
 
     /**
-     * @return the resportesConsultar
-     */
-    public javax.swing.JMenuItem getResportesConsultar() {
-        return resportesConsultar;
-    }
-
-    /**
      * @return the salir
      */
     public javax.swing.JMenuItem getSalir() {
@@ -107,8 +114,10 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         estudiante = new javax.swing.JMenuItem();
         inscripcion = new javax.swing.JMenu();
         inscripcionEstudiante = new javax.swing.JMenuItem();
+        retiroAsig = new javax.swing.JMenu();
+        retiroAsignatura = new javax.swing.JMenuItem();
         reportes = new javax.swing.JMenu();
-        resportesConsultar = new javax.swing.JMenuItem();
+        reportesConsultar = new javax.swing.JMenuItem();
         cerrar = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
 
@@ -217,17 +226,31 @@ public class DashboardAdministrador extends javax.swing.JFrame {
 
         menu.add(inscripcion);
 
+        retiroAsig.setText("Retiro");
+        retiroAsig.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        retiroAsig.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        retiroAsig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retiroAsigActionPerformed(evt);
+            }
+        });
+
+        retiroAsignatura.setText("Retiro de Asignatura");
+        retiroAsig.add(retiroAsignatura);
+
+        menu.add(retiroAsig);
+
         reportes.setText("Reportes");
         reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        resportesConsultar.setText("Consultar");
-        resportesConsultar.addActionListener(new java.awt.event.ActionListener() {
+        reportesConsultar.setText("Consultar");
+        reportesConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resportesConsultarActionPerformed(evt);
+                reportesConsultarActionPerformed(evt);
             }
         });
-        reportes.add(resportesConsultar);
+        reportes.add(reportesConsultar);
 
         menu.add(reportes);
 
@@ -301,9 +324,13 @@ public class DashboardAdministrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_estudianteActionPerformed
 
-    private void resportesConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resportesConsultarActionPerformed
+    private void reportesConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesConsultarActionPerformed
 
-    }//GEN-LAST:event_resportesConsultarActionPerformed
+    }//GEN-LAST:event_reportesConsultarActionPerformed
+
+    private void retiroAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retiroAsigActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_retiroAsigActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +359,9 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem periodoAcademico;
     private javax.swing.JMenuItem profesor;
     private javax.swing.JMenu reportes;
-    private javax.swing.JMenuItem resportesConsultar;
+    private javax.swing.JMenuItem reportesConsultar;
+    private javax.swing.JMenu retiroAsig;
+    private javax.swing.JMenuItem retiroAsignatura;
     private javax.swing.JMenuItem salir;
     private javax.swing.JMenuItem seccion;
     private javax.swing.JMenuItem semestre;

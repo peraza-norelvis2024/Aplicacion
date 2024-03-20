@@ -11,6 +11,7 @@ import vistas.PeriodoAcademicoAdmin;
 import vistas.ProfesorAdmin;
 import vistas.EstudianteAdmin;
 import vistas.InscripcionAdmin;
+import vistas.RetiroAsigAdmin;
 import vistas.ReportesAdmin;
 import vistas.Login;
 
@@ -104,6 +105,16 @@ public class CDashboardAdministrador {
                 InscripcionAdmin inscripcion = new InscripcionAdmin();
                 CInscripcionAdmin controlador_inscripcion = new CInscripcionAdmin(inscripcion, sesion);
                 inscripcion.setVisible(true);
+                view.dispose();
+            }
+        });
+        
+        this.view.getRetiroAsignatura().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                RetiroAsigAdmin retiroAsig = new RetiroAsigAdmin();
+                CRetiroAsigAdmin controlador_inscripcion = new CRetiroAsigAdmin(retiroAsig, sesion);
+                retiroAsig.setVisible(true);
                 view.dispose();
             }
         });
