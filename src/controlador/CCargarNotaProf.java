@@ -18,6 +18,7 @@ import javax.swing.table.TableModel;
 import modelo.MEstudiante;
 import modelo.MNota;
 import modelo.MSeccion;
+import vistas.ModificarNotaProf;
 
 public class CCargarNotaProf {
     private CargarNotasProf view;
@@ -129,6 +130,16 @@ public class CCargarNotaProf {
                 }else{
                     JOptionPane.showMessageDialog(view,"No se encontraron notas para guardar", "Error", JOptionPane.ERROR_MESSAGE);    
                 }
+            }
+        });
+        
+        view.getModificarNota().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ModificarNotaProf frm = new ModificarNotaProf();
+                CModificarNotasProf controladorModificarNota = new CModificarNotasProf(frm, sesion);
+                frm.setVisible(true);
+                view.dispose();
             }
         });
     }
