@@ -15,6 +15,9 @@ import modelo.Sesion;
 import conexion.CConexion;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import modelo.MEstudiante;
+import modelo.MNota;
+import modelo.MSeccion;
 
 public class CCargarNotaProf {
     private CargarNotasProf view;
@@ -24,7 +27,7 @@ public class CCargarNotaProf {
     private HashMap<String, Integer> mapaCarreras;
     private HashMap<String, Integer> mapaAsignaturas;
     private HashMap<String, Integer> mapaSecciones;
-    
+    private List<MNota> arrayNotas;
     Connection connection = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
@@ -37,6 +40,10 @@ public class CCargarNotaProf {
         this.mapaCarreras = new HashMap<>();
         this.mapaAsignaturas = new HashMap<>();
         this.mapaSecciones = new HashMap<>();
+        this.arrayNotas = new ArrayList<MNota>();
+        
+        DefaultTableModel tabla = (DefaultTableModel) view.getTablaNotas().getModel();
+        tabla.setRowCount(0);
         
         llenarCbxPeriodoAcademico();
         
@@ -51,9 +58,6 @@ public class CCargarNotaProf {
                     
                     view.getListCarreras().addItem("Seleccione opción");
                     llenarCbxCarrera(codigoPeriodoSeleccionado);
-                    // Realizar acciones con el código de la sección seleccionada
-                    System.out.println("Código de periodo seleccionado: " + codigoPeriodoSeleccionado);
-                    // Puedes realizar cualquier acción que necesites con este código
                 }
             }
         });
@@ -70,9 +74,7 @@ public class CCargarNotaProf {
                     view.getListAsignatura().addItem("Seleccione opción");
 
                     llenarCbxAsignaturas(codigoPeriodoSeleccionado, codigoCarreraSeleccionado);
-                    // Realizar acciones con el código de la sección seleccionada
-                    System.out.println("Código de carrera seleccionado: " + codigoCarreraSeleccionado);
-                    // Puedes realizar cualquier acción que necesites con este código
+                
                 }
             }
         });
@@ -80,7 +82,7 @@ public class CCargarNotaProf {
         view.getListAsignatura().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Obtener el código de la sección seleccionada
+                // Obtener el código de la asignatura seleccionada
                 int codigoPeriodoSeleccionado = obtenerCodigoPeriodoSeleccionado();
                 int codigoAsignaturaSeleccionado = obtenerCodigoAsignaturaSeleccionada();
                 view.getListSeccion().removeAllItems();
@@ -89,9 +91,6 @@ public class CCargarNotaProf {
                     view.getListSeccion().addItem("Seleccione opción");
 
                     llenarCbxSecciones(codigoPeriodoSeleccionado, codigoAsignaturaSeleccionado);
-                    // Realizar acciones con el código de la sección seleccionada
-                    System.out.println("Código de asignatura seleccionado: " + codigoAsignaturaSeleccionado);
-                    // Puedes realizar cualquier acción que necesites con este código
                 }
             }
         });
@@ -107,9 +106,6 @@ public class CCargarNotaProf {
                     view.getListSeccion().addItem("Seleccione opción");
 
                     llenarTablaNotas(codigoPeriodoSeleccionado, codigoSeccionSeleccionado);
-                    // Realizar acciones con el código de la sección seleccionada
-                    System.out.println("Código de seccion seleccionado: " + codigoSeccionSeleccionado);
-                    // Puedes realizar cualquier acción que necesites con este código
                 }
             }
         });
@@ -124,6 +120,17 @@ public class CCargarNotaProf {
             }
         });
         
+        view.getBontonGuardar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel tabla = (DefaultTableModel) view.getTablaNotas().getModel();
+                if(tabla.getRowCount() > 0) {
+                    guardarNotas();
+                }else{
+                    JOptionPane.showMessageDialog(view,"No se encontraron notas para guardar", "Error", JOptionPane.ERROR_MESSAGE);    
+                }
+            }
+        });
     }
     
     private void llenarCbxPeriodoAcademico(){
@@ -285,14 +292,14 @@ public class CCargarNotaProf {
     
     
     private void llenarTablaNotas(int periodo, int seccion){
+        this.arrayNotas = new ArrayList<MNota>();
         
-        System.out.println("Usuario logueado: " + sesion.getNombre_usuario());
         int codigo_profesor = sesion.getCodigo_usuario();
         TableModel model = view.getTablaNotas().getModel();
         DefaultTableModel defaultModel = (DefaultTableModel) model;
         defaultModel.setRowCount(0);
         
-        String sql = "SELECT e.cedula as cedula, e.nombre as nombre, e.apellido as apellido, COALESCE(n.nota, NULL) AS nota, COALESCE(n.codigo, 0) AS nota_id "
+        String sql = "SELECT e.codigo as codigo_est, e.cedula as cedula, e.nombre as nombre, e.apellido as apellido, COALESCE(n.nota, NULL) AS nota, COALESCE(n.codigo, 0) AS nota_id "
                 + "FROM inscripcion i "
                 + "INNER JOIN estudiante e ON i.estudiante_id = e.codigo "
                 + "LEFT JOIN "
@@ -307,8 +314,9 @@ public class CCargarNotaProf {
             statement.setInt(3, periodo);
             
             resultSet = statement.executeQuery();
-            
+            boolean encontro = false;
             while (resultSet.next()) {
+                encontro = true;
                 Float nota = null;
                 
                 if (resultSet.getObject("nota") != null) {
@@ -321,7 +329,33 @@ public class CCargarNotaProf {
                     resultSet.getString("apellido"),
                     nota,
                 };
+                
+                MEstudiante estudiante = new MEstudiante();
+                estudiante.setCodigo(resultSet.getInt("codigo_est"));
+                estudiante.setCedula(resultSet.getString("cedula"));
+                estudiante.setNombre(resultSet.getString("nombre"));
+                estudiante.setApellido(resultSet.getString("apellido"));
+                
+                MSeccion mseccion = new MSeccion();
+                mseccion.setCodigo(seccion);
+                
+                MNota mnota = new MNota();
+                mnota.setCodigo(resultSet.getInt("nota_id"));
+                mnota.setEstudiante_id(estudiante);
+                mnota.setSeccion_id(mseccion);
+                
+                if(nota == null || nota < 0){
+                    mnota.setNota(-1);
+                }else{
+                    mnota.setNota(nota);
+                }
+                
+                arrayNotas.add(mnota);
+                
                 ((DefaultTableModel) model).addRow(row);
+            }
+            if(!encontro){
+                JOptionPane.showMessageDialog(view,"No se encontraron notas", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -336,6 +370,69 @@ public class CCargarNotaProf {
                 e.printStackTrace();
             }
         }
+    }
+    
+    private void guardarNotas(){
+        DefaultTableModel tabla = (DefaultTableModel) this.view.getTablaNotas().getModel();
+        boolean error = false;
+        for (int row = 0; row < tabla.getRowCount(); row++) {
+            Object[] rowData = new Object[tabla.getColumnCount()];
+            rowData[0] = tabla.getValueAt(row, 0);
+            rowData[1] = tabla.getValueAt(row, 1);
+            rowData[2] = tabla.getValueAt(row, 2);
+            rowData[3] = tabla.getValueAt(row, 3);
+            
+            if(rowData[3] != null && rowData[3]!=""){
+                rowData[3] = Float.parseFloat(rowData[3].toString());
+            }else{
+                rowData[3] = Float.parseFloat("-1.0");
+            }
+            
+            MNota nota = arrayNotas.get(row);
+            
+            String sql = "";
+            
+            if(nota.getCodigo() == 0 && (rowData[3] != null && (float) rowData[3] > -1)){
+                sql = "INSERT INTO nota(nota, seccion_id, estudiante_id) "
+                        + "VALUES ( "+(float) rowData[3]+","+nota.getSeccion_id().getCodigo()+","+nota.getEstudiante_id().getCodigo()+");";
+            }
+            
+            if(nota.getCodigo() > 0 && (rowData[3] != null && (float) rowData[3] > -1)){
+                sql = "UPDATE nota SET nota = "+(float) rowData[3]+" WHERE codigo = "+nota.getCodigo()+";";
+            }
+            
+            
+            try{
+                if(!sql.equals("")){
+                    connection = cconexion.establecerConexion();
+                    statement = connection.prepareStatement(sql);
+                    statement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                error = true;
+                e.printStackTrace();
+            } finally {
+                // Cerrar la conexión, el statement y el resultSet
+                try {
+                    if (resultSet != null) resultSet.close();
+                    if (statement != null) statement.close();
+                    if (connection != null) connection.close();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+        
+        if(error){
+            JOptionPane.showMessageDialog(view,"Error al guardar notas, por favor verificar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(view,"Se ha guardado exitosamente!");
+        }
+        
+        this.limpiarCampos();
+    
     }
     
     private int obtenerCodigoPeriodoSeleccionado() {
@@ -383,5 +480,22 @@ public class CCargarNotaProf {
         }else{
             return 0;
         }
+    }
+    
+    public void limpiarCampos(){
+        this.view.getListPeriodos().setSelectedIndex(0);
+        this.view.getListAsignatura().removeAllItems();
+        this.view.getListCarreras().removeAllItems();
+        this.view.getListSeccion().removeAllItems();
+        
+        TableModel model = view.getTablaNotas().getModel();
+        DefaultTableModel defaultModel = (DefaultTableModel) model;
+        defaultModel.setRowCount(0);
+        
+        this.mapaCarreras = new HashMap<>();
+        this.mapaAsignaturas = new HashMap<>();
+        this.mapaSecciones = new HashMap<>();
+        this.arrayNotas = new ArrayList<MNota>();
+        
     }
 }
