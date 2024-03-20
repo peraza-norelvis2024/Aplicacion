@@ -33,7 +33,7 @@ public class CargarNotasProf extends javax.swing.JFrame {
         return listSeccion;
     }
 
-    public javax.swing.JMenu getModificarNota() {
+    public javax.swing.JMenuItem getModificarNota() {
         return modificarNota;
     }
 
@@ -66,7 +66,8 @@ public class CargarNotasProf extends javax.swing.JFrame {
         bontonAtras1 = new javax.swing.JButton();
         bontonGuardar = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
-        modificarNota = new javax.swing.JMenu();
+        modificar = new javax.swing.JMenu();
+        modificarNota = new javax.swing.JMenuItem();
 
         listPeriodos2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -234,20 +235,29 @@ public class CargarNotasProf extends javax.swing.JFrame {
 
         menu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        modificarNota.setText("Modificar Nota");
-        modificarNota.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        modificarNota.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        modificarNota.addMouseListener(new java.awt.event.MouseAdapter() {
+        modificar.setText("Modificar");
+        modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        modificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarNotaMouseClicked(evt);
+                modificarMouseClicked(evt);
             }
         });
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+
+        modificarNota.setText("Modificar Nota");
         modificarNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarNotaActionPerformed(evt);
             }
         });
-        menu.add(modificarNota);
+        modificar.add(modificarNota);
+
+        menu.add(modificar);
 
         setJMenuBar(menu);
 
@@ -277,17 +287,17 @@ public class CargarNotasProf extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bontonGuardarMouseClicked
 
-    private void modificarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarNotaActionPerformed
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         
-    }//GEN-LAST:event_modificarNotaActionPerformed
+    }//GEN-LAST:event_modificarActionPerformed
 
-    private void modificarNotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarNotaMouseClicked
+    private void modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseClicked
         //Abrir la otra ventana si el usuario y contraseña son correctos
         ModificarNotaProf frm = new ModificarNotaProf();
         frm.setVisible(true);
         //Cerrar ventana anterior
         this.dispose();
-    }//GEN-LAST:event_modificarNotaMouseClicked
+    }//GEN-LAST:event_modificarMouseClicked
 
     private void listPeriodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPeriodosActionPerformed
         // TODO add your handling code here:
@@ -296,6 +306,10 @@ public class CargarNotasProf extends javax.swing.JFrame {
     private void bontonAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonAtras1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bontonAtras1ActionPerformed
+
+    private void modificarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarNotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarNotaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,7 +333,8 @@ public class CargarNotasProf extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> listPeriodos2;
     private javax.swing.JComboBox<String> listSeccion;
     private javax.swing.JMenuBar menu;
-    private javax.swing.JMenu modificarNota;
+    private javax.swing.JMenu modificar;
+    private javax.swing.JMenuItem modificarNota;
     private javax.swing.JScrollPane scrollNotas;
     private javax.swing.JTable tablaNotas;
     private javax.swing.JLabel textAsignatura;

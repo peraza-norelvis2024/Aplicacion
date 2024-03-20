@@ -24,11 +24,7 @@ public class ModificarNotaProf extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> getListAsignatura() {
         return listAsignatura;
     }
-
-    public javax.swing.JComboBox<String> getListCarreras() {
-        return listCarreras;
-    }
-
+    
     public javax.swing.JComboBox<String> getListSeccion() {
         return listSeccion;
     }
@@ -55,8 +51,6 @@ public class ModificarNotaProf extends javax.swing.JFrame {
         tablaNota = new javax.swing.JTable();
         bontonCancelar = new javax.swing.JButton();
         bontonGuardar = new javax.swing.JButton();
-        textCarrera = new javax.swing.JLabel();
-        listCarreras = new javax.swing.JComboBox<>();
         textAsignatura = new javax.swing.JLabel();
         listAsignatura = new javax.swing.JComboBox<>();
         textSeccion = new javax.swing.JLabel();
@@ -89,7 +83,7 @@ public class ModificarNotaProf extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Cédula", "Nombre", "Apellido", "Nota"
+                "Nombre", "Apellido", "Carrera", "Nota"
             }
         ) {
             Class[] types = new Class [] {
@@ -132,12 +126,6 @@ public class ModificarNotaProf extends javax.swing.JFrame {
             }
         });
 
-        textCarrera.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        textCarrera.setForeground(new java.awt.Color(255, 255, 255));
-        textCarrera.setText("Carrera");
-
-        listCarreras.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
         textAsignatura.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         textAsignatura.setForeground(new java.awt.Color(255, 255, 255));
         textAsignatura.setText("Asignatura");
@@ -154,61 +142,59 @@ public class ModificarNotaProf extends javax.swing.JFrame {
         bgModificarNota.setLayout(bgModificarNotaLayout);
         bgModificarNotaLayout.setHorizontalGroup(
             bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgModificarNotaLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+            .addGroup(bgModificarNotaLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonBuscar)
                     .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(bgModificarNotaLayout.createSequentialGroup()
                             .addComponent(bontonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(500, 500, 500)
                             .addComponent(bontonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(bgModificarNotaLayout.createSequentialGroup()
-                            .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(bgModificarNotaLayout.createSequentialGroup()
-                                    .addComponent(titulo)
-                                    .addGap(30, 30, 30))
-                                .addGroup(bgModificarNotaLayout.createSequentialGroup()
-                                    .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textCedula)
-                                        .addComponent(textAsignatura))
-                                    .addGap(33, 33, 33)
-                                    .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgModificarNotaLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(titulo)
+                                .addGap(230, 230, 230))
+                            .addGroup(bgModificarNotaLayout.createSequentialGroup()
+                                .addComponent(textCedula)
+                                .addGap(64, 64, 64)
+                                .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(bgModificarNotaLayout.createSequentialGroup()
+                                        .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(botonBuscar))
+                                    .addGroup(bgModificarNotaLayout.createSequentialGroup()
                                         .addComponent(listAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textCarrera)
-                                        .addComponent(textSeccion))
-                                    .addGap(27, 27, 27)))
-                            .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(listCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(listSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(scrollNota)))
-                .addGap(44, 44, 44))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(textSeccion)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(listSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(bgModificarNotaLayout.createSequentialGroup()
+                                .addComponent(textAsignatura)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(scrollNota, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
         bgModificarNotaLayout.setVerticalGroup(
             bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgModificarNotaLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(titulo)
-                .addGap(43, 43, 43)
+                .addGap(39, 39, 39)
                 .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textCedula)
-                    .addComponent(textCarrera)
-                    .addComponent(listCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textAsignatura)
-                    .addComponent(listSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textSeccion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(listAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textSeccion)
+                        .addComponent(listSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textAsignatura))
+                .addGap(64, 64, 64)
                 .addComponent(scrollNota, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                 .addGroup(bgModificarNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bontonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bontonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,12 +252,10 @@ public class ModificarNotaProf extends javax.swing.JFrame {
     private javax.swing.JTextField campoCedula;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> listAsignatura;
-    private javax.swing.JComboBox<String> listCarreras;
     private javax.swing.JComboBox<String> listSeccion;
     private javax.swing.JScrollPane scrollNota;
     private javax.swing.JTable tablaNota;
     private javax.swing.JLabel textAsignatura;
-    private javax.swing.JLabel textCarrera;
     private javax.swing.JLabel textCedula;
     private javax.swing.JLabel textSeccion;
     private javax.swing.JLabel titulo;
