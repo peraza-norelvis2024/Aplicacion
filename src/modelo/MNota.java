@@ -8,7 +8,9 @@ public class MNota {
     private MSeccion seccion_id;
     private float nota;
     private boolean estatus;
-
+    
+    public MNota(){}
+    
     public MNota(int codigo, MEstudiante estudiante_id, MSeccion seccion_id, float nota, boolean estatus) {
         this.codigo = codigo;
         this.estudiante_id = estudiante_id;
