@@ -125,7 +125,7 @@ public class ProfesorAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bgEstudiante2 = new javax.swing.JPanel();
+        bgProfesor = new javax.swing.JPanel();
         tituloProf = new javax.swing.JLabel();
         textCedBusProf = new javax.swing.JLabel();
         campoCedBusProf = new javax.swing.JTextField();
@@ -157,7 +157,7 @@ public class ProfesorAdmin extends javax.swing.JFrame {
         setTitle("Profesor");
         setResizable(false);
 
-        bgEstudiante2.setBackground(new java.awt.Color(41, 144, 159));
+        bgProfesor.setBackground(new java.awt.Color(41, 144, 159));
 
         tituloProf.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         tituloProf.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,19 +280,19 @@ public class ProfesorAdmin extends javax.swing.JFrame {
         botonGuardarProf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonGuardarProf.setEnabled(false);
 
-        javax.swing.GroupLayout bgEstudiante2Layout = new javax.swing.GroupLayout(bgEstudiante2);
-        bgEstudiante2.setLayout(bgEstudiante2Layout);
-        bgEstudiante2Layout.setHorizontalGroup(
-            bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+        javax.swing.GroupLayout bgProfesorLayout = new javax.swing.GroupLayout(bgProfesor);
+        bgProfesor.setLayout(bgProfesorLayout);
+        bgProfesorLayout.setHorizontalGroup(
+            bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgProfesorLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgEstudiante2Layout.createSequentialGroup()
-                        .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgProfesorLayout.createSequentialGroup()
+                        .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgProfesorLayout.createSequentialGroup()
                                 .addComponent(textEspProf)
                                 .addGap(18, 18, 18)
-                                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(campoCorProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campoEspProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campoApeProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,9 +303,9 @@ public class ProfesorAdmin extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(campoNomProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(bgEstudiante2Layout.createSequentialGroup()
-                        .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                    .addGroup(bgProfesorLayout.createSequentialGroup()
+                        .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgProfesorLayout.createSequentialGroup()
                                 .addComponent(bontonAtrasProf, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bontonCancelarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +315,7 @@ public class ProfesorAdmin extends javax.swing.JFrame {
                                 .addComponent(botonModificarProf)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonGuardarProf))
-                            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                            .addGroup(bgProfesorLayout.createSequentialGroup()
                                 .addComponent(textCedBusProf)
                                 .addGap(48, 48, 48)
                                 .addComponent(campoCedBusProf, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,74 +323,74 @@ public class ProfesorAdmin extends javax.swing.JFrame {
                                 .addComponent(botonBuscarProf)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonAgregarProf))
-                            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                            .addGroup(bgProfesorLayout.createSequentialGroup()
                                 .addComponent(textApeProf)
                                 .addGap(334, 334, 334)
                                 .addComponent(textDirProf)
                                 .addGap(34, 34, 34)
                                 .addComponent(campoDirProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                            .addGroup(bgProfesorLayout.createSequentialGroup()
                                 .addComponent(textCorProf)
                                 .addGap(342, 342, 342)
-                                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textTelProf)
                                     .addComponent(textStaProf))
                                 .addGap(38, 38, 38)
-                                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(comboStaProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campoTelProf, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(46, Short.MAX_VALUE))))
-            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+            .addGroup(bgProfesorLayout.createSequentialGroup()
                 .addGap(250, 250, 250)
                 .addComponent(tituloProf)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        bgEstudiante2Layout.setVerticalGroup(
-            bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgEstudiante2Layout.createSequentialGroup()
+        bgProfesorLayout.setVerticalGroup(
+            bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgProfesorLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(tituloProf)
                 .addGap(30, 30, 30)
-                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(bgEstudiante2Layout.createSequentialGroup()
-                        .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(bgProfesorLayout.createSequentialGroup()
+                        .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textCedBusProf)
                             .addComponent(campoCedBusProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonBuscarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonAgregarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addComponent(textCedProf))
-                    .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(campoCedProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(textNomProf)
                         .addComponent(campoNomProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgEstudiante2Layout.createSequentialGroup()
+                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgProfesorLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textApeProf, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoApeProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgEstudiante2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgProfesorLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textDirProf)
                             .addComponent(campoDirProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(30, 30, 30)
-                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textCorProf)
                     .addComponent(campoCorProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textTelProf)
                     .addComponent(campoTelProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(textEspProf)
                         .addComponent(campoEspProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(textStaProf)
                         .addComponent(comboStaProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(93, 93, 93)
-                .addGroup(bgEstudiante2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bgProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bontonAtrasProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bontonCancelarProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonEliminarProf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,11 +403,11 @@ public class ProfesorAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgEstudiante2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgEstudiante2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -441,7 +441,7 @@ public class ProfesorAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bgEstudiante2;
+    private javax.swing.JPanel bgProfesor;
     private javax.swing.JButton bontonAtrasProf;
     private javax.swing.JButton bontonCancelarProf;
     private javax.swing.JButton botonAgregarProf;

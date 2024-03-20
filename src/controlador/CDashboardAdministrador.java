@@ -12,7 +12,8 @@ import vistas.ProfesorAdmin;
 import vistas.EstudianteAdmin;
 import vistas.InscripcionAdmin;
 import vistas.RetiroAsigAdmin;
-import vistas.ReportesAdmin;
+import vistas.ReportesSeccionesAdmin;
+import vistas.ReportesEstudiantesAdmin;
 import vistas.Login;
 
 import modelo.Sesion;
@@ -105,6 +106,26 @@ public class CDashboardAdministrador {
                 InscripcionAdmin inscripcion = new InscripcionAdmin();
                 CInscripcionAdmin controlador_inscripcion = new CInscripcionAdmin(inscripcion, sesion);
                 inscripcion.setVisible(true);
+                view.dispose();
+            }
+        });
+        
+        this.view.getReportesEst().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                ReportesEstudiantesAdmin reportesEstudiantesAdmin = new ReportesEstudiantesAdmin();
+                CReportesEstudiantesAdmin controlador_reportesEstudiantesAdmin = new CReportesEstudiantesAdmin(reportesEstudiantesAdmin, sesion);
+                reportesEstudiantesAdmin.setVisible(true);
+                view.dispose();
+            }
+        });
+        
+        this.view.getReportesSec().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                ReportesSeccionesAdmin reportesSeccionesAdmin = new ReportesSeccionesAdmin();
+                CReportesSeccionesAdmin controlador_reportesSeccionesAdmin = new CReportesSeccionesAdmin(reportesSeccionesAdmin, sesion);
+                reportesSeccionesAdmin.setVisible(true);
                 view.dispose();
             }
         });
