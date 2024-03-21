@@ -70,7 +70,9 @@ public class ReportesSeccionesAdmin extends javax.swing.JFrame {
         textSeccionRet.setForeground(new java.awt.Color(255, 255, 255));
         textSeccionRet.setText("Sección");
 
+        comboSeccionRet.setEditable(true);
         comboSeccionRet.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        comboSeccionRet.setEnabled(false);
 
         tableSec.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
