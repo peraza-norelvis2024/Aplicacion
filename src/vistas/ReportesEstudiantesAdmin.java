@@ -56,6 +56,7 @@ public class ReportesEstudiantesAdmin extends javax.swing.JFrame {
         textEstudianteRet.setText("Ver reporte de");
 
         comboEstudianteRet.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        comboEstudianteRet.setEnabled(false);
 
         tableEst.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,7 +98,7 @@ public class ReportesEstudiantesAdmin extends javax.swing.JFrame {
                             .addGroup(bgResportesEstLayout.createSequentialGroup()
                                 .addComponent(textEstudianteRet)
                                 .addGap(18, 18, 18)
-                                .addComponent(comboEstudianteRet, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(comboEstudianteRet, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(bontonAtrasEstudianteRet, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(bgResportesEstLayout.createSequentialGroup()
                         .addGap(423, 423, 423)
