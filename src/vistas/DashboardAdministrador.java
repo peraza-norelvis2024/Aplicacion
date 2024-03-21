@@ -6,10 +6,17 @@ import javax.swing.JOptionPane;
 public class DashboardAdministrador extends javax.swing.JFrame {
 
     /**
-     * @return the reportesConsultar
+     * @return the reportesEst
      */
-    public javax.swing.JMenuItem getReportesConsultar() {
-        return reportesConsultar;
+    public javax.swing.JMenuItem getReportesEst() {
+        return reportesEst;
+    }
+
+    /**
+     * @return the reportesSec
+     */
+    public javax.swing.JMenuItem getReportesSec() {
+        return reportesSec;
     }
 
     /**
@@ -117,7 +124,8 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         retiroAsig = new javax.swing.JMenu();
         retiroAsignatura = new javax.swing.JMenuItem();
         reportes = new javax.swing.JMenu();
-        reportesConsultar = new javax.swing.JMenuItem();
+        reportesSec = new javax.swing.JMenuItem();
+        reportesEst = new javax.swing.JMenuItem();
         cerrar = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
 
@@ -244,13 +252,21 @@ public class DashboardAdministrador extends javax.swing.JFrame {
         reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        reportesConsultar.setText("Consultar");
-        reportesConsultar.addActionListener(new java.awt.event.ActionListener() {
+        reportesSec.setText("Por Sección");
+        reportesSec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reportesConsultarActionPerformed(evt);
+                reportesSecActionPerformed(evt);
             }
         });
-        reportes.add(reportesConsultar);
+        reportes.add(reportesSec);
+
+        reportesEst.setText("Por Estudiante");
+        reportesEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportesEstActionPerformed(evt);
+            }
+        });
+        reportes.add(reportesEst);
 
         menu.add(reportes);
 
@@ -324,13 +340,17 @@ public class DashboardAdministrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_estudianteActionPerformed
 
-    private void reportesConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesConsultarActionPerformed
+    private void reportesSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesSecActionPerformed
 
-    }//GEN-LAST:event_reportesConsultarActionPerformed
+    }//GEN-LAST:event_reportesSecActionPerformed
 
     private void retiroAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retiroAsigActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_retiroAsigActionPerformed
+
+    private void reportesEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesEstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reportesEstActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,7 +379,8 @@ public class DashboardAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem periodoAcademico;
     private javax.swing.JMenuItem profesor;
     private javax.swing.JMenu reportes;
-    private javax.swing.JMenuItem reportesConsultar;
+    private javax.swing.JMenuItem reportesEst;
+    private javax.swing.JMenuItem reportesSec;
     private javax.swing.JMenu retiroAsig;
     private javax.swing.JMenuItem retiroAsignatura;
     private javax.swing.JMenuItem salir;

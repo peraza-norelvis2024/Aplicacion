@@ -84,8 +84,9 @@ public class RetiroAsigAdmin extends javax.swing.JFrame {
         botonEliminarRet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Retiro de asignatura");
+        setTitle("Retiro De Asignatura");
         setPreferredSize(new java.awt.Dimension(800, 430));
+        setResizable(false);
 
         bgModificarNota.setBackground(new java.awt.Color(41, 144, 159));
         bgModificarNota.setPreferredSize(new java.awt.Dimension(400, 575));
