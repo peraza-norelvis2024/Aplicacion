@@ -152,7 +152,7 @@ public class RetiroAsigAdmin extends javax.swing.JFrame {
         });
 
         botonEliminarRet.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonEliminarRet.setText("ELIMINAR");
+        botonEliminarRet.setText("RETIRAR");
         botonEliminarRet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEliminarRet.setEnabled(false);
 
