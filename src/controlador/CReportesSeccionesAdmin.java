@@ -43,6 +43,7 @@ public class CReportesSeccionesAdmin {
     private MSeccion seccion;
     private HashMap<String, Integer> mapaProfesor;
     private MDecanato profesor;
+    private List<MSeccion> arraySecciones;
 
     Connection connection = null;
     PreparedStatement statement = null;
@@ -54,6 +55,8 @@ public class CReportesSeccionesAdmin {
         this.view.getComboSeccionesRet().addItem("Seleccione opción");
         this.view.getComboSeccionesRet().addItem("Reporte general");
         this.view.getComboSeccionesRet().addItem("Reporte por sección");
+        this.view.getComboSeccionRet().addItem("Seleccione opción");
+        this.llenarCbxSecciones();
         
         //Accion de boton atras
         this.view.getBontonAtrasSeccionRet().addActionListener(new ActionListener(){
@@ -70,8 +73,27 @@ public class CReportesSeccionesAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int index = view.getComboSeccionesRet().getSelectedIndex();
-                if(index == 1){
+                if(index == 0){
+                    view.getComboSeccionRet().setEnabled(false);
+                    // Limpiar la tabla
+                    DefaultTableModel model = (DefaultTableModel) view.getTableSec().getModel();
+                    model.setRowCount(0); // Elimina todas las filas del modelo
+                    model.setColumnCount(0); // Elimina todas las columnas del modelo
+
+                }
+                
+                else if(index == 1){
                     reporteGeneral();
+                    view.getComboSeccionRet().setEnabled(false);
+                }
+                
+                else if(index == 2){
+                    view.getComboSeccionRet().setEnabled(true);
+                    // Limpiar la tabla
+                    DefaultTableModel model = (DefaultTableModel) view.getTableSec().getModel();
+                    model.setRowCount(0); // Elimina todas las filas del modelo
+                    model.setColumnCount(0); // Elimina todas las columnas del modelo
+                    
                 }
             }
         });
@@ -142,7 +164,59 @@ public class CReportesSeccionesAdmin {
                 e.printStackTrace();
             }
         }
-        
-        
     }
+    
+    private void llenarCbxSecciones() {
+        try {
+            // Crear una lista para almacenar los datos del combo
+            this.arraySecciones = new ArrayList<>();
+            mapaSeccion = new HashMap<>(); // Inicializamos el HashMap
+
+            ArrayList<String> data = new ArrayList<>();
+            view.getComboSeccionRet().removeAllItems();
+            this.view.getComboSeccionRet().addItem("Seleccione opción");
+
+            String sql = "SELECT s.codigo as codigo, s.numero as nombre, s.estatus as estatus  "
+                    + "FROM seccion s "
+                    + "WHERE s.estatus=true;"; // Quitamos las condiciones específicas de la consulta
+
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+
+            resultSet = statement.executeQuery();
+            // Iterar sobre los resultados y agregarlos a la lista
+            boolean encontro = false;
+            while (resultSet.next()) {
+                encontro = true;
+                int codigo = resultSet.getInt("codigo");
+                String nombre = resultSet.getString("nombre");
+
+                MSeccion mseccion = new MSeccion();
+                mseccion.setCodigo(codigo);
+                mseccion.setNumero(nombre);
+                mseccion.setEstatus(resultSet.getBoolean("estatus"));
+
+                arraySecciones.add(mseccion);
+
+                data.add(nombre);
+                mapaSeccion.put(nombre, codigo); // Agregamos al HashMap
+            }
+            for (String seccion : data) {
+                view.getComboSeccionRet().addItem(seccion);
+            }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+            // Cerrar la conexión, el statement y el resultSet
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }  
 }
