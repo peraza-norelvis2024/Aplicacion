@@ -164,9 +164,9 @@
                       <Component id="textSeccion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="listSeccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                  <Component id="scrollNotas" min="-2" pref="88" max="-2" attributes="0"/>
-                  <EmptySpace pref="97" max="32767" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                  <Component id="scrollNotas" min="-2" pref="225" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bontonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bontonAtras1" alignment="3" min="-2" max="-2" attributes="0"/>

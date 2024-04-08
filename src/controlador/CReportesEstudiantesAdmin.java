@@ -55,7 +55,6 @@ public class CReportesEstudiantesAdmin {
         this.view.getComboEstudianteRet().addItem("Estudiante por semestre");
         this.view.getComboEstudianteRet().addItem("20 mejores promedios de estudiantes por carrera");
         this.view.getComboEstudianteRet().addItem("20 mejores promedios de estudiantes por decanato");
-        this.view.getComboEstudianteRet().addItem("Estudiantes con promedios por encima de 16 puntos por sección y carrera");
         
         this.view.getComboEstudianteRet().addActionListener(new ActionListener(){
             @Override
@@ -78,11 +77,11 @@ public class CReportesEstudiantesAdmin {
                 }
                 
                 else if(index == 5){
-                    
+                    mejoresPromediosPorCarrera();
                 }
                 
                 else if(index == 6){
-                    
+                    mejoresPromediosPorDecanato();
                 }
             }
         });
@@ -318,5 +317,127 @@ public class CReportesEstudiantesAdmin {
         }
     }
 
+    private void mejoresPromediosPorCarrera() {
+        String sql = ""
+                + "SELECT e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, e.cedula AS cedula_estudiante, c.nombre AS nombre_carrera, "
+                + "SUM(n.nota/5) AS suma_notas, COUNT(n.nota) AS cantidad_notas, SUM(n.nota/5) / COUNT(n.nota) AS promedio_estudiante "
+                + "FROM estudiante e "
+                + "INNER JOIN carrera c ON e.carrera_id = c.codigo "
+                + "INNER JOIN inscripcion i ON e.codigo = i.estudiante_id "
+                + "INNER JOIN seccion s ON i.seccion_id = s.codigo "
+                + "INNER JOIN asignatura a ON s.asignatura_id = a.codigo "
+                + "INNER JOIN nota n ON e.codigo = n.estudiante_id AND s.codigo = n.seccion_id "
+                + "WHERE e.estatus = true "
+                + "GROUP BY e.nombre, e.apellido, e.cedula, c.nombre "
+                + "ORDER BY promedio_estudiante DESC "
+                + "LIMIT 20";
+        try {
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+
+            resultSet = statement.executeQuery();
+            // Iterar sobre los resultados y agregarlos a la lista
+            DefaultTableModel newModel = new DefaultTableModel();
+            newModel.addColumn("Nombre Estudiante");
+            newModel.addColumn("Apellido Estudiante");
+            newModel.addColumn("Cédula Estudiante");
+            newModel.addColumn("Carrera");
+            newModel.addColumn("Promedio Estudiante");
+
+            boolean encontro = false;
+            while (resultSet.next()) {
+                encontro = true;
+                Object[] row = {
+                    resultSet.getString("nombre_estudiante"),
+                    resultSet.getString("apellido_estudiante"),
+                    resultSet.getString("cedula_estudiante"),
+                    resultSet.getString("nombre_carrera"),
+                    resultSet.getDouble("promedio_estudiante")
+                };
+
+                ((DefaultTableModel) newModel).addRow(row);
+            }
+            if (encontro) {
+                this.view.getTableEst().setModel(newModel);
+            } else {
+                JOptionPane.showMessageDialog(view, "No se encontraron registros", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión, el statement y el resultSet
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void mejoresPromediosPorDecanato() {
+        String sql = ""
+                + "SELECT e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, e.cedula AS cedula_estudiante, d.nombre AS nombre_decanato, "
+                + "SUM(n.nota/5) AS suma_notas, COUNT(n.nota) AS cantidad_notas, SUM(n.nota/5) / COUNT(n.nota) AS promedio_estudiante "
+                + "FROM estudiante e "
+                + "INNER JOIN carrera c ON e.carrera_id = c.codigo "
+                + "INNER JOIN inscripcion i ON e.codigo = i.estudiante_id "
+                + "INNER JOIN seccion s ON i.seccion_id = s.codigo "
+                + "INNER JOIN asignatura a ON s.asignatura_id = a.codigo "
+                + "INNER JOIN decanato d ON c.decanato_id = d.codigo "
+                + "INNER JOIN nota n ON e.codigo = n.estudiante_id AND s.codigo = n.seccion_id "
+                + "WHERE e.estatus = true "
+                + "GROUP BY e.nombre, e.apellido, e.cedula, d.nombre "
+                + "ORDER BY promedio_estudiante DESC "
+                + "LIMIT 20";
+        try {
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+
+            resultSet = statement.executeQuery();
+            // Iterar sobre los resultados y agregarlos a la lista
+            DefaultTableModel newModel = new DefaultTableModel();
+            newModel.addColumn("Nombre Estudiante");
+            newModel.addColumn("Apellido Estudiante");
+            newModel.addColumn("Cédula Estudiante");
+            newModel.addColumn("Decanato");
+            newModel.addColumn("Promedio Estudiante");
+
+            boolean encontro = false;
+            while (resultSet.next()) {
+                encontro = true;
+                Object[] row = {
+                    resultSet.getString("nombre_estudiante"),
+                    resultSet.getString("apellido_estudiante"),
+                    resultSet.getString("cedula_estudiante"),
+                    resultSet.getString("nombre_decanato"),
+                    resultSet.getDouble("promedio_estudiante")
+                };
+
+                ((DefaultTableModel) newModel).addRow(row);
+            }
+            if (encontro) {
+                this.view.getTableEst().setModel(newModel);
+            } else {
+                JOptionPane.showMessageDialog(view, "No se encontraron registros", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión, el statement y el resultSet
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

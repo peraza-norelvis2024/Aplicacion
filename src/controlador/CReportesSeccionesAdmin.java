@@ -97,6 +97,24 @@ public class CReportesSeccionesAdmin {
                 }
             }
         });
+        
+        this.view.getComboSeccionesRet().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtener la sección seleccionada
+                String seccionSeleccionada = (String) view.getComboSeccionesRet().getSelectedItem();
+
+                // Verificar si se ha seleccionado una opción válida
+                if (!seccionSeleccionada.equals("Seleccione opción")) {
+                    // Obtener el código de la sección seleccionada del mapaSeccion
+                    int codigoSeccion = mapaSeccion.get(seccionSeleccionada);
+
+                    // Realizar consultas para obtener estudiantes por encima y por debajo del promedio
+                    
+                }
+            }
+        });
+
     }
     
     private void reporteGeneral(){
@@ -168,55 +186,52 @@ public class CReportesSeccionesAdmin {
     
     private void llenarCbxSecciones() {
         try {
-            // Crear una lista para almacenar los datos del combo
-            this.arraySecciones = new ArrayList<>();
-            mapaSeccion = new HashMap<>(); // Inicializamos el HashMap
+            // Inicializar el mapaSeccion
+            mapaSeccion = new HashMap<>();
 
-            ArrayList<String> data = new ArrayList<>();
+            // Limpiar el combo de secciones antes de llenarlo
             view.getComboSeccionRet().removeAllItems();
-            this.view.getComboSeccionRet().addItem("Seleccione opción");
+            view.getComboSeccionRet().addItem("Seleccione opción");
 
-            String sql = "SELECT s.codigo as codigo, s.numero as nombre, s.estatus as estatus  "
-                    + "FROM seccion s "
-                    + "WHERE s.estatus=true;"; // Quitamos las condiciones específicas de la consulta
+            // Consulta SQL para obtener las secciones junto con el nombre de la asignatura a la que pertenecen
+            String sql = "SELECT s.codigo AS codigo, s.numero AS nombre, s.estatus AS estatus, a.nombre AS nombre_asignatura " +
+                         "FROM seccion s " +
+                         "INNER JOIN asignatura a ON s.asignatura_id = a.codigo " +
+                         "WHERE s.estatus = true;";
 
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
-
             resultSet = statement.executeQuery();
-            // Iterar sobre los resultados y agregarlos a la lista
-            boolean encontro = false;
+
+            // Iterar sobre los resultados y agregarlos al combo de secciones
             while (resultSet.next()) {
-                encontro = true;
                 int codigo = resultSet.getInt("codigo");
-                String nombre = resultSet.getString("nombre");
+                String nombreSeccion = resultSet.getString("nombre");
+                String nombreAsignatura = resultSet.getString("nombre_asignatura");
+                boolean estatus = resultSet.getBoolean("estatus");
 
-                MSeccion mseccion = new MSeccion();
-                mseccion.setCodigo(codigo);
-                mseccion.setNumero(nombre);
-                mseccion.setEstatus(resultSet.getBoolean("estatus"));
+                // Construir el texto a mostrar en el combo, que incluye el nombre de la asignatura y el número de la sección
+                String textoCombo = nombreAsignatura + " - Sección " + nombreSeccion;
 
-                arraySecciones.add(mseccion);
+                // Agregar el nombre de la sección al combo
+                view.getComboSeccionRet().addItem(textoCombo);
 
-                data.add(nombre);
-                mapaSeccion.put(nombre, codigo); // Agregamos al HashMap
+                // Almacenar el código de la sección en el mapaSeccion
+                mapaSeccion.put(textoCombo, codigo);
             }
-            for (String seccion : data) {
-                view.getComboSeccionRet().addItem(seccion);
-            }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
             // Cerrar la conexión, el statement y el resultSet
             try {
                 if (resultSet != null) resultSet.close();
                 if (statement != null) statement.close();
                 if (connection != null) connection.close();
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-    }  
+    }
+
+  
 }
