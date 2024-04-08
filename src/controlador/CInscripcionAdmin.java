@@ -365,69 +365,77 @@ public class CInscripcionAdmin {
         }    
     }
     
-    private void llenarTablaInscripcion(){
-        int seccion = obtenerCodigoSeccionSeleccionado();
-        MSemestre semestre;
-        
-        TableModel model = view.getjTablaInscripcion().getModel();
-        
-        ArrayList<String> data = new ArrayList<>();
-        String sql = "SELECT sm.codigo as codigo, sm.nombre as nombre "
-                + "FROM seccion s "
-                + "INNER JOIN asignatura a ON s.asignatura_id =  a.codigo "
-                + "INNER JOIN semestre sm ON a.semestre_id = sm.codigo "
-                + "WHERE s.codigo = ? AND s.estatus = true LIMIT 1;";
-        try {
-            
-            connection = cconexion.establecerConexion();
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1, seccion);
-            
-            resultSet = statement.executeQuery();
-            // Iterar sobre los resultados y agregarlos a la lista
-            if (resultSet.next()) {
-                semestre = new MSemestre(resultSet.getInt("codigo"), resultSet.getString("nombre"), true);
-                
-                MInscripcion inscripcion = new MInscripcion();
-                inscripcion.setEstudiante_id(estudiante);
-                inscripcion.setPeriodo_academico_id(periodoAcademico);
-                inscripcion.setSeccion_id(seccion_model);
-                inscripcion.setSemestre_id(semestre);
-                
+   private void llenarTablaInscripcion() {
+    int seccion = obtenerCodigoSeccionSeleccionado();
+    MSemestre semestre;
+
+    TableModel model = view.getjTablaInscripcion().getModel();
+
+    ArrayList<String> data = new ArrayList<>();
+    String sql = "SELECT sm.codigo as codigo, sm.nombre as nombre "
+            + "FROM seccion s "
+            + "INNER JOIN asignatura a ON s.asignatura_id =  a.codigo "
+            + "INNER JOIN semestre sm ON a.semestre_id = sm.codigo "
+            + "WHERE s.codigo = ? AND s.estatus = true LIMIT 1;";
+    try {
+
+        connection = cconexion.establecerConexion();
+        statement = connection.prepareStatement(sql);
+        statement.setInt(1, seccion);
+
+        resultSet = statement.executeQuery();
+        // Iterar sobre los resultados y agregarlos a la lista
+        if (resultSet.next()) {
+            semestre = new MSemestre(resultSet.getInt("codigo"), resultSet.getString("nombre"), true);
+
+            MInscripcion inscripcion = new MInscripcion();
+            inscripcion.setEstudiante_id(estudiante);
+            inscripcion.setPeriodo_academico_id(periodoAcademico);
+            inscripcion.setSeccion_id(seccion_model);
+            inscripcion.setSemestre_id(semestre);
+
+            // Verificar si la asignatura ya está inscrita
+            boolean asignaturaYaInscrita = false;
+            for (MInscripcion insc : inscripciones) {
+                if (insc.getSeccion_id().getAsignatura_id().getCodigo() == inscripcion.getSeccion_id().getAsignatura_id().getCodigo()) {
+                    asignaturaYaInscrita = true;
+                    break;
+                }
+            }
+
+            if (asignaturaYaInscrita) {
+                JOptionPane.showMessageDialog(view, "No puede agregar la misma asignatura", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
                 inscripciones.add(inscripcion);
-                
+
                 Object[] row = {
-                    inscripcion.getSeccion_id().getAsignatura_id().getCodigo(),
-                    inscripcion.getSeccion_id().getAsignatura_id().getNombre(),
-                    inscripcion.getSemestre_id().getNombre(),
-                    inscripcion.getSeccion_id().getNumero(),
+                        inscripcion.getSeccion_id().getAsignatura_id().getCodigo(),
+                        inscripcion.getSeccion_id().getAsignatura_id().getNombre(),
+                        inscripcion.getSemestre_id().getNombre(),
+                        inscripcion.getSeccion_id().getNumero(),
                 };
                 ((DefaultTableModel) model).addRow(row);
                 view.getBotonInscripcion().setEnabled(true);
-                
-            }else{
-                JOptionPane.showMessageDialog(view,"No se encontro el semestre", "Error", JOptionPane.ERROR_MESSAGE);
-                
             }
-            
-        
+
+        } else {
+            JOptionPane.showMessageDialog(view, "No se encontró el semestre", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // Cerrar la conexión, el statement y el resultSet
+        try {
+            if (resultSet != null) resultSet.close();
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            // Cerrar la conexión, el statement y el resultSet
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-                
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
-        //MInscripcion inscripcion = new MInscripcion();
-                
     }
-    
+}
     private void registrarInscripcion(){
         String sql = "INSERT INTO inscripcion (estudiante_id, seccion_id, periodo_academico_id, semestre_id) VALUES (?,?,?,?);";
         try{
