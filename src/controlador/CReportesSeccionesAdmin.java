@@ -75,11 +75,6 @@ public class CReportesSeccionesAdmin {
                 int index = view.getComboSeccionesRet().getSelectedIndex();
                 if(index == 0){
                     view.getComboSeccionRet().setEnabled(false);
-                    // Limpiar la tabla
-                    DefaultTableModel model = (DefaultTableModel) view.getTableSec().getModel();
-                    model.setRowCount(0); // Elimina todas las filas del modelo
-                    model.setColumnCount(0); // Elimina todas las columnas del modelo
-
                 }
                 
                 else if(index == 1){
@@ -89,38 +84,36 @@ public class CReportesSeccionesAdmin {
                 
                 else if(index == 2){
                     view.getComboSeccionRet().setEnabled(true);
-                    // Limpiar la tabla
-                    DefaultTableModel model = (DefaultTableModel) view.getTableSec().getModel();
-                    model.setRowCount(0); // Elimina todas las filas del modelo
-                    model.setColumnCount(0); // Elimina todas las columnas del modelo
-                    
                 }
             }
         });
         
-        this.view.getComboSeccionesRet().addActionListener(new ActionListener(){
+        this.view.getComboSeccionRet().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Obtener la sección seleccionada
-                String seccionSeleccionada = (String) view.getComboSeccionesRet().getSelectedItem();
-
-                // Verificar si se ha seleccionado una opción válida
-                if (!seccionSeleccionada.equals("Seleccione opción")) {
-                    // Obtener el código de la sección seleccionada del mapaSeccion
-                    int codigoSeccion = mapaSeccion.get(seccionSeleccionada);
-
-                    // Realizar consultas para obtener estudiantes por encima y por debajo del promedio
-                    
+                int index = view.getComboSeccionRet().getSelectedIndex();
+                if (index > 0) {
+                    DefaultTableModel model = (DefaultTableModel) view.getTableSec().getModel();
+                    model.setRowCount(0);
+                    String nombreSeccion = (String) view.getComboSeccionRet().getSelectedItem();
+                    int codigoSeccion = mapaSeccion.get(nombreSeccion);
+                    mostrarDatosSeccion(codigoSeccion);
                 }
             }
         });
-
     }
     
     private void reporteGeneral(){
         String sql = ""
-                + "WITH promedio_notas AS (SELECT seccion_id, AVG(nota) AS promedio FROM  nota GROUP BY seccion_id ) "
-                + "SELECT s.numero AS nombre_seccion, pn.promedio AS promedio_notas, SUM(CASE WHEN n.nota > pn.promedio THEN 1 ELSE 0 END) AS estudiantes_con_nota_mayor, SUM(CASE WHEN n.nota < pn.promedio THEN 1 ELSE 0 END) AS estudiantes_con_nota_menor, c.nombre as nombre_carrera, d.nombre as nombre_decanato, a.nombre as nombre_asignatura, p.nombre as nombre_profesor, p.apellido as apellido_profesor "
+                + "SELECT s.numero AS nombre_seccion, "
+                + "AVG(n.nota) AS promedio_notas, "
+                + "COUNT(CASE WHEN n.nota >= 48 THEN 1 ELSE NULL END) AS estudiantes_aprobados, "
+                + "COUNT(CASE WHEN n.nota < 48 THEN 1 ELSE NULL END) AS estudiantes_reprobados, "
+                + "c.nombre as nombre_carrera, "
+                + "d.nombre as nombre_decanato, "
+                + "a.nombre as nombre_asignatura, "
+                + "p.nombre as nombre_profesor, "
+                + "p.apellido as apellido_profesor "
                 + "FROM seccion s "
                 + "INNER JOIN nota n ON s.codigo = n.seccion_id "
                 + "INNER JOIN asignatura a ON s.asignatura_id = a.codigo "
@@ -128,47 +121,46 @@ public class CReportesSeccionesAdmin {
                 + "INNER JOIN carrera c ON a.carrera_id = c.codigo "
                 + "INNER JOIN decanato d ON c.decanato_id = d.codigo "
                 + "INNER JOIN periodo_academico pa ON s.periodo_id = pa.codigo "
-                + "INNER JOIN promedio_notas pn ON s.codigo = pn.seccion_id "
                 + "WHERE s.estatus = true AND pa.estatus = true AND pa.activo = true "
-                + "GROUP BY s.codigo, s.numero, pn.promedio, c.nombre, d.nombre, p.nombre, p.apellido, a.nombre;";
+                + "GROUP BY s.codigo, s.numero, c.nombre, d.nombre, p.nombre, p.apellido, a.nombre;";
         try{
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
-            
+
             resultSet = statement.executeQuery();
             // Iterar sobre los resultados y agregarlos a la lista
             DefaultTableModel newModel = new DefaultTableModel();
-            newModel.addColumn("Sección");
             newModel.addColumn("Decanato");
             newModel.addColumn("Carrera");
             newModel.addColumn("Asignatura");
+            newModel.addColumn("Sección");
             newModel.addColumn("Profesor");
-            newModel.addColumn("Promedio");
-            newModel.addColumn("Mayor al promedio");
-            newModel.addColumn("Menor al promedio");
-            
+            newModel.addColumn("Promedio De La Sección");
+            newModel.addColumn("Estudiantes Aprobados");
+            newModel.addColumn("Estudiantes Reprobados");
+
             boolean encontro = false;
             while (resultSet.next()) {
                 encontro = true;
                 Object[] row = {
-                    resultSet.getString("nombre_seccion"),
                     resultSet.getString("nombre_decanato"),
                     resultSet.getString("nombre_carrera"),
                     resultSet.getString("nombre_asignatura"),
-                    resultSet.getString("nombre_profesor")+" "+resultSet.getString("apellido_profesor"),
+                    resultSet.getString("nombre_seccion"),
+                    resultSet.getString("nombre_profesor") + " " + resultSet.getString("apellido_profesor"),
                     resultSet.getFloat("promedio_notas"),
-                    resultSet.getInt("estudiantes_con_nota_mayor"),
-                    resultSet.getInt("estudiantes_con_nota_menor")
+                    resultSet.getInt("estudiantes_aprobados"),
+                    resultSet.getInt("estudiantes_reprobados")
                 };
-                
+
                 ((DefaultTableModel) newModel).addRow(row);
             }
             if(encontro){
                 this.view.getTableSec().setModel(newModel);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(view,"No se encontraron registros", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -177,7 +169,7 @@ public class CReportesSeccionesAdmin {
                 if (resultSet != null) resultSet.close();
                 if (statement != null) statement.close();
                 if (connection != null) connection.close();
-                
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -232,6 +224,116 @@ public class CReportesSeccionesAdmin {
             }
         }
     }
+    private void mostrarDatosSeccion(int codigoSeccion) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Decanato");
+        model.addColumn("Carrera");
+        model.addColumn("Asignatura");
+        model.addColumn("Sección");
+        model.addColumn("Profesor");
+        model.addColumn("Estudiante");
+        model.addColumn("Nota");
+        model.addColumn("Promedio de la Sección"); // Nueva columna para el promedio de la sección
 
-  
+        double promedioSeccion = obtenerPromedioSeccion(codigoSeccion); // Obtener el promedio de la sección
+
+        try {
+            String sql = "SELECT d.nombre AS decanato, c.nombre AS carrera, a.nombre AS asignatura, s.numero AS seccion, CONCAT(p.nombre, ' ', p.apellido) AS profesor " +
+                         "FROM seccion s " +
+                         "INNER JOIN asignatura a ON s.asignatura_id = a.codigo " +
+                         "INNER JOIN carrera c ON a.carrera_id = c.codigo " +
+                         "INNER JOIN decanato d ON c.decanato_id = d.codigo " +
+                         "INNER JOIN profesor p ON s.profesor_id = p.codigo " +
+                         "WHERE s.codigo = ?;";
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, codigoSeccion);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String decanato = resultSet.getString("decanato");
+                String carrera = resultSet.getString("carrera");
+                String asignatura = resultSet.getString("asignatura");
+                String seccion = resultSet.getString("seccion");
+                String profesor = resultSet.getString("profesor");
+
+                model.addRow(new Object[]{decanato, carrera, asignatura, seccion, profesor, "", "", promedioSeccion}); // Añadir el promedio de la sección a cada fila
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        obtenerEstudiantesPorEncimaPromedio(codigoSeccion, model);
+        obtenerEstudiantesPorDebajoPromedio(codigoSeccion, model);
+
+        view.getTableSec().setModel(model);
+    }
+
+    private double obtenerPromedioSeccion(int codigoSeccion) {
+        double promedio = 0.0;
+        try {
+            String sql = "SELECT AVG(nota) AS promedio " +
+                         "FROM nota " +
+                         "WHERE seccion_id = ?;";
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, codigoSeccion);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                promedio = resultSet.getDouble("promedio");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return promedio;
+    }
+
+
+    private void obtenerEstudiantesPorEncimaPromedio(int codigoSeccion, DefaultTableModel model) {
+        try {
+            String sql = "SELECT e.nombre AS nombre_estudiante, n.nota " +
+                         "FROM estudiante e " +
+                         "INNER JOIN nota n ON e.codigo = n.estudiante_id " +
+                         "WHERE n.seccion_id = ? AND n.nota > (SELECT AVG(nota) FROM nota WHERE seccion_id = ?);";
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, codigoSeccion);
+            statement.setInt(2, codigoSeccion);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String nombreEstudiante = resultSet.getString("nombre_estudiante");
+                double nota = resultSet.getDouble("nota");
+
+                model.addRow(new Object[]{"", "", "", "", "", nombreEstudiante, nota, "Por Encima"});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void obtenerEstudiantesPorDebajoPromedio(int codigoSeccion, DefaultTableModel model) {
+        try {
+            String sql = "SELECT e.nombre AS nombre_estudiante, n.nota " +
+                         "FROM estudiante e " +
+                         "INNER JOIN nota n ON e.codigo = n.estudiante_id " +
+                         "WHERE n.seccion_id = ? AND n.nota < (SELECT AVG(nota) FROM nota WHERE seccion_id = ?);";
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, codigoSeccion);
+            statement.setInt(2, codigoSeccion);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String nombreEstudiante = resultSet.getString("nombre_estudiante");
+                double nota = resultSet.getDouble("nota");
+
+                model.addRow(new Object[]{"", "", "", "", "", nombreEstudiante, nota, "Por Debajo"});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

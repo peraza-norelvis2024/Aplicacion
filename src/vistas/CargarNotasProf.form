@@ -108,48 +108,46 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="textAsignatura" min="-2" max="-2" attributes="0"/>
-                                      <Component id="textPeriodos" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="listPeriodos" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="listAsignatura" min="-2" pref="200" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="textCarrera" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                          <Component id="listCarreras" min="-2" pref="200" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="textSeccion" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                          <Component id="listSeccion" min="-2" pref="200" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Component id="scrollNotas" alignment="0" min="-2" pref="782" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="bontonAtras1" min="-2" pref="93" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="bontonAgregar" min="-2" pref="128" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="bontonBuscar" min="-2" pref="89" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="textAsignatura" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textPeriodos" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="listPeriodos" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="listAsignatura" min="-2" pref="200" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="textCarrera" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                              <Component id="listCarreras" min="-2" pref="200" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="textSeccion" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                              <Component id="listSeccion" min="-2" pref="200" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="scrollNotas" alignment="0" min="-2" pref="782" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="bontonBuscar" min="-2" pref="89" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -179,13 +177,11 @@
                       <Component id="textSeccion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="listSeccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="bontonBuscar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <Component id="bontonBuscar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="scrollNotas" min="-2" pref="186" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bontonAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bontonAtras1" alignment="3" min="-2" max="-2" attributes="0"/>
