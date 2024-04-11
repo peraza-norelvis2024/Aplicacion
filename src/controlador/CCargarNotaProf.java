@@ -13,7 +13,10 @@ import vistas.CargarNotasProf;
 import vistas.DashboardProfesor;
 import modelo.Sesion;
 import conexion.CConexion;
+import java.awt.Component;
+import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 import modelo.MEstudiante;
 import modelo.MNota;
@@ -29,6 +32,7 @@ public class CCargarNotaProf {
     private HashMap<String, Integer> mapaAsignaturas;
     private HashMap<String, Integer> mapaSecciones;
     private List<MNota> arrayNotas;
+    private boolean puedeEditar = false;
     Connection connection = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
@@ -106,9 +110,21 @@ public class CCargarNotaProf {
                 if(codigoSeccionSeleccionado!=0){
                     view.getListSeccion().addItem("Seleccione opción");
 
-                    llenarTablaNotas(codigoPeriodoSeleccionado, codigoSeccionSeleccionado);
+                   view.getBontonBuscar().setEnabled(true);
                 }
             }
+        });
+        view.getBontonBuscar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                int seccion = obtenerCodigoSeccionSeleccionado();
+                if(seccion > 0){
+                    puedeEditar = false;
+                    llenarTablaNotas();
+                }
+            }
+
+           
         });
         
         view.getBontonAtras1().addActionListener(new ActionListener(){
@@ -120,8 +136,17 @@ public class CCargarNotaProf {
                 view.dispose();
             }
         });
-        
-        view.getBontonGuardar().addActionListener(new ActionListener(){
+        view.getBontonAgregar().addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+        int seccion = obtenerCodigoSeccionSeleccionado();
+                if(seccion > 0){
+                    puedeEditar = true;
+                    llenarTablaNotas();
+                }
+        }
+        });
+        view.getBontonGuardar1().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultTableModel tabla = (DefaultTableModel) view.getTablaNotas().getModel();
@@ -143,7 +168,126 @@ public class CCargarNotaProf {
             }
         });
     }
-    
+         private void llenarTablaNotas() {
+             int seccion = obtenerCodigoSeccionSeleccionado();
+             int periodo = obtenerCodigoPeriodoSeleccionado();
+         this.arrayNotas = new ArrayList<MNota>();
+
+    int codigo_profesor = sesion.getCodigo_usuario();
+    JTable tablaNotas = view.getTablaNotas();
+    DefaultTableModel model = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 3 && puedeEditar) {
+        return true; // La columna 4 es editable si puedeEditar es true
+    }
+    return false; // Todas las demás celdas no son editables
+        }
+         @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            if (columnIndex == 3) {
+                return Float.class; // Indica que la columna 4 contiene valores Float
+            }
+            return super.getColumnClass(columnIndex);
+        }
+        
+        @Override
+        public void setValueAt(Object value, int row, int column) {
+            if (column == 3 && value instanceof Float) {
+                Float nota = (Float) value;
+                if (nota >= 0 && nota <= 100) {
+                    // La nota es válida, puedes realizar el cambio en el modelo de datos
+                    super.setValueAt(value, row, column);
+                } else {
+                    // La nota no está en el rango válido, se muestra un mensaje de error
+                    JOptionPane.showMessageDialog(view, "La nota debe estar entre 1 y 100", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                // No es la columna de notas o el valor no es un Float, se maneja de forma predeterminada
+                super.setValueAt(value, row, column);
+            }}
+    };
+    tablaNotas.setModel(model);
+
+    // Agregar las columnas necesarias al modelo
+    model.addColumn("Cédula");
+    model.addColumn("Nombre");
+    model.addColumn("Apellido");
+    model.addColumn("Nota");
+
+    String sql = "SELECT e.codigo as codigo_est, e.cedula as cedula, e.nombre as nombre, e.apellido as apellido, COALESCE(n.nota, NULL) AS nota, COALESCE(n.codigo, 0) AS nota_id "
+            + "FROM inscripcion i "
+            + "INNER JOIN estudiante e ON i.estudiante_id = e.codigo "
+            + "LEFT JOIN "
+            + "(SELECT estudiante_id, nota, codigo FROM nota WHERE seccion_id = ?) n ON e.codigo = n.estudiante_id "
+            + "WHERE i.seccion_id = ? AND i.periodo_academico_id = ? AND i.estatus = true;";
+
+        
+        try{
+            connection = cconexion.establecerConexion();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, seccion);
+            statement.setInt(2, seccion);
+            statement.setInt(3, periodo);
+            
+            resultSet = statement.executeQuery();
+            boolean encontro = false;
+            while (resultSet.next()) {
+                encontro = true;
+                Float nota = null;
+                
+                if (resultSet.getObject("nota") != null) {
+                    nota = resultSet.getFloat("nota");
+                }
+                
+                Object[] row = {
+                    resultSet.getString("cedula"),
+                    resultSet.getString("nombre"),
+                    resultSet.getString("apellido"),
+                    nota,
+                };
+                
+                MEstudiante estudiante = new MEstudiante();
+                estudiante.setCodigo(resultSet.getInt("codigo_est"));
+                estudiante.setCedula(resultSet.getString("cedula"));
+                estudiante.setNombre(resultSet.getString("nombre"));
+                estudiante.setApellido(resultSet.getString("apellido"));
+                
+                MSeccion mseccion = new MSeccion();
+                mseccion.setCodigo(seccion);
+                
+                MNota mnota = new MNota();
+                mnota.setCodigo(resultSet.getInt("nota_id"));
+                mnota.setEstudiante_id(estudiante);
+                mnota.setSeccion_id(mseccion);
+                
+                if(nota == null || nota < 0){
+                    mnota.setNota(-1);
+                }else{
+                    mnota.setNota(nota);
+                }
+                
+                arrayNotas.add(mnota);
+                
+                ((DefaultTableModel) model).addRow(row);
+            }
+            if(!encontro){
+                JOptionPane.showMessageDialog(view,"No se encontraron notas", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión, el statement y el resultSet
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     private void llenarCbxPeriodoAcademico(){
         try{
             // Crear una lista para almacenar los datos del combo
@@ -298,92 +442,8 @@ public class CCargarNotaProf {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-    }
-    
-    
-    private void llenarTablaNotas(int periodo, int seccion){
-        this.arrayNotas = new ArrayList<MNota>();
-        
-        int codigo_profesor = sesion.getCodigo_usuario();
-        TableModel model = view.getTablaNotas().getModel();
-        DefaultTableModel defaultModel = (DefaultTableModel) model;
-        defaultModel.setRowCount(0);
-        
-        String sql = "SELECT e.codigo as codigo_est, e.cedula as cedula, e.nombre as nombre, e.apellido as apellido, COALESCE(n.nota, NULL) AS nota, COALESCE(n.codigo, 0) AS nota_id "
-                + "FROM inscripcion i "
-                + "INNER JOIN estudiante e ON i.estudiante_id = e.codigo "
-                + "LEFT JOIN "
-                + "(SELECT estudiante_id, nota, codigo FROM nota WHERE seccion_id = ?) n ON e.codigo = n.estudiante_id "
-                + "WHERE i.seccion_id = ? AND i.periodo_academico_id = ? AND i.estatus = true;";
-        
-        try{
-            connection = cconexion.establecerConexion();
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1, seccion);
-            statement.setInt(2, seccion);
-            statement.setInt(3, periodo);
-            
-            resultSet = statement.executeQuery();
-            boolean encontro = false;
-            while (resultSet.next()) {
-                encontro = true;
-                Float nota = null;
-                
-                if (resultSet.getObject("nota") != null) {
-                    nota = resultSet.getFloat("nota");
-                }
-                
-                Object[] row = {
-                    resultSet.getString("cedula"),
-                    resultSet.getString("nombre"),
-                    resultSet.getString("apellido"),
-                    nota,
-                };
-                
-                MEstudiante estudiante = new MEstudiante();
-                estudiante.setCodigo(resultSet.getInt("codigo_est"));
-                estudiante.setCedula(resultSet.getString("cedula"));
-                estudiante.setNombre(resultSet.getString("nombre"));
-                estudiante.setApellido(resultSet.getString("apellido"));
-                
-                MSeccion mseccion = new MSeccion();
-                mseccion.setCodigo(seccion);
-                
-                MNota mnota = new MNota();
-                mnota.setCodigo(resultSet.getInt("nota_id"));
-                mnota.setEstudiante_id(estudiante);
-                mnota.setSeccion_id(mseccion);
-                
-                if(nota == null || nota < 0){
-                    mnota.setNota(-1);
-                }else{
-                    mnota.setNota(nota);
-                }
-                
-                arrayNotas.add(mnota);
-                
-                ((DefaultTableModel) model).addRow(row);
-            }
-            if(!encontro){
-                JOptionPane.showMessageDialog(view,"No se encontraron notas", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Cerrar la conexión, el statement y el resultSet
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-                
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    
-    private void guardarNotas(){
+        }}
+private void guardarNotas(){
         DefaultTableModel tabla = (DefaultTableModel) this.view.getTablaNotas().getModel();
         boolean error = false;
         for (int row = 0; row < tabla.getRowCount(); row++) {

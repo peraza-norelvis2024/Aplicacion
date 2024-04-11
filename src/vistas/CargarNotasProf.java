@@ -9,10 +9,6 @@ public class CargarNotasProf extends javax.swing.JFrame {
         return bontonAtras1;
     }
 
-    public javax.swing.JButton getBontonGuardar() {
-        return bontonGuardar;
-    }
-
     public javax.swing.JComboBox<String> getListAsignatura() {
         return listAsignatura;
     }
@@ -64,7 +60,9 @@ public class CargarNotasProf extends javax.swing.JFrame {
         scrollNotas = new javax.swing.JScrollPane();
         tablaNotas = new javax.swing.JTable();
         bontonAtras1 = new javax.swing.JButton();
-        bontonGuardar = new javax.swing.JButton();
+        bontonAgregar = new javax.swing.JButton();
+        bontonGuardar1 = new javax.swing.JButton();
+        bontonBuscar = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
         modificar = new javax.swing.JMenu();
         modificarNota = new javax.swing.JMenuItem();
@@ -159,14 +157,46 @@ public class CargarNotasProf extends javax.swing.JFrame {
             }
         });
 
-        bontonGuardar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        bontonGuardar.setText("GUARDAR");
-        bontonGuardar.setToolTipText("");
-        bontonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bontonGuardar.setPreferredSize(new java.awt.Dimension(82, 31));
-        bontonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+        bontonAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonAgregar.setText("AGREGAR NOTA");
+        bontonAgregar.setToolTipText("");
+        bontonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonAgregar.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bontonGuardarMouseClicked(evt);
+                bontonAgregarMouseClicked(evt);
+            }
+        });
+        bontonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bontonAgregarActionPerformed(evt);
+            }
+        });
+
+        bontonGuardar1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonGuardar1.setText("GUARDAR");
+        bontonGuardar1.setToolTipText("");
+        bontonGuardar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonGuardar1.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonGuardar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bontonGuardar1MouseClicked(evt);
+            }
+        });
+
+        bontonBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bontonBuscar.setText("Buscar");
+        bontonBuscar.setToolTipText("");
+        bontonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bontonBuscar.setPreferredSize(new java.awt.Dimension(82, 31));
+        bontonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bontonBuscarMouseClicked(evt);
+            }
+        });
+        bontonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bontonBuscarActionPerformed(evt);
             }
         });
 
@@ -180,32 +210,43 @@ public class CargarNotasProf extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(bgCargarNotasLayout.createSequentialGroup()
                 .addGap(0, 31, Short.MAX_VALUE)
-                .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgCargarNotasLayout.createSequentialGroup()
-                        .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textAsignatura)
-                            .addComponent(textPeriodos))
-                        .addGap(18, 18, 18)
-                        .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listPeriodos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(listAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(115, 115, 115)
                         .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(bgCargarNotasLayout.createSequentialGroup()
-                                .addComponent(textCarrera)
-                                .addGap(51, 51, 51)
-                                .addComponent(listCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(bgCargarNotasLayout.createSequentialGroup()
-                                .addComponent(textSeccion)
-                                .addGap(51, 51, 51)
-                                .addComponent(listSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(bgCargarNotasLayout.createSequentialGroup()
-                            .addComponent(bontonAtras1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bontonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(scrollNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                                .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textAsignatura)
+                                    .addComponent(textPeriodos))
+                                .addGap(18, 18, 18)
+                                .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(listPeriodos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(listAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(115, 115, 115)
+                                .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(bgCargarNotasLayout.createSequentialGroup()
+                                        .addComponent(textCarrera)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(listCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(bgCargarNotasLayout.createSequentialGroup()
+                                        .addComponent(textSeccion)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(listSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(scrollNotas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(37, Short.MAX_VALUE))
+                    .addGroup(bgCargarNotasLayout.createSequentialGroup()
+                        .addComponent(bontonAtras1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bontonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(152, 152, 152))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgCargarNotasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bontonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(361, 361, 361))
+            .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgCargarNotasLayout.createSequentialGroup()
+                    .addContainerGap(721, Short.MAX_VALUE)
+                    .addComponent(bontonGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)))
         );
         bgCargarNotasLayout.setVerticalGroup(
             bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,13 +265,22 @@ public class CargarNotasProf extends javax.swing.JFrame {
                     .addComponent(textAsignatura)
                     .addComponent(textSeccion)
                     .addComponent(listSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(scrollNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+
+                .addGap(18, 18, 18)
+                .addComponent(bontonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(scrollNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+
                 .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bontonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bontonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bontonAtras1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+                .addGap(34, 34, 34))
+            .addGroup(bgCargarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgCargarNotasLayout.createSequentialGroup()
+                    .addContainerGap(481, Short.MAX_VALUE)
+                    .addComponent(bontonGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(35, 35, 35)))
         );
 
         menu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -279,9 +329,9 @@ public class CargarNotasProf extends javax.swing.JFrame {
         //Abrir ventana
     }//GEN-LAST:event_bontonAtras1MouseClicked
 
-    private void bontonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonGuardarMouseClicked
+    private void bontonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonAgregarMouseClicked
 
-    }//GEN-LAST:event_bontonGuardarMouseClicked
+    }//GEN-LAST:event_bontonAgregarMouseClicked
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         
@@ -303,6 +353,22 @@ public class CargarNotasProf extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_modificarNotaActionPerformed
 
+    private void bontonGuardar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonGuardar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonGuardar1MouseClicked
+
+    private void bontonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonAgregarActionPerformed
+
+    private void bontonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bontonBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonBuscarMouseClicked
+
+    private void bontonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bontonBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bontonBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -316,8 +382,10 @@ public class CargarNotasProf extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgCargarNotas;
+    private javax.swing.JButton bontonAgregar;
     private javax.swing.JButton bontonAtras1;
-    private javax.swing.JButton bontonGuardar;
+    private javax.swing.JButton bontonBuscar;
+    private javax.swing.JButton bontonGuardar1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> listAsignatura;
     private javax.swing.JComboBox<String> listCarreras;
@@ -335,4 +403,26 @@ public class CargarNotasProf extends javax.swing.JFrame {
     private javax.swing.JLabel textSeccion;
     private javax.swing.JLabel tituloNotas;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the bontonAgregar
+     */
+    public javax.swing.JButton getBontonAgregar() {
+        return bontonAgregar;
+    }
+
+    /**
+     * @return the bontonGuardar1
+     */
+    public javax.swing.JButton getBontonGuardar1() {
+        return bontonGuardar1;
+    }
+
+    /**
+     * @return the bontonBuscar
+     */
+    public javax.swing.JButton getBontonBuscar() {
+        return bontonBuscar;
+    }
+
 }
