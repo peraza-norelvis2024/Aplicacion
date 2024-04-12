@@ -101,7 +101,7 @@ public class CReportesEstudiantesAdmin {
     
     private void estudiantesRetirados(){
         String sql = ""
-                + "SELECT e.nombre as nombre, e.apellido as apellido, e.cedula as cedula, a.nombre as nombre_asignatura "
+                + "SELECT e.cedula as cedula, e.nombre as nombre, e.apellido as apellido, a.nombre as nombre_asignatura "
                 + "FROM inscripcion i "
                 + "INNER JOIN estudiante e ON i.estudiante_id = e.codigo "
                 + "INNER JOIN seccion s ON i.seccion_id = s.codigo "
@@ -115,18 +115,18 @@ public class CReportesEstudiantesAdmin {
             resultSet = statement.executeQuery();
             // Iterar sobre los resultados y agregarlos a la lista
             DefaultTableModel newModel = new DefaultTableModel();
+            newModel.addColumn("Cédula");
             newModel.addColumn("Nombre");
             newModel.addColumn("Apellido");
-            newModel.addColumn("Cédula");
             newModel.addColumn("Asignatura");
             
             boolean encontro = false;
             while (resultSet.next()) {
                 encontro = true;
                 Object[] row = {
+                    resultSet.getString("cedula"),
                     resultSet.getString("nombre"),
                     resultSet.getString("apellido"),
-                    resultSet.getString("cedula"),
                     resultSet.getString("nombre_asignatura"),
                 };
                 
@@ -155,7 +155,7 @@ public class CReportesEstudiantesAdmin {
     
     private void estudiantesPorDecanatos(){
          String sql = ""
-                + "SELECT e.nombre as nombre, e.apellido as apellido, e.cedula as cedula, d.nombre as nombre_decanato "
+                + "SELECT e.cedula as cedula, e.nombre as nombre, e.apellido as apellido, d.nombre as nombre_decanato "
                 + "FROM estudiante e "
                 + "INNER JOIN carrera c ON e.carrera_id = c.codigo "
                 + "INNER JOIN decanato d ON c.decanato_id = d.codigo "
@@ -169,18 +169,18 @@ public class CReportesEstudiantesAdmin {
             model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
             // Iterar sobre los resultados y agregarlos a la lista
             DefaultTableModel newModel = new DefaultTableModel();
+            newModel.addColumn("Cédula");
             newModel.addColumn("Nombre");
             newModel.addColumn("Apellido");
-            newModel.addColumn("Cédula");
             newModel.addColumn("Decanato");
             
             boolean encontro = false;
             while (resultSet.next()) {
                 encontro = true;
                 Object[] row = {
+                    resultSet.getString("cedula"),
                     resultSet.getString("nombre"),
                     resultSet.getString("apellido"),
-                    resultSet.getString("cedula"),
                     resultSet.getString("nombre_decanato"),
                 };
                 
@@ -209,7 +209,7 @@ public class CReportesEstudiantesAdmin {
     
     private void estudiantesPorCarrera(){
          String sql = ""
-                + "SELECT e.nombre as nombre, e.apellido as apellido, e.cedula as cedula, c.nombre as nombre_carrera "
+                + "SELECT e.cedula as cedula, e.nombre as nombre, e.apellido as apellido, c.nombre as nombre_carrera "
                 + "FROM estudiante e "
                 + "INNER JOIN carrera c ON e.carrera_id = c.codigo "
                 + "WHERE e.estatus = true AND c.estatus = true; ";
@@ -222,18 +222,18 @@ public class CReportesEstudiantesAdmin {
             model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
             // Iterar sobre los resultados y agregarlos a la lista
             DefaultTableModel newModel = new DefaultTableModel();
+            newModel.addColumn("Cédula");
             newModel.addColumn("Nombre");
             newModel.addColumn("Apellido");
-            newModel.addColumn("Cédula");
             newModel.addColumn("Carrera");
             
             boolean encontro = false;
             while (resultSet.next()) {
                 encontro = true;
                 Object[] row = {
+                    resultSet.getString("cedula"),
                     resultSet.getString("nombre"),
                     resultSet.getString("apellido"),
-                    resultSet.getString("cedula"),
                     resultSet.getString("nombre_carrera"),
                 };
                 
@@ -262,14 +262,14 @@ public class CReportesEstudiantesAdmin {
     
     private void estudiantesPorSemestre() {
         String sql = ""
-                + "SELECT e.nombre AS nombre, e.apellido AS apellido, e.cedula AS cedula, MIN(s.nombre) AS nombre_semestre "
+                + "SELECT e.cedula AS cedula, e.nombre AS nombre, e.apellido AS apellido, MIN(s.nombre) AS nombre_semestre "
                 + "FROM estudiante e "
                 + "INNER JOIN inscripcion i ON e.codigo = i.estudiante_id "
                 + "INNER JOIN seccion sec ON i.seccion_id = sec.codigo "
                 + "INNER JOIN asignatura a ON sec.asignatura_id = a.codigo "
                 + "INNER JOIN semestre s ON a.semestre_id = s.codigo "
                 + "WHERE e.estatus = true AND s.estatus = true "
-                + "GROUP BY e.nombre, e.apellido, e.cedula";
+                + "GROUP BY e.cedula, e.nombre, e.apellido";
         try {
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
@@ -279,18 +279,18 @@ public class CReportesEstudiantesAdmin {
             model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
             // Iterar sobre los resultados y agregarlos a la lista
             DefaultTableModel newModel = new DefaultTableModel();
+            newModel.addColumn("Cédula");
             newModel.addColumn("Nombre");
             newModel.addColumn("Apellido");
-            newModel.addColumn("Cédula");
             newModel.addColumn("Semestre");
 
             boolean encontro = false;
             while (resultSet.next()) {
                 encontro = true;
                 Object[] row = {
+                    resultSet.getString("cedula"),
                     resultSet.getString("nombre"),
                     resultSet.getString("apellido"),
-                    resultSet.getString("cedula"),
                     resultSet.getString("nombre_semestre"),
                 };
 
@@ -319,7 +319,7 @@ public class CReportesEstudiantesAdmin {
 
     private void mejoresPromediosPorCarrera() {
         String sql = ""
-                + "SELECT e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, e.cedula AS cedula_estudiante, c.nombre AS nombre_carrera, "
+                + "SELECT e.cedula AS cedula_estudiante, e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, c.nombre AS nombre_carrera, "
                 + "SUM(n.nota/5) AS suma_notas, COUNT(n.nota) AS cantidad_notas, SUM(n.nota/5) / COUNT(n.nota) AS promedio_estudiante "
                 + "FROM estudiante e "
                 + "INNER JOIN carrera c ON e.carrera_id = c.codigo "
@@ -328,7 +328,7 @@ public class CReportesEstudiantesAdmin {
                 + "INNER JOIN asignatura a ON s.asignatura_id = a.codigo "
                 + "INNER JOIN nota n ON e.codigo = n.estudiante_id AND s.codigo = n.seccion_id "
                 + "WHERE e.estatus = true "
-                + "GROUP BY e.nombre, e.apellido, e.cedula, c.nombre "
+                + "GROUP BY e.cedula, e.nombre, e.apellido, c.nombre "
                 + "ORDER BY promedio_estudiante DESC "
                 + "LIMIT 20";
         try {
@@ -338,19 +338,19 @@ public class CReportesEstudiantesAdmin {
             resultSet = statement.executeQuery();
             // Iterar sobre los resultados y agregarlos a la lista
             DefaultTableModel newModel = new DefaultTableModel();
-            newModel.addColumn("Nombre Estudiante");
-            newModel.addColumn("Apellido Estudiante");
-            newModel.addColumn("Cédula Estudiante");
+            newModel.addColumn("Cédula");
+            newModel.addColumn("Nombre");
+            newModel.addColumn("Apellido");
             newModel.addColumn("Carrera");
-            newModel.addColumn("Promedio Estudiante");
+            newModel.addColumn("Promedio del Estudiante");
 
             boolean encontro = false;
             while (resultSet.next()) {
                 encontro = true;
                 Object[] row = {
+                    resultSet.getString("cedula_estudiante"),
                     resultSet.getString("nombre_estudiante"),
                     resultSet.getString("apellido_estudiante"),
-                    resultSet.getString("cedula_estudiante"),
                     resultSet.getString("nombre_carrera"),
                     resultSet.getDouble("promedio_estudiante")
                 };
@@ -380,7 +380,7 @@ public class CReportesEstudiantesAdmin {
 
     private void mejoresPromediosPorDecanato() {
         String sql = ""
-                + "SELECT e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, e.cedula AS cedula_estudiante, d.nombre AS nombre_decanato, "
+                + "SELECT e.cedula AS cedula_estudiante, e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, d.nombre AS nombre_decanato, "
                 + "SUM(n.nota/5) AS suma_notas, COUNT(n.nota) AS cantidad_notas, SUM(n.nota/5) / COUNT(n.nota) AS promedio_estudiante "
                 + "FROM estudiante e "
                 + "INNER JOIN carrera c ON e.carrera_id = c.codigo "
@@ -390,7 +390,7 @@ public class CReportesEstudiantesAdmin {
                 + "INNER JOIN decanato d ON c.decanato_id = d.codigo "
                 + "INNER JOIN nota n ON e.codigo = n.estudiante_id AND s.codigo = n.seccion_id "
                 + "WHERE e.estatus = true "
-                + "GROUP BY e.nombre, e.apellido, e.cedula, d.nombre "
+                + "GROUP BY e.cedula, e.nombre, e.apellido, d.nombre "
                 + "ORDER BY promedio_estudiante DESC "
                 + "LIMIT 20";
         try {
@@ -400,19 +400,19 @@ public class CReportesEstudiantesAdmin {
             resultSet = statement.executeQuery();
             // Iterar sobre los resultados y agregarlos a la lista
             DefaultTableModel newModel = new DefaultTableModel();
-            newModel.addColumn("Nombre Estudiante");
-            newModel.addColumn("Apellido Estudiante");
-            newModel.addColumn("Cédula Estudiante");
+            newModel.addColumn("Cédula");
+            newModel.addColumn("Nombre");
+            newModel.addColumn("Apellido");
             newModel.addColumn("Decanato");
-            newModel.addColumn("Promedio Estudiante");
+            newModel.addColumn("Promedio del Estudiante");
 
             boolean encontro = false;
             while (resultSet.next()) {
                 encontro = true;
                 Object[] row = {
+                    resultSet.getString("cedula_estudiante"),
                     resultSet.getString("nombre_estudiante"),
                     resultSet.getString("apellido_estudiante"),
-                    resultSet.getString("cedula_estudiante"),
                     resultSet.getString("nombre_decanato"),
                     resultSet.getDouble("promedio_estudiante")
                 };
