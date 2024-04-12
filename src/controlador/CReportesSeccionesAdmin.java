@@ -112,6 +112,7 @@ public class CReportesSeccionesAdmin {
                 + "c.nombre as nombre_carrera, "
                 + "d.nombre as nombre_decanato, "
                 + "a.nombre as nombre_asignatura, "
+                + "p.cedula as cedula_profesor, "
                 + "p.nombre as nombre_profesor, "
                 + "p.apellido as apellido_profesor "
                 + "FROM seccion s "
@@ -122,7 +123,7 @@ public class CReportesSeccionesAdmin {
                 + "INNER JOIN decanato d ON c.decanato_id = d.codigo "
                 + "INNER JOIN periodo_academico pa ON s.periodo_id = pa.codigo "
                 + "WHERE s.estatus = true AND pa.estatus = true AND pa.activo = true "
-                + "GROUP BY s.codigo, s.numero, c.nombre, d.nombre, p.nombre, p.apellido, a.nombre;";
+                + "GROUP BY s.codigo, s.numero, c.nombre, d.nombre, p.cedula, p.nombre, p.apellido, a.nombre;";
         try{
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
@@ -147,7 +148,7 @@ public class CReportesSeccionesAdmin {
                     resultSet.getString("nombre_carrera"),
                     resultSet.getString("nombre_asignatura"),
                     resultSet.getString("nombre_seccion"),
-                    resultSet.getString("nombre_profesor") + " " + resultSet.getString("apellido_profesor"),
+                    resultSet.getString("cedula_profesor") + " " + resultSet.getString("nombre_profesor") + " " + resultSet.getString("apellido_profesor"),
                     resultSet.getFloat("promedio_notas"),
                     resultSet.getInt("estudiantes_aprobados"),
                     resultSet.getInt("estudiantes_reprobados")
@@ -186,10 +187,10 @@ public class CReportesSeccionesAdmin {
             view.getComboSeccionRet().addItem("Seleccione opción");
 
             // Consulta SQL para obtener las secciones junto con el nombre de la asignatura a la que pertenecen
-            String sql = "SELECT s.codigo AS codigo, s.numero AS nombre, s.estatus AS estatus, a.nombre AS nombre_asignatura " +
-                         "FROM seccion s " +
-                         "INNER JOIN asignatura a ON s.asignatura_id = a.codigo " +
-                         "WHERE s.estatus = true;";
+            String sql = "SELECT s.codigo AS codigo, s.numero AS nombre, s.estatus AS estatus, a.nombre AS nombre_asignatura " 
+                        +"FROM seccion s "
+                        +"INNER JOIN asignatura a ON s.asignatura_id = a.codigo " 
+                        +"WHERE s.estatus = true;";
 
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
@@ -231,20 +232,22 @@ public class CReportesSeccionesAdmin {
         model.addColumn("Asignatura");
         model.addColumn("Sección");
         model.addColumn("Profesor");
-        model.addColumn("Estudiante");
+        model.addColumn("C.I del Estudiante");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
         model.addColumn("Nota");
-        model.addColumn("Promedio de la Sección"); // Nueva columna para el promedio de la sección
+        model.addColumn("Prom. de Sección"); // Nueva columna para el promedio de la sección
 
         double promedioSeccion = obtenerPromedioSeccion(codigoSeccion); // Obtener el promedio de la sección
 
         try {
-            String sql = "SELECT d.nombre AS decanato, c.nombre AS carrera, a.nombre AS asignatura, s.numero AS seccion, CONCAT(p.nombre, ' ', p.apellido) AS profesor " +
-                         "FROM seccion s " +
-                         "INNER JOIN asignatura a ON s.asignatura_id = a.codigo " +
-                         "INNER JOIN carrera c ON a.carrera_id = c.codigo " +
-                         "INNER JOIN decanato d ON c.decanato_id = d.codigo " +
-                         "INNER JOIN profesor p ON s.profesor_id = p.codigo " +
-                         "WHERE s.codigo = ?;";
+            String sql = "SELECT d.nombre AS decanato, c.nombre AS carrera, a.nombre AS asignatura, s.numero AS seccion, CONCAT(p.cedula, ' ', p.nombre, ' ', p.apellido) AS profesor "
+                        +"FROM seccion s " 
+                        +"INNER JOIN asignatura a ON s.asignatura_id = a.codigo " 
+                        +"INNER JOIN carrera c ON a.carrera_id = c.codigo " 
+                        +"INNER JOIN decanato d ON c.decanato_id = d.codigo " 
+                        +"INNER JOIN profesor p ON s.profesor_id = p.codigo " 
+                        +"WHERE s.codigo = ?;";
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, codigoSeccion);
@@ -257,7 +260,7 @@ public class CReportesSeccionesAdmin {
                 String seccion = resultSet.getString("seccion");
                 String profesor = resultSet.getString("profesor");
 
-                model.addRow(new Object[]{decanato, carrera, asignatura, seccion, profesor, "", "", promedioSeccion}); // Añadir el promedio de la sección a cada fila
+                model.addRow(new Object[]{decanato, carrera, asignatura, seccion, profesor, "", "", "", "", promedioSeccion}); // Añadir el promedio de la sección a cada fila
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -272,9 +275,9 @@ public class CReportesSeccionesAdmin {
     private double obtenerPromedioSeccion(int codigoSeccion) {
         double promedio = 0.0;
         try {
-            String sql = "SELECT AVG(nota) AS promedio " +
-                         "FROM nota " +
-                         "WHERE seccion_id = ?;";
+            String sql = "SELECT AVG(nota) AS promedio "
+                        +"FROM nota "
+                        +"WHERE seccion_id = ?;";
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, codigoSeccion);
@@ -292,10 +295,10 @@ public class CReportesSeccionesAdmin {
 
     private void obtenerEstudiantesPorEncimaPromedio(int codigoSeccion, DefaultTableModel model) {
         try {
-            String sql = "SELECT e.nombre AS nombre_estudiante, n.nota " +
-                         "FROM estudiante e " +
-                         "INNER JOIN nota n ON e.codigo = n.estudiante_id " +
-                         "WHERE n.seccion_id = ? AND n.nota > (SELECT AVG(nota) FROM nota WHERE seccion_id = ?);";
+            String sql = "SELECT e.cedula AS cedula_estudiante, e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, n.nota "
+                        +"FROM estudiante e "
+                        +"INNER JOIN nota n ON e.codigo = n.estudiante_id "
+                        +"WHERE n.seccion_id = ? AND n.nota > (SELECT AVG(nota) FROM nota WHERE seccion_id = ?);";
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, codigoSeccion);
@@ -303,10 +306,12 @@ public class CReportesSeccionesAdmin {
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
+                String cedulaEstudiante = resultSet.getString("cedula_estudiante");
                 String nombreEstudiante = resultSet.getString("nombre_estudiante");
+                String apellidoEstudiante = resultSet.getString("apellido_estudiante");
                 double nota = resultSet.getDouble("nota");
 
-                model.addRow(new Object[]{"", "", "", "", "", nombreEstudiante, nota, "Por Encima"});
+                model.addRow(new Object[]{"", "", "", "", "", cedulaEstudiante, nombreEstudiante, apellidoEstudiante, nota, "Por Encima"});
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -315,10 +320,10 @@ public class CReportesSeccionesAdmin {
 
     private void obtenerEstudiantesPorDebajoPromedio(int codigoSeccion, DefaultTableModel model) {
         try {
-            String sql = "SELECT e.nombre AS nombre_estudiante, n.nota " +
-                         "FROM estudiante e " +
-                         "INNER JOIN nota n ON e.codigo = n.estudiante_id " +
-                         "WHERE n.seccion_id = ? AND n.nota < (SELECT AVG(nota) FROM nota WHERE seccion_id = ?);";
+            String sql = "SELECT e.cedula AS cedula_estudiante, e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, n.nota " 
+                        +"FROM estudiante e " 
+                        +"INNER JOIN nota n ON e.codigo = n.estudiante_id " 
+                        +"WHERE n.seccion_id = ? AND n.nota < (SELECT AVG(nota) FROM nota WHERE seccion_id = ?);";
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, codigoSeccion);
@@ -326,10 +331,12 @@ public class CReportesSeccionesAdmin {
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
+                String cedulaEstudiante = resultSet.getString("cedula_estudiante");
                 String nombreEstudiante = resultSet.getString("nombre_estudiante");
+                String apellidoEstudiante = resultSet.getString("apellido_estudiante");
                 double nota = resultSet.getDouble("nota");
 
-                model.addRow(new Object[]{"", "", "", "", "", nombreEstudiante, nota, "Por Debajo"});
+                model.addRow(new Object[]{"", "", "", "", "", cedulaEstudiante, nombreEstudiante, apellidoEstudiante, nota, "Por Debajo"});
             }
         } catch (SQLException e) {
             e.printStackTrace();
