@@ -205,95 +205,99 @@ public class CModificarNotasProf {
         
     }
     
-    private void cargarNota(MEstudiante estudiante){
-        try{
-            int codigo_asignatura = obtenerCodigoAsignaturaSeleccionada();
-            
-            String sql = "SELECT s.codigo as codigo_seccion, s.numero as nombre_seccion, n.nota as nota, n.codigo as nota_id "
-                    + "FROM nota n "
-                    + "INNER JOIN estudiante e ON n.estudiante_id = e.codigo "
-                    + "INNER JOIN seccion s ON n.seccion_id = s.codigo "
-                    + "INNER JOIN asignatura a ON s.asignatura_id = a.codigo "
-                    + "INNER JOIN periodo_academico p ON s.periodo_id = p.codigo "
-                    + "WHERE n.estudiante_id = ? AND a.codigo = ? AND p.estatus = true AND p.activo = true AND n.estatus = true LIMIT 1;";
-            
-            connection = cconexion.establecerConexion();
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1, estudiante.getCodigo());;
-            statement.setInt(2, codigo_asignatura);
-            
-            resultSet = statement.executeQuery();
-            // Iterar sobre los resultados y agregarlos a la lista
-            
-            if(resultSet.next()) {
-                
-                MSeccion seccion = new MSeccion();
-                seccion.setCodigo(resultSet.getInt("codigo_seccion"));
-                seccion.setNumero(resultSet.getString("nombre_seccion"));
-                
-                this.nota = new MNota();
-                this.nota.setCodigo(resultSet.getInt("nota_id"));
-                this.nota.setEstudiante_id(estudiante);
-                this.nota.setSeccion_id(seccion);
-                this.nota.setNota(resultSet.getFloat("nota"));
-                
-                this.view.getCampoNombre().setText(this.nota.getEstudiante_id().getNombre());
-                this.view.getCampoApellido().setText(this.nota.getEstudiante_id().getApellido());
-                this.view.getCampoCarrera().setText(this.nota.getEstudiante_id().getCarrera_id().getNombre());
-                this.view.getCampoSeccion().setText(this.nota.getSeccion_id().getNumero());
-                this.view.getCampoNota().setValue(this.nota.getNota());
-                
-                this.view.getBontonGuardar().setEnabled(true);
+  private void cargarNota(MEstudiante estudiante){
+try{
+int codigo_asignatura = obtenerCodigoAsignaturaSeleccionada();
+String sql = "SELECT s.codigo as codigo_seccion, s.numero as nombre_seccion, n.nota as nota, n.codigo as nota_id "
+                + "FROM nota n "
+                + "INNER JOIN estudiante e ON n.estudiante_id = e.codigo "
+                + "INNER JOIN seccion s ON n.seccion_id = s.codigo "
+                + "INNER JOIN asignatura a ON s.asignatura_id = a.codigo "
+                + "INNER JOIN periodo_academico p ON s.periodo_id = p.codigo "
+                + "WHERE n.estudiante_id = ? AND a.codigo = ? AND p.estatus = true AND p.activo = true AND n.estatus = true LIMIT 1;";
         
-            }else{
-                JOptionPane.showMessageDialog(view,"No se encontraron notas", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+        connection = cconexion.establecerConexion();
+        statement = connection.prepareStatement(sql);
+        statement.setInt(1, estudiante.getCodigo());;
+        statement.setInt(2, codigo_asignatura);
+        
+        resultSet = statement.executeQuery();
+        // Iterar sobre los resultados y agregarlos a la lista
+        
+        if(resultSet.next()) {
+            
+            MSeccion seccion = new MSeccion();
+            seccion.setCodigo(resultSet.getInt("codigo_seccion"));
+            seccion.setNumero(resultSet.getString("nombre_seccion"));
+            
+            this.nota = new MNota();
+            this.nota.setCodigo(resultSet.getInt("nota_id"));
+            this.nota.setEstudiante_id(estudiante);
+            this.nota.setSeccion_id(seccion);
+            this.nota.setNota(resultSet.getFloat("nota"));
+            
+            this.view.getCampoNombre().setText(this.nota.getEstudiante_id().getNombre());
+            this.view.getCampoApellido().setText(this.nota.getEstudiante_id().getApellido());
+            this.view.getCampoCarrera().setText(this.nota.getEstudiante_id().getCarrera_id().getNombre());
+            this.view.getCampoSeccion().setText(this.nota.getSeccion_id().getNumero());
+            this.view.getCampoNota().setValue(this.nota.getNota());
+            
+            this.view.getBontonGuardar().setEnabled(true);
+    
+        }else{
+            JOptionPane.showMessageDialog(view,"No se encontraron notas", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // Cerrar la conexión, el statement y el resultSet
+        try {
+            if (resultSet != null) resultSet.close();
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            // Cerrar la conexión, el statement y el resultSet
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-                
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
-        
     }
     
-    private void guardarNota(MNota nota){
-        String sql = "UPDATE nota SET nota = ? WHERE codigo = ?;";
-        try{
+}
+   private void guardarNota(MNota nota) {
+    String sql = "UPDATE nota SET nota = ? WHERE codigo = ?;";
+    try {
+        float notaValue = Float.parseFloat(this.view.getCampoNota().getValue().toString());
         
+        // Validar que la nota esté en el rango de 0 a 100
+        if (notaValue >= 0 && notaValue <= 100) {
             connection = cconexion.establecerConexion();
             statement = connection.prepareStatement(sql);
-            statement.setFloat(1, Float.parseFloat(this.view.getCampoNota().getValue().toString()));
+            statement.setFloat(1, notaValue);
             statement.setInt(2, nota.getCodigo());
 
             statement.executeUpdate();
-            
-            JOptionPane.showMessageDialog(view,"Se ha actualizado exitosamente!");
-            
+
+            JOptionPane.showMessageDialog(view, "Se ha actualizado exitosamente!");
+
             this.limpiarCampos();
-            
+        } else {
+            JOptionPane.showMessageDialog(view, "La nota debe estar entre 0 y 100", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(view, "Ingrese un valor numérico válido para la nota", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // Cerrar la conexión, el statement y el resultSet
+        try {
+            if (resultSet != null) resultSet.close();
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            // Cerrar la conexión, el statement y el resultSet
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-                
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
-        
     }
+}
     private int obtenerCodigoAsignaturaSeleccionada() {
         int selectedIndex = view.getListAsignatura().getSelectedIndex();
 
