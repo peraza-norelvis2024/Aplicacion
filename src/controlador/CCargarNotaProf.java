@@ -256,7 +256,7 @@ public class CCargarNotaProf {
                 MSeccion mseccion = new MSeccion();
                 mseccion.setCodigo(seccion);
                 
-                MNota mnota = new MNota();
+                MNota mnota = new MNota.getInstance();
                 mnota.setCodigo(resultSet.getInt("nota_id"));
                 mnota.setEstudiante_id(estudiante);
                 mnota.setSeccion_id(mseccion);

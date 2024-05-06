@@ -230,7 +230,7 @@ String sql = "SELECT s.codigo as codigo_seccion, s.numero as nombre_seccion, n.n
             seccion.setCodigo(resultSet.getInt("codigo_seccion"));
             seccion.setNumero(resultSet.getString("nombre_seccion"));
             
-            this.nota = new MNota();
+            this.nota = new MNota.getInstance();
             this.nota.setCodigo(resultSet.getInt("nota_id"));
             this.nota.setEstudiante_id(estudiante);
             this.nota.setSeccion_id(seccion);

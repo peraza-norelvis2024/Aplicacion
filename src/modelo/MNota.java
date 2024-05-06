@@ -8,15 +8,18 @@ public class MNota {
     private MSeccion seccion_id;
     private float nota;
     private boolean estatus;
-    
-    public MNota(){}
-    
-    public MNota(int codigo, MEstudiante estudiante_id, MSeccion seccion_id, float nota, boolean estatus) {
-        this.codigo = codigo;
-        this.estudiante_id = estudiante_id;
-        this.seccion_id = seccion_id;
-        this.nota = nota;
-        this.estatus = estatus;
+
+    private static MNota instance;
+
+    private MNota() {
+        // Constructor privado para evitar la creación directa de instancias
+    }
+
+    public static MNota getInstance() {
+        if (instance == null) {
+            instance = new MNota();
+        }
+        return instance;
     }
 
     public int getCodigo() {
@@ -58,5 +61,10 @@ public class MNota {
     public void setEstatus(boolean estatus) {
         this.estatus = estatus;
     }
-    
+
+    public static class getInstance extends MNota {
+
+        public getInstance() {
+        }
+    }
 }
