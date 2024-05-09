@@ -14,6 +14,7 @@ import javax.swing.*;
 
 import conexion.CConexion;
 import java.util.*;
+import modelo.Command;
 import modelo.MAsignatura;
 import modelo.MEstudiante;
 import modelo.MInscripcion;
@@ -29,10 +30,40 @@ public class CRetiroAsigAdmin {
     private MEstudiante estudiante;
     private MInscripcion inscripcion;
     private List<MInscripcion> inscripciones;
+    private Command buscarEstudianteCommand;
+    private Command retirarAsignaturaCommand;
     
     Connection connection = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
+    
+  public  class BuscarEstudianteCommand implements Command {
+    private CRetiroAsigAdmin retiroAsigAdmin;
+
+    public BuscarEstudianteCommand(CRetiroAsigAdmin retiroAsigAdmin) {
+        this.retiroAsigAdmin = retiroAsigAdmin;
+    }
+
+    @Override
+    public void execute() {
+        retiroAsigAdmin.buscarEstudiante();
+    }
+}
+
+// Comando concreto para retirar asignatura
+public class RetirarAsignaturaCommand implements Command {
+    private CRetiroAsigAdmin retiroAsigAdmin;
+
+    public RetirarAsignaturaCommand(CRetiroAsigAdmin retiroAsigAdmin) {
+        this.retiroAsigAdmin = retiroAsigAdmin;
+    }
+
+    @Override
+    public void execute() {
+        retiroAsigAdmin.retirarAsignatura();
+    }
+}
+
     
     public CRetiroAsigAdmin(RetiroAsigAdmin view, Sesion sesion){
         this.view = view;
@@ -42,6 +73,9 @@ public class CRetiroAsigAdmin {
         this.mapaEstudiante = new HashMap<>();
         this.estudiante = null;
         this.inscripciones = new ArrayList<>();
+        
+        buscarEstudianteCommand = new BuscarEstudianteCommand(this);
+        retirarAsignaturaCommand = new RetirarAsignaturaCommand(this);
         
         //Accion de boton atras
         this.view.getBontonAtrasRet().addActionListener(new ActionListener(){
@@ -66,11 +100,11 @@ public class CRetiroAsigAdmin {
             }
         });
         
-        this.view.getBotonBuscarRet().addActionListener(new ActionListener(){
+         this.view.getBotonBuscarRet().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!view.getCampoCedRet().getText().isEmpty()){
-                    buscarEstudiante();
+                if (!view.getCampoCedRet().getText().isEmpty()) {
+                    buscarEstudianteCommand.execute();
                 }
             }
         });
@@ -87,12 +121,12 @@ public class CRetiroAsigAdmin {
             }
         });
         
-        this.view.getBotonEliminarRet().addActionListener(new ActionListener(){
+        this.view.getBotonEliminarRet().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int confirmado = JOptionPane.showConfirmDialog(null, "¿Está seguro de retirar la asignatura?");
-                if (JOptionPane.OK_OPTION==confirmado) {
-                    retirarAsigantura();
+                if (JOptionPane.OK_OPTION == confirmado) {
+                    retirarAsignaturaCommand.execute();
                 }
             }
         });
@@ -187,7 +221,7 @@ public class CRetiroAsigAdmin {
     
     }
     
-    private void retirarAsigantura(){
+    private void retirarAsignatura(){
         int index = view.getListAsigRet().getSelectedIndex();
         MInscripcion inscrip = this.inscripciones.get(index - 1);
         String sql = "UPDATE inscripcion SET estatus = false WHERE codigo = ?;";
