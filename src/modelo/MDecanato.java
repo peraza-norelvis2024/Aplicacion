@@ -1,13 +1,18 @@
 // Norelvis Peraza // Joe Verde // Sophia Estrada // Juan Fonseca // Gloria Sánchez
 
+
 package modelo;
 
-public class MDecanato {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MDecanato implements Componente {
     private int codigo;
     private String nombre;
     private String descripcion;
     private MUniversidad universidad_id;
     private boolean estatus;
+    private List<Componente> componentes;
 
     public MDecanato(int codigo, String nombre, String descripcion, MUniversidad universidad_id, boolean estatus) {
         this.codigo = codigo;
@@ -15,6 +20,7 @@ public class MDecanato {
         this.descripcion = descripcion;
         this.universidad_id = universidad_id;
         this.estatus = estatus;
+        this.componentes = new ArrayList<>();
     }
 
     public int getCodigo() {
@@ -57,5 +63,15 @@ public class MDecanato {
         this.estatus = estatus;
     }
     
-    
+    public void agregarComponente(Componente componente) {
+        componentes.add(componente);
+    }
+
+    public void eliminarComponente(Componente componente) {
+        componentes.remove(componente);
+    }
+
+    public Componente getComponente(int index) {
+        return componentes.get(index);
+    }
 }
