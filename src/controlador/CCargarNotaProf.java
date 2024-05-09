@@ -256,7 +256,7 @@ public class CCargarNotaProf {
                 MSeccion mseccion = new MSeccion();
                 mseccion.setCodigo(seccion);
                 
-                MNota mnota = new MNota();
+                MNota mnota = new MNota.getInstance();
                 mnota.setCodigo(resultSet.getInt("nota_id"));
                 mnota.setEstudiante_id(estudiante);
                 mnota.setSeccion_id(mseccion);
@@ -443,69 +443,80 @@ public class CCargarNotaProf {
                 e.printStackTrace();
             }
         }}
-private void guardarNotas(){
-        DefaultTableModel tabla = (DefaultTableModel) this.view.getTablaNotas().getModel();
-        boolean error = false;
-        for (int row = 0; row < tabla.getRowCount(); row++) {
-            Object[] rowData = new Object[tabla.getColumnCount()];
-            rowData[0] = tabla.getValueAt(row, 0);
-            rowData[1] = tabla.getValueAt(row, 1);
-            rowData[2] = tabla.getValueAt(row, 2);
-            rowData[3] = tabla.getValueAt(row, 3);
-            
-            if(rowData[3] != null && rowData[3]!=""){
-                rowData[3] = Float.parseFloat(rowData[3].toString());
-            }else{
-                rowData[3] = Float.parseFloat("-1.0");
-            }
-            
-            MNota nota = arrayNotas.get(row);
-            
-            String sql = "";
-            
-            if(nota.getCodigo() == 0 && (rowData[3] != null && (float) rowData[3] > -1)){
-                sql = "INSERT INTO nota(nota, seccion_id, estudiante_id) "
-                        + "VALUES ( "+(float) rowData[3]+","+nota.getSeccion_id().getCodigo()+","+nota.getEstudiante_id().getCodigo()+");";
-            }
-            
-            if(nota.getCodigo() > 0 && (rowData[3] != null && (float) rowData[3] > -1)){
-                sql = "UPDATE nota SET nota = "+(float) rowData[3]+" WHERE codigo = "+nota.getCodigo()+";";
-            }
-            
-            
-            try{
-                if(!sql.equals("")){
-                    connection = cconexion.establecerConexion();
-                    statement = connection.prepareStatement(sql);
-                    statement.executeUpdate();
-                }
-            } catch (SQLException e) {
-                error = true;
-                e.printStackTrace();
-            } finally {
-                // Cerrar la conexión, el statement y el resultSet
-                try {
-                    if (resultSet != null) resultSet.close();
-                    if (statement != null) statement.close();
-                    if (connection != null) connection.close();
+private void guardarNotas() {
+    DefaultTableModel tabla = (DefaultTableModel) this.view.getTablaNotas().getModel();
+    boolean error = false;
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+    for (int row = 0; row < tabla.getRowCount(); row++) {
+        Object[] rowData = new Object[tabla.getColumnCount()];
+        rowData[0] = tabla.getValueAt(row, 0);
+        rowData[1] = tabla.getValueAt(row, 1);
+        rowData[2] = tabla.getValueAt(row, 2);
+        rowData[3] = tabla.getValueAt(row, 3);
+
+        if (rowData[3] != null && rowData[3] != "") {
+            float notaValue;
+            try {
+                notaValue = Float.parseFloat(rowData[3].toString());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(view, "La nota debe ser un número válido en la fila " + (row + 1), "Error", JOptionPane.ERROR_MESSAGE);
+                error = true;
+                continue;
             }
-            
+
+            if (notaValue < 0 || notaValue > 100) {
+                JOptionPane.showMessageDialog(view, "La nota debe estar en el rango de 0 a 100 en la fila " + (row + 1), "Error", JOptionPane.ERROR_MESSAGE);
+                error = true;
+                continue;
+            }
+
+            rowData[3] = notaValue;
+        } else {
+            rowData[3] = -1.0f;
         }
-        
-        if(error){
-            JOptionPane.showMessageDialog(view,"Error al guardar notas, por favor verificar", "Error", JOptionPane.ERROR_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(view,"Se ha guardado exitosamente!");
+
+        MNota nota = arrayNotas.get(row);
+        String sql = "";
+
+        if (nota.getCodigo() == 0 && (float) rowData[3] > -1) {
+            sql = "INSERT INTO nota(nota, seccion_id, estudiante_id) "
+                    + "VALUES (" + (float) rowData[3] + "," + nota.getSeccion_id().getCodigo() + "," + nota.getEstudiante_id().getCodigo() + ");";
         }
-        
-        this.limpiarCampos();
-    
+
+        if (nota.getCodigo() > 0 && (float) rowData[3] > -1) {
+            sql = "UPDATE nota SET nota = " + (float) rowData[3] + " WHERE codigo = " + nota.getCodigo() + ";";
+        }
+
+        try {
+            if (!sql.equals("")) {
+                connection = cconexion.establecerConexion();
+                statement = connection.prepareStatement(sql);
+                statement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            error = true;
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión, el statement y el resultSet
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
-    
+
+    if (error) {
+        JOptionPane.showMessageDialog(view, "Error al guardar notas, por favor verificar", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(view, "Se ha guardado exitosamente!");
+    }
+
+    this.limpiarCampos();
+}
     private int obtenerCodigoPeriodoSeleccionado() {
         int selectedIndex = view.getListPeriodos().getSelectedIndex();
 
